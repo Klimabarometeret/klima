@@ -60,7 +60,11 @@
 				"outputs": [
 					{
 						"referenceName": "ssb_csv_lake_output",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"folder": "ssb_07849",
+							"filename": "07849"
+						}
 					}
 				]
 			}

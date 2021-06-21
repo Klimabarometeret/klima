@@ -3,10 +3,7 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ssbHTTP",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"relativeUrl": "@dataset().relativeUrl"
-			}
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"relativeUrl": {
@@ -18,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": "@dataset().relativeUrl"
+				"relativeUrl": {
+					"value": "@dataset().relativeUrl",
+					"type": "Expression"
+				}
 			},
 			"columnDelimiter": ",",
 			"encodingName": "ISO-8859-1",
