@@ -1,0 +1,23 @@
+{
+	"name": "ssb_csv_lake_output",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "csv_lake_linked_service",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "dataset().filename",
+				"folderPath": "@dataset().folder",
+				"fileSystem": "ssbdata"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}

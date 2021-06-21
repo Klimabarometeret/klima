@@ -1,0 +1,70 @@
+{
+	"name": "ssb_pipeline",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy To Data Lake",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "POST",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"4204\",\n          \"0\",\n          \"1001\"\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\",\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\",\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\",\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\",\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobFSWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "ssb_csv_input",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "07849"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ssb_csv_lake_output",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

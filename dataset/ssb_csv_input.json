@@ -1,5 +1,5 @@
 {
-	"name": "ssbCsvInput",
+	"name": "ssb_csv_input",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "ssbHTTP",
