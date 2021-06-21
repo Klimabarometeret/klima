@@ -1,11 +1,6 @@
 {
 	"name": "ssbHTTP",
 	"properties": {
-		"parameters": {
-			"relativeUrl": {
-				"type": "String"
-			}
-		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
