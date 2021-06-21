@@ -3,13 +3,13 @@
 	"properties": {
 		"parameters": {
 			"relativeUrl": {
-				"type": "string"
+				"type": "String"
 			}
 		},
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
-			"url": "@{linkedService().relativeUrl}",
+			"url": "https://data.ssb.no/api/v0/no/table/",
 			"enableServerCertificateValidation": true,
 			"authenticationType": "Anonymous"
 		}
