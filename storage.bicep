@@ -4,7 +4,7 @@ param storageAccountName string
 param location string = resourceGroup().location
 param globalRedundancy bool = false
 
-var containerName = 'data'
+var containerName = 'ssbdata'
 
 resource stacc 'Microsoft.Storage/storageAccounts@2021-04-01' = {
   name: storageAccountName
@@ -16,11 +16,7 @@ resource stacc 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 }
 
 resource container1 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-04-01' = {
-  name: '${stacc.name}/default/${containerName}1'
-}
-
-resource container2 'Microsoft.Storage/storageAccounts/blobServices/containers@2021-04-01' = {
-  name: '${stacc.name}/default/${containerName}2'
+  name: '${stacc.name}/default/${containerName}'
 }
 
 param currentTime string = utcNow()
