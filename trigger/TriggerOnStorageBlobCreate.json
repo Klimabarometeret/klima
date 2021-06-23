@@ -1,0 +1,24 @@
+{
+	"name": "TriggerOnStorageBlobCreate",
+	"properties": {
+		"annotations": [],
+		"runtimeState": "Started",
+		"pipelines": [
+			{
+				"pipelineReference": {
+					"referenceName": "AutomationTest",
+					"type": "PipelineReference"
+				}
+			}
+		],
+		"type": "BlobEventsTrigger",
+		"typeProperties": {
+			"blobPathBeginsWith": "/ssbdata/blobs/",
+			"ignoreEmptyBlobs": true,
+			"scope": "/subscriptions/828f9a73-7ecc-4f88-9abe-3c39c71ec80f/resourceGroups/klima-rg/providers/Microsoft.Storage/storageAccounts/klimastacc",
+			"events": [
+				"Microsoft.Storage.BlobCreated"
+			]
+		}
+	}
+}
