@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataset": {
-						"referenceName": "SSB_BLOB",
+						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference"
 					},
 					"fieldList": [
