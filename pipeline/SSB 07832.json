@@ -66,8 +66,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_OUTPUT",
-						"type": "DatasetReference"
+						"referenceName": "SSB_BLOB_INPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@activity('Web1').output.label",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
