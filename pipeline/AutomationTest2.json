@@ -51,16 +51,33 @@
 					},
 					"activities": [
 						{
-							"name": "Append variable1",
-							"type": "AppendVariable",
+							"name": "Data flow1",
+							"type": "ExecuteDataFlow",
 							"dependsOn": [],
+							"policy": {
+								"timeout": "1.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
 							"userProperties": [],
 							"typeProperties": {
-								"variableName": "fileNames",
-								"value": {
-									"value": "@item().name",
-									"type": "Expression"
-								}
+								"dataflow": {
+									"referenceName": "dataflow1",
+									"type": "DataFlowReference",
+									"parameters": {
+										"fileName": {
+											"value": "'@{item().name}'",
+											"type": "Expression"
+										}
+									}
+								},
+								"compute": {
+									"coreCount": 8,
+									"computeType": "General"
+								},
+								"traceLevel": "Fine"
 							}
 						}
 					]
