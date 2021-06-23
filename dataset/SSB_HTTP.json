@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText1",
+	"name": "SSB_HTTP",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SSB_HTTP_LINK",

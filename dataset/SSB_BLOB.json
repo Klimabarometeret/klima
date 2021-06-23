@@ -1,5 +1,5 @@
 {
-	"name": "DelimitedText2",
+	"name": "SSB_BLOB",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
