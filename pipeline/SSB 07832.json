@@ -1,0 +1,144 @@
+{
+	"name": "SSB 07832",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "POST",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"agg:KommSummer\",\n        \"values\": [\n          \"K-4204\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Kjoretoy\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\"*\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "type kjøring",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type kjøring",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "drivstofftype",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "drivstofftype",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "år",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "år",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statistikkvariabel",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "statistikkvariabel",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "07849: Registrerte kjøretøy,",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "07849: Registrerte kjøretøy,",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SSB_HTTP",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "07832"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSB_BLOB",
+						"type": "DatasetReference"
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}

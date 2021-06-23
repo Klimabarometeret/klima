@@ -27,6 +27,11 @@
 				}
 			}
 		],
+		"parameters": {
+			"blobName": {
+				"type": "string"
+			}
+		},
 		"annotations": []
 	}
 }
