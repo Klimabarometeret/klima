@@ -93,44 +93,7 @@
 					"url": "https://data.ssb.no/api/v0/no/table/07832",
 					"method": "POST",
 					"body": {
-						"query": [
-							{
-								"code": "Region",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"0"
-									]
-								}
-							},
-							{
-								"code": "Kjoretoy",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"0853"
-									]
-								}
-							},
-							{
-								"code": "ContentsCode",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"Personbiler1"
-									]
-								}
-							},
-							{
-								"code": "Tid",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"2008"
-									]
-								}
-							}
-						],
+						"query": [],
 						"response": {
 							"format": "json-stat2"
 						}
