@@ -14,11 +14,15 @@
 			],
 			"sinks": [
 				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
 					"name": "sink1"
 				}
 			],
 			"transformations": [],
-			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
+			"script": "source(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: '',\n\ttableName: '',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1) ~> sink1"
 		}
 	}
 }
