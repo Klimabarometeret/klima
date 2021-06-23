@@ -15,7 +15,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "@dataset().fileName",
+				"fileName": {
+					"value": "concat(@dataset().fileName, \".csv\")",
+					"type": "Expression"
+				},
 				"container": "ssbdata"
 			},
 			"columnDelimiter": ",",
