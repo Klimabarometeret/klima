@@ -3,11 +3,11 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Copy data",
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Web1",
+						"activity": "GetApiTitle",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -70,7 +70,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": {
-								"value": "@activity('Web1').output.label",
+								"value": "@activity('GetApiTitle').output",
 								"type": "Expression"
 							}
 						}
@@ -78,7 +78,7 @@
 				]
 			},
 			{
-				"name": "Web1",
+				"name": "GetApiTitle",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
