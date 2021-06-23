@@ -1,0 +1,12 @@
+{
+	"name": "SSB_HTTP_LINK",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://data.ssb.no/api/v0/no/table/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
