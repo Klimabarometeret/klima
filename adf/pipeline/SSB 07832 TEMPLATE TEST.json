@@ -4,6 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy data",
+				"description": "Legg inn table ID på relativeUrl variabel udner source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -58,10 +59,7 @@
 				"inputs": [
 					{
 						"referenceName": "SSB_HTTP1",
-						"type": "DatasetReference",
-						"parameters": {
-							"relativeUrl": "07832"
-						}
+						"type": "DatasetReference"
 					}
 				],
 				"outputs": [
@@ -79,6 +77,7 @@
 			},
 			{
 				"name": "GetApiTitle",
+				"description": "LEGG inn table ID fra SSB bakerst på url under settings",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
