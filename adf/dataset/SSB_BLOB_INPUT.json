@@ -5,20 +5,11 @@
 			"referenceName": "AZURE_BLOB_LINK",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"fileName": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				},
 				"container": "ssbdata"
 			},
 			"columnDelimiter": ",",
