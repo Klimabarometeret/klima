@@ -70,7 +70,10 @@
 						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "12906"
+							"fileName": {
+								"value": "@activity('GetApiTitle').output.label",
+								"type": "Expression"
+							}
 						}
 					}
 				]

@@ -35,7 +35,7 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".csv"
+							"fileExtension": ".txt"
 						}
 					},
 					"enableStaging": false,
@@ -133,8 +133,11 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_INPUT",
-						"type": "DatasetReference"
+						"referenceName": "SSB_BLOB_OUTPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "07849"
+						}
 					}
 				]
 			}

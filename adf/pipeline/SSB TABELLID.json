@@ -63,7 +63,13 @@
 				"outputs": [
 					{
 						"referenceName": "SSB_BLOB_INPUT",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@activity('GetApiTitle').output.label",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
