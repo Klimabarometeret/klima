@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformSsbBlobToSQL", "TransformSsbBlobToSQL\TransformSsbBlobToSQL.csproj", "{733EEBBC-6786-4C41-9D81-4A46CA02FB4E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransformSsbBlobToSQL", "TransformSsbBlobToSQL\TransformSsbBlobToSQL.csproj", "{D9D71180-3FFB-488D-987A-07889BD551BF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{733EEBBC-6786-4C41-9D81-4A46CA02FB4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{733EEBBC-6786-4C41-9D81-4A46CA02FB4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{733EEBBC-6786-4C41-9D81-4A46CA02FB4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{733EEBBC-6786-4C41-9D81-4A46CA02FB4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9D71180-3FFB-488D-987A-07889BD551BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9D71180-3FFB-488D-987A-07889BD551BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9D71180-3FFB-488D-987A-07889BD551BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9D71180-3FFB-488D-987A-07889BD551BF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {B096F1C8-6F21-4AC7-A602-64111815FB9A}
+		SolutionGuid = {663DD129-B450-4E5A-9B5B-DC9E3E32B586}
 	EndGlobalSection
 EndGlobal

@@ -11,7 +11,7 @@ namespace TransformSsbBlobToSQL
         public static void Run([BlobTrigger("ssbdata/{name}", Connection = "")] string myBlob, string name,
             FunctionContext context)
         {
-            var logger = context.GetLogger("Log from 'SsbBlobToSQL'");
+            var logger = context.GetLogger("Function1");
             logger.LogInformation($"C# Blob trigger function Processed blob\n Name: {name} \n Data: {myBlob}");
         }
     }
