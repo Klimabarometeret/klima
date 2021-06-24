@@ -4,7 +4,7 @@
 		"activities": [
 			{
 				"name": "Copy data",
-				"description": "Velg Source: SSB_HTTP\nVelg Sink: SSB_BLOB_OUTPUT\n\nLegg inn table ID på relativeUrl variabel under source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen",
+				"description": "Velg Source: SSB_HTTP\nVelg Sink: SSB_BLOB_OUTPUT\n\nLegg inn table ID på relativeUrl variabel under source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen\n\nSett \"@activity('GetApiTitle').output.label\" som sink filename",
 				"type": "Copy",
 				"dependsOn": [
 					{
