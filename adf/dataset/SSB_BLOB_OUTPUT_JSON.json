@@ -1,0 +1,27 @@
+{
+	"name": "SSB_BLOB_OUTPUT_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@concat(dataset().fileName, ' JSON')",
+					"type": "Expression"
+				},
+				"container": "ssbdata"
+			}
+		},
+		"schema": {}
+	}
+}
