@@ -1,1 +1,1 @@
-# Klimabarometeret
+Initialized by Azure Data Factory!
