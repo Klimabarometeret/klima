@@ -1,5 +1,5 @@
 {
-	"name": "SSB_BLOB_OUTPUT",
+	"name": "SSB_BLOB_INPUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",

@@ -1,5 +1,5 @@
 {
-	"name": "AzureSqlTable1",
+	"name": "AZURE_SQL_OUTPUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_SQL_DB_LINK",
