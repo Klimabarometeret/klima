@@ -20,7 +20,8 @@
 					"type": "Expression"
 				},
 				"container": "ssbdata"
-			}
+			},
+			"encodingName": "ISO-8859-1"
 		},
 		"schema": {}
 	}

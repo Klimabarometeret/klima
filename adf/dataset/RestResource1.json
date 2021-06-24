@@ -1,0 +1,15 @@
+{
+	"name": "RestResource1",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SSB_REST_LINK",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"relativeUrl": "@dataset().relativeUrl"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
