@@ -20,7 +20,7 @@
 						"storeSettings": {
 							"type": "HttpReadSettings",
 							"requestMethod": "POST",
-							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1420\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
 							"requestTimeout": ""
 						},
 						"formatSettings": {
@@ -133,7 +133,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_OUTPUT",
+						"referenceName": "SSB_BLOB_INPUT",
 						"type": "DatasetReference"
 					}
 				]

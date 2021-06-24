@@ -1,0 +1,57 @@
+{
+	"name": "SSB JSON TEST",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data",
+				"description": "Legg inn table ID på relativeUrl variabel udner source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "POST",
+						"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1420\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat2\"\n  }\n}"
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "RestResource1",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSB_BLOB_OUTPUT_JSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "07849"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-06-23T12:24:47Z"
+	}
+}

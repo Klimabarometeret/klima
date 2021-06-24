@@ -1,0 +1,17 @@
+{
+	"name": "SSB_REST_LINK",
+	"properties": {
+		"parameters": {
+			"relativeUrl": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestService",
+		"typeProperties": {
+			"url": "https://data.ssb.no/api/v0/no/table/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

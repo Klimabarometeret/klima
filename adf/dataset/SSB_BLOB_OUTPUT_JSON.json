@@ -1,5 +1,5 @@
 {
-	"name": "SSB_BLOB_INPUT11",
+	"name": "SSB_BLOB_OUTPUT_JSON",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
@@ -11,21 +11,18 @@
 			}
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@dataset().fileName",
+					"value": "@concat(dataset().fileName, ' JSON')",
 					"type": "Expression"
 				},
 				"container": "ssbdata"
 			},
-			"columnDelimiter": ",",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"encodingName": "ISO-8859-1"
 		},
-		"schema": []
+		"schema": {}
 	}
 }
