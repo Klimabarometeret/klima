@@ -16,12 +16,11 @@
 			"location": {
 				"type": "AzureBlobStorageLocation",
 				"fileName": {
-					"value": "@concat(dataset().fileName, ' JSON')",
+					"value": "@concat(dataset().fileName, ' JSON.json')",
 					"type": "Expression"
 				},
 				"container": "ssbdata"
-			},
-			"encodingName": "ISO-8859-1"
+			}
 		},
 		"schema": {}
 	}

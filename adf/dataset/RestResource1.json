@@ -3,13 +3,18 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SSB_REST_LINK",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"relativeUrl": "@dataset().relativeUrl"
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"relativeUrl": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "@dataset().relativeUrl"
+		},
 		"schema": []
 	}
 }

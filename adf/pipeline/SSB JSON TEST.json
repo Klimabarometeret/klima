@@ -37,7 +37,10 @@
 				"inputs": [
 					{
 						"referenceName": "RestResource1",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "07849"
+						}
 					}
 				],
 				"outputs": [
