@@ -93,7 +93,26 @@
 					"url": "https://data.ssb.no/api/v0/no/table/07832",
 					"method": "POST",
 					"body": {
-						"query": [],
+						"query": [
+							{
+								"code": "Region",
+								"selection": {
+									"filter": "agg:KommSummer",
+									"values": [
+										"K-4204"
+									]
+								}
+							},
+							{
+								"code": "Kjoretoy",
+								"selection": {
+									"filter": "all",
+									"values": [
+										"*"
+									]
+								}
+							}
+						],
 						"response": {
 							"format": "json-stat2"
 						}
