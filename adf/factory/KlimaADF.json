@@ -1,0 +1,9 @@
+{
+	"name": "KlimaADF",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e437e9f7-6100-4c93-8c38-c30d0f8f429e",
+		"tenantId": "7aa99425-1726-430d-bee1-6d96e27ae823"
+	}
+}

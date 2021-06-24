@@ -1,0 +1,9 @@
+{
+	"name": "PhilipADF",
+	"location": "northeurope",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "6d0d3674-9779-4335-8d34-3baa641aa5f4",
+		"tenantId": "7aa99425-1726-430d-bee1-6d96e27ae823"
+	}
+}
