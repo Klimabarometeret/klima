@@ -70,7 +70,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": {
-								"value": "@activity('GetApiTitle').output.label",
+								"value": "@concat(activity('GetApiTitle').output.label, '.csv')",
 								"type": "Expression"
 							}
 						}
