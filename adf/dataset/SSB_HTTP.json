@@ -21,7 +21,7 @@
 				}
 			},
 			"columnDelimiter": ",",
-			"encodingName": "UTF-8",
+			"encodingName": "ISO-8859-1",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
