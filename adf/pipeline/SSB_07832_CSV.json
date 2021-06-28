@@ -69,10 +69,7 @@
 						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": {
-								"value": "@concat(activity('GetApiTitle').output.label, '.csv')",
-								"type": "Expression"
-							}
+							"fileName": "@concat(activity('GetApiTitle').output.label, '.csv')"
 						}
 					}
 				]

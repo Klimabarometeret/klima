@@ -43,12 +43,86 @@
 						"formatSettings": {
 							"type": "DelimitedTextWriteSettings",
 							"quoteAllText": true,
-							"fileExtension": ".txt"
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
 					"translator": {
 						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "region",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "region",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "type kjøring",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "type kjøring",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "drivstofftype",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "drivstofftype",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "år",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "år",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "statistikkvariabel",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "statistikkvariabel",
+									"type": "String",
+									"physicalType": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "07849: Registrerte kjøretøy,",
+									"type": "String",
+									"physicalType": "String"
+								},
+								"sink": {
+									"name": "07849: Registrerte kjøretøy,",
+									"type": "String",
+									"physicalType": "String"
+								}
+							}
+						],
 						"typeConversion": true,
 						"typeConversionSettings": {
 							"allowDataTruncation": true,
@@ -70,10 +144,7 @@
 						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": {
-								"value": "@concat(activity('GetApiTitle').output.label, '.csv')",
-								"type": "Expression"
-							}
+							"fileName": "07849.csv"
 						}
 					}
 				]
