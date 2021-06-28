@@ -8,12 +8,12 @@ using TransformSsbBlobToSQL.Models;
 
 namespace TransformSsbBlobToSQL.Data
 {
-    class SsbContext : DbContext
+    public class SsbContext : DbContext
     {
-        public SsbContext(DbContextOptions options) : base(options)
+        public SsbContext(DbContextOptions<SsbContext> options) : base(options)
         {
         }
 
-        private DbSet<Ssb07849> ssbKjøringer { get; set; }
+        private DbSet<Ssb07849> Ssb07849s { get; set; }
     }
 }

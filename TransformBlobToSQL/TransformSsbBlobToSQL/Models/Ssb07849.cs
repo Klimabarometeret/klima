@@ -24,6 +24,10 @@ namespace TransformSsbBlobToSQL.Models
 
         public DateTime Dato { get; set; }
 
+        public Ssb07849()
+        {
+        }
+
         public Ssb07849(string region, string typeKjøring, string drivstofftype, int år, string statistikkvariabel,
             int antall)
         {

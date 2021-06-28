@@ -1,19 +1,37 @@
-using Microsoft.Azure.Functions.Worker.Configuration;
+using System.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System.Threading.Tasks;
-
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using TransformSsbBlobToSQL.Data;
 namespace TransformSsbBlobToSQL
 {
     public class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
-            var host = new HostBuilder()
-                .ConfigureFunctionsWorkerDefaults()
-                .Build();
+        #if DEBUG
+            Debugger.Launch();
+        #endif
 
-            host.Run();
+            CreateHostBuilder(args).Build().Run();
+        }
+
+        public static IHostBuilder CreateHostBuilder(string[] args)
+        {
+            return new HostBuilder()
+                .ConfigureAppConfiguration(c =>
+                {
+                    c.AddCommandLine(args);
+                })
+                .ConfigureFunctionsWorkerDefaults()
+                .ConfigureServices(s =>
+                {
+                    s.AddDbContext<SsbContext>(options =>
+                    {
+                        options.UseSqlite("FileName=sqlitedb");
+                    });
+                });
         }
     }
 }
