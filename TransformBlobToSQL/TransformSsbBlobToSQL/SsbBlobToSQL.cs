@@ -31,15 +31,15 @@ namespace TransformSsbBlobToSQL
 
             Console.WriteLine($"Number of lines after transformation: {ssb07849.Count}");
 
-            await _context.AddRangeAsync(ssb07849);
-            await _context.SaveChangesAsync();
-
-            var allData = await _context.FindAsync<List<Ssb07849>>();
-
-            Console.WriteLine($"Number of objects from DB: {allData.Count}");
+            // await _context.AddRangeAsync(ssb07849);
+            // await _context.SaveChangesAsync();
+            //
+            // var allData = await _context.FindAsync<List<Ssb07849>>();
+            //
+            // Console.WriteLine($"Number of objects from DB: {allData.Count}");
         }
 
-        private static Object CommonRows(Ssb07849Raw x)
+        private static object CommonRows(Ssb07849Raw x)
         {
             return new {x.TypeKjøring, x.DrivstoffType, x.År, x.StatistikkVariabel, x.RegistrerteKjøretøy};
         }
