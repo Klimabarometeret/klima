@@ -1,5 +1,5 @@
 {
-	"name": "SSB 07832 CSV",
+	"name": "SSB_07832_CSV",
 	"properties": {
 		"activities": [
 			{
@@ -57,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP",
+						"referenceName": "SSB_HTTP_INPUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "07832"
