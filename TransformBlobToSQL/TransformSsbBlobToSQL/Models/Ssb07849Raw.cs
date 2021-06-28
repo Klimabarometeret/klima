@@ -7,9 +7,10 @@ using CsvHelper.Configuration.Attributes;
 
 namespace TransformSsbBlobToSQL.Models
 {
-    class SsbKjøring
+    class Ssb07849Raw
     {
-        // public int Id { get; set; }
+        // public int Id { get; set; } = 0;
+
         [Name("region")]
         public string Region { get; set; }
 
