@@ -18,7 +18,7 @@ namespace TransformSsbBlobToSQL.Models
 
         public int År { get; set; }
 
-        public string Statistikkvariabel { get; set; }
+        public string Biltype { get; set; }
 
         public int Antall { get; set; }
 
@@ -31,7 +31,7 @@ namespace TransformSsbBlobToSQL.Models
             TypeKjøring = typeKjøring;
             Drivstofftype = drivstofftype;
             År = år;
-            Statistikkvariabel = statistikkvariabel;
+            Biltype = statistikkvariabel;
             Antall = antall;
             Dato = DateTime.Parse($"01-01-{år}");
         }
