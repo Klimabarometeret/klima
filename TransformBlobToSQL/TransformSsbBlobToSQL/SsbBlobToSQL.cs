@@ -1,12 +1,7 @@
 using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Text;
-using CsvHelper;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Extensions.Logging;
+using MoreLinq;
 using TransformSsbBlobToSQL.Conversion;
 using TransformSsbBlobToSQL.Models;
 
@@ -15,17 +10,21 @@ namespace TransformSsbBlobToSQL
     public static class SsbBlobToSQL
     {
         [Function("SsbBlobToSQL")]
-        public static void Run([BlobTrigger("ssbdata/{name}", Connection = "")] string ssbBlob, string name,
+        public static void Run([BlobTrigger("ssbdata/{name}", Connection = "")]
+            string ssbBlob, string name,
             FunctionContext context)
         {
-            var csvConverter = new ConvertFromCsv();
-            var data = csvConverter.toSsbKjøringList(ssbBlob);
+            var ssb07849 = Converter.fromCsv(ssbBlob)
+                .DistinctBy(CommonRows)
+                .Select(Converter.toEntity)
+                .ToList();
 
-            // Midlertidlig utskrift for å vise at konvertering er vellykket
-            foreach (var ssbKjøring in data.Take(5))
-            {
-                Console.WriteLine(ssbKjøring);
-            }
+            Console.WriteLine($"Number of lines after transformation: {ssb07849.Count}");
+        }
+
+        private static Object CommonRows(Ssb07849Raw x)
+        {
+            return new {x.TypeKjøring, x.DrivstoffType, x.År, x.StatistikkVariabel, x.RegistrerteKjøretøy};
         }
     }
 }
