@@ -13,7 +13,7 @@
 				"container": "ssbdata"
 			},
 			"columnDelimiter": ",",
-			"encodingName": "ISO-8859-1",
+			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
