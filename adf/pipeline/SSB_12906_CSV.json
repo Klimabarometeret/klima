@@ -70,10 +70,7 @@
 						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": {
-								"value": "@concat(activity('GetApiTitle').output.label, '.csv')",
-								"type": "Expression"
-							}
+							"fileName": "12906.csv"
 						}
 					}
 				]
@@ -157,6 +154,37 @@
 							"format": "json-stat2"
 						}
 					}
+				}
+			},
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Copy data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "SSB 12906",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
 				}
 			}
 		],
