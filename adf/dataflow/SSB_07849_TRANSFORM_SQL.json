@@ -1,5 +1,5 @@
 {
-	"name": "SSB 07849",
+	"name": "SSB_07849_TRANSFORM_SQL",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
