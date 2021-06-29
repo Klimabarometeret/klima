@@ -1,5 +1,5 @@
 {
-	"name": "MET_DATA_MIDDELTEMP",
+	"name": "MET_DATA_MEANTEMP_OLD",
 	"properties": {
 		"activities": [
 			{
@@ -53,7 +53,7 @@
 						"referenceName": "MET_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_MIDDELTEMP.json"
+							"fileName": "MET_MEANTEMP.json"
 						}
 					}
 				]
