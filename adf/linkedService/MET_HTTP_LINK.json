@@ -1,0 +1,12 @@
+{
+	"name": "MET_HTTP_LINK",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://rim.met.no/api/v1/observations",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
