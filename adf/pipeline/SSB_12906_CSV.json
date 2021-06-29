@@ -28,7 +28,7 @@
 						"storeSettings": {
 							"type": "HttpReadSettings",
 							"requestMethod": "POST",
-							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"vs:Kommun\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\"\n        ]\n      }\n    },\n    {\n      \"code\": \"TypeRegistrering\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"N\",\n          \"B\"\n        ]\n      }\n    },\n    {\n      \"code\": \"EuroKlasser\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"00\",\n          \"01\",\n          \"02\",\n          \"03\",\n          \"04\",\n          \"05\",\n          \"06\",\n          \"07\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"1\",\n          \"2\",\n          \"3\",\n          \"4\",\n          \"5\",\n          \"13\",\n          \"14\",\n          \"15\",\n          \"16\",\n          \"17\",\n          \"6\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"TypeRegistrering\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"N\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
 							"requestTimeout": ""
 						},
 						"formatSettings": {
@@ -96,11 +96,9 @@
 							{
 								"code": "Region",
 								"selection": {
-									"filter": "vs:Kommun",
+									"filter": "item",
 									"values": [
-										"0",
-										"4204",
-										"1001"
+										"4204"
 									]
 								}
 							},
@@ -109,49 +107,22 @@
 								"selection": {
 									"filter": "item",
 									"values": [
-										"N",
-										"B"
-									]
-								}
-							},
-							{
-								"code": "EuroKlasser",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"00",
-										"01",
-										"02",
-										"03",
-										"04",
-										"05",
-										"06",
-										"07"
+										"N"
 									]
 								}
 							},
 							{
 								"code": "DrivstoffType",
 								"selection": {
-									"filter": "item",
+									"filter": "all",
 									"values": [
-										"1",
-										"2",
-										"3",
-										"4",
-										"5",
-										"13",
-										"14",
-										"15",
-										"16",
-										"17",
-										"6"
+										"*"
 									]
 								}
 							}
 						],
 						"response": {
-							"format": "json-stat2"
+							"format": "csv2"
 						}
 					}
 				}

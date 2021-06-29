@@ -27,7 +27,7 @@
 						"storeSettings": {
 							"type": "HttpReadSettings",
 							"requestMethod": "POST",
-							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"agg:KommSummer\",\n        \"values\": [\n          \"K-4204\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Kjoretoy\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\"*\"]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Kjoretoy\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": []\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
 							"requestTimeout": ""
 						},
 						"formatSettings": {
@@ -94,9 +94,13 @@
 							{
 								"code": "Region",
 								"selection": {
-									"filter": "agg:KommSummer",
+									"filter": "item",
 									"values": [
-										"K-4204"
+										"0",
+										"4204",
+										"1001",
+										"1017",
+										"1018"
 									]
 								}
 							},
@@ -104,14 +108,12 @@
 								"code": "Kjoretoy",
 								"selection": {
 									"filter": "all",
-									"values": [
-										"*"
-									]
+									"values": []
 								}
 							}
 						],
 						"response": {
-							"format": "json-stat2"
+							"format": "csv2"
 						}
 					}
 				}
