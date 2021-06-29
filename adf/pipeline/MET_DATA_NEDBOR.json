@@ -1,5 +1,5 @@
 {
-	"name": "MET_DATA_NEDBOR_OLD",
+	"name": "MET_DATA_NEDBOR",
 	"properties": {
 		"activities": [
 			{
@@ -60,7 +60,7 @@
 						"referenceName": "MET_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_MEANTEMP.json"
+							"fileName": "MET_NEDBOR.json"
 						}
 					}
 				]
