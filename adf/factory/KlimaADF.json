@@ -1,5 +1,13 @@
 {
 	"name": "KlimaADF",
+	"properties": {
+		"globalParameters": {
+			"summertime": {
+				"type": "bool",
+				"value": true
+			}
+		}
+	},
 	"location": "northeurope",
 	"identity": {
 		"type": "SystemAssigned",
