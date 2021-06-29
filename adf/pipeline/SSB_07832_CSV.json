@@ -1,0 +1,157 @@
+{
+	"name": "SSB_07832_CSV",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "GetApiTitle",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "POST",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Kjoretoy\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": []\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "SSB_HTTP_INPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "07832"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SSB_BLOB_OUTPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "07832.csv"
+						}
+					}
+				]
+			},
+			{
+				"name": "GetApiTitle",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://data.ssb.no/api/v0/no/table/07832",
+					"method": "POST",
+					"body": {
+						"query": [
+							{
+								"code": "Region",
+								"selection": {
+									"filter": "item",
+									"values": [
+										"0",
+										"4204",
+										"1001",
+										"1017",
+										"1018"
+									]
+								}
+							},
+							{
+								"code": "Kjoretoy",
+								"selection": {
+									"filter": "all",
+									"values": []
+								}
+							}
+						],
+						"response": {
+							"format": "csv2"
+						}
+					}
+				}
+			},
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Copy data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "SSB_07832_TRANSFORM_SQL",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-06-23T12:27:04Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

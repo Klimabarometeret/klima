@@ -1,0 +1,17 @@
+{
+	"name": "SVV_HTTP_INPUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SVV_HTTP_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	}
+}

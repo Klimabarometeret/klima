@@ -1,5 +1,5 @@
 {
-	"name": "SSB 07832 CSV",
+	"name": "SSB_07832_CSV Lang streng paa fillagring",
 	"properties": {
 		"activities": [
 			{
@@ -57,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP",
+						"referenceName": "SSB_HTTP_INPUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "07832"
@@ -69,10 +69,7 @@
 						"referenceName": "SSB_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": {
-								"value": "@concat(activity('GetApiTitle').output.label, '.csv')",
-								"type": "Expression"
-							}
+							"fileName": "@concat(activity('GetApiTitle').output.label, '.csv')"
 						}
 					}
 				]
