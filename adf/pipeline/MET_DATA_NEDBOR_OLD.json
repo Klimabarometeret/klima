@@ -1,18 +1,11 @@
 {
-	"name": "MET_DATA_NEDBOR_OLD",
+	"name": "MET_DATA_NEDBOR",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data",
+				"name": "Copy data1",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Sjekke om sommertid",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -49,7 +42,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": {
-								"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=sum(precipitation_amount%20P1D)&timeResolution=days')",
+								"value": "@concat(\n    concat(\n        '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \n        string(\n            utcnow()\n        )\n    ),\n'&elements=sum(precipitation_amount%20P1D)&timeResolution=days')",
 								"type": "Expression"
 							}
 						}
@@ -60,79 +53,12 @@
 						"referenceName": "MET_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_MEANTEMP.json"
+							"fileName": "MET_NEDBOR.json"
 						}
 					}
 				]
-			},
-			{
-				"name": "Formater til vaar tidssone",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Hente datetime",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "datetimeFormat",
-					"value": {
-						"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Sjekke om sommertid",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Formater til vaar tidssone",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "summertime",
-					"value": {
-						"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
-						"type": "Expression"
-					}
-				}
-			},
-			{
-				"name": "Hente datetime",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "datetime",
-					"value": {
-						"value": "@utcnow()",
-						"type": "Expression"
-					}
-				}
 			}
 		],
-		"variables": {
-			"datetime": {
-				"type": "String"
-			},
-			"summertime": {
-				"type": "Boolean"
-			},
-			"datetimeFormat": {
-				"type": "String"
-			},
-			"asdf": {
-				"type": "String"
-			}
-		},
 		"annotations": []
 	}
 }
