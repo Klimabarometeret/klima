@@ -41,7 +41,7 @@
 						"referenceName": "MET_HTTP_INPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"relativeUrl": "?sources=SN39040&referenceTime=1940-06-29T09:28:26Z/2021-06-29T09:28:28Z&elements=mean(air_temperature%20P1D)&timeResolution=days"
+							"relativeUrl": "?sources=SN39040&referenceTime=1940-01-01T00:00:00Z/2021-06-29T09:28:28Z&elements=mean(air_temperature%20P1D)&timeResolution=days"
 						}
 					}
 				],
@@ -50,7 +50,7 @@
 						"referenceName": "MET_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_DATA"
+							"fileName": "MET_DATA.json"
 						}
 					}
 				]
