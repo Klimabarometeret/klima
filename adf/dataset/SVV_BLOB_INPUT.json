@@ -1,0 +1,18 @@
+{
+	"name": "SVV_BLOB_INPUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"container": "svvdata"
+			}
+		},
+		"schema": {}
+	}
+}
