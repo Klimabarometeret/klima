@@ -1,0 +1,61 @@
+{
+	"name": "MET_DATA_JSON",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MET_HTTP_INPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "?sources=SN39040&referenceTime=1940-06-29T09:28:26Z/2021-06-29T09:28:28Z&elements=mean(air_temperature%20P1D)&timeResolution=days"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MET_BLOB_OUTPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "MET_DATA"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
