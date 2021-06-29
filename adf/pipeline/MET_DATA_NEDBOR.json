@@ -1,5 +1,5 @@
 {
-	"name": "MET_DATA_MIDDELTEMP",
+	"name": "MET_DATA_NEDBOR",
 	"properties": {
 		"activities": [
 			{
@@ -42,7 +42,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": {
-								"value": "@concat(\n    concat(\n        '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \n        string(\n            utcnow()\n        )\n    ),\n'&elements=mean(air_temperature%20P1D)&timeResolution=days')",
+								"value": "@concat(\n    concat(\n        '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \n        string(\n            utcnow()\n        )\n    ),\n'&elements=sum(precipitation_amount%20P1D)&timeResolution=days')",
 								"type": "Expression"
 							}
 						}
@@ -53,7 +53,7 @@
 						"referenceName": "MET_BLOB_OUTPUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_MIDDELTEMP.json"
+							"fileName": "MET_NEDBOR.json"
 						}
 					}
 				]
