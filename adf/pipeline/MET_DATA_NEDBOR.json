@@ -159,9 +159,6 @@
 			},
 			"datetimeFormat": {
 				"type": "String"
-			},
-			"asdf": {
-				"type": "String"
 			}
 		},
 		"annotations": []
