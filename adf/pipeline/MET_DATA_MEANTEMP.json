@@ -1,0 +1,169 @@
+{
+	"name": "MET_DATA_MEANTEMP",
+	"properties": {
+		"activities": [
+			{
+				"name": "Copy data",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sjekke om sommertid",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "MET_HTTP_INPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": {
+								"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=mean(air_temperature%20P1D)&timeResolution=days')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "MET_BLOB_OUTPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "MET_MEANTEMP.json"
+						}
+					}
+				]
+			},
+			{
+				"name": "Formater til vaar tidssone",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Hente datetime",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "datetimeFormat",
+					"value": {
+						"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Sjekke om sommertid",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Formater til vaar tidssone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "summertime",
+					"value": {
+						"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Hente datetime",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "datetime",
+					"value": {
+						"value": "@utcnow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Data flow1",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Copy data",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "MET_MEANTEMP_TRANSFORM_SQL",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"variables": {
+			"datetime": {
+				"type": "String"
+			},
+			"summertime": {
+				"type": "Boolean"
+			},
+			"datetimeFormat": {
+				"type": "String"
+			},
+			"asdf": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
