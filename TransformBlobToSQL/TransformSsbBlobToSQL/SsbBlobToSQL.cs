@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Functions.Worker;
 using MoreLinq;
+using Serilog;
 using TransformSsbBlobToSQL.Conversion;
 using TransformSsbBlobToSQL.Data;
 using TransformSsbBlobToSQL.Models;
@@ -13,10 +14,12 @@ namespace TransformSsbBlobToSQL
     public class SsbBlobToSQL
     {
         private readonly SsbContext _context;
+        private readonly ILogger _logger;
 
-        public SsbBlobToSQL(SsbContext context)
+        public SsbBlobToSQL(SsbContext context, ILogger logger)
         {
             _context = context;
+            _logger = logger;
         }
 
         [Function("SsbBlobToSQL")]
@@ -28,20 +31,20 @@ namespace TransformSsbBlobToSQL
                 .DistinctBy(CommonRows)
                 .Select(Converter.toEntity)
                 .ToList();
-
+            _logger.Warning($"Number of lines after transformation: {ssb07849.Count}");
             Console.WriteLine($"Number of lines after transformation: {ssb07849.Count}");
 
-            // await _context.AddRangeAsync(ssb07849);
-            // await _context.SaveChangesAsync();
-            //
-            // var allData = await _context.FindAsync<List<Ssb07849>>();
-            //
-            // Console.WriteLine($"Number of objects from DB: {allData.Count}");
+            await _context.AddRangeAsync(ssb07849);
+            await _context.SaveChangesAsync();
+            
+            var allData = await _context.FindAsync<List<Ssb07849>>();
+            
+            Console.WriteLine($"Number of objects from DB: {allData.Count}");
         }
 
         private static object CommonRows(Ssb07849Raw x)
         {
-            return new {x.TypeKjøring, x.DrivstoffType, x.År, x.StatistikkVariabel, x.RegistrerteKjøretøy};
+            return new {x.TypeKjï¿½ring, x.DrivstoffType, x.ï¿½r, x.StatistikkVariabel, x.RegistrerteKjï¿½retï¿½y};
         }
     }
 }
