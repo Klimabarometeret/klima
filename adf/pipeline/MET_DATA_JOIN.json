@@ -11,6 +11,18 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "MET_DATA_MEANTEMP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "MET_DATA_MAXTEMP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -49,14 +61,7 @@
 			{
 				"name": "MET_DATA_MEANTEMP",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "MET_DATA_MAXTEMP",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
@@ -69,14 +74,7 @@
 			{
 				"name": "MET_DATA_NEDBOR",
 				"type": "ExecutePipeline",
-				"dependsOn": [
-					{
-						"activity": "MET_DATA_MEANTEMP",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"userProperties": [],
 				"typeProperties": {
 					"pipeline": {
