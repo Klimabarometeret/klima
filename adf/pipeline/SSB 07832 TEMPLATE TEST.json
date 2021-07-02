@@ -1,5 +1,5 @@
 {
-	"name": "SSB 07832",
+	"name": "SSB 07832 TEMPLATE TEST",
 	"properties": {
 		"activities": [
 			{
@@ -57,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP",
+						"referenceName": "SSB_HTTP1",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "07832"
@@ -66,8 +66,14 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_INPUT",
-						"type": "DatasetReference"
+						"referenceName": "SSB_BLOB_INPUT1",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": {
+								"value": "@activity('GetApiTitle').output.label",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			},
@@ -84,7 +90,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"url": "https://data.ssb.no/api/v0/no/table/07832",
+					"url": "https://data.ssb.no/api/v0/no/table/",
 					"method": "POST",
 					"body": {
 						"query": [],
@@ -96,7 +102,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-06-23T12:27:04Z"
+		"lastPublishTime": "2021-06-23T12:24:47Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

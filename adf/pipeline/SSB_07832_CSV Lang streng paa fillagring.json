@@ -1,5 +1,5 @@
 {
-	"name": "SSB 07832",
+	"name": "SSB_07832_CSV Lang streng paa fillagring",
 	"properties": {
 		"activities": [
 			{
@@ -57,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP",
+						"referenceName": "SSB_HTTP_INPUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "07832"
@@ -66,8 +66,11 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_INPUT",
-						"type": "DatasetReference"
+						"referenceName": "SSB_BLOB_OUTPUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "@concat(activity('GetApiTitle').output.label, '.csv')"
+						}
 					}
 				]
 			},
@@ -87,7 +90,26 @@
 					"url": "https://data.ssb.no/api/v0/no/table/07832",
 					"method": "POST",
 					"body": {
-						"query": [],
+						"query": [
+							{
+								"code": "Region",
+								"selection": {
+									"filter": "agg:KommSummer",
+									"values": [
+										"K-4204"
+									]
+								}
+							},
+							{
+								"code": "Kjoretoy",
+								"selection": {
+									"filter": "all",
+									"values": [
+										"*"
+									]
+								}
+							}
+						],
 						"response": {
 							"format": "json-stat2"
 						}
@@ -96,7 +118,7 @@
 			}
 		],
 		"annotations": [],
-		"lastPublishTime": "2021-06-23T12:27:04Z"
+		"lastPublishTime": "2021-07-01T16:09:27Z"
 	},
 	"type": "Microsoft.DataFactory/factories/pipelines"
 }

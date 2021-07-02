@@ -1,0 +1,25 @@
+{
+	"name": "AZURE_SQL_OUTPUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_SQL_DB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"tableName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "ssb",
+			"table": {
+				"value": "@dataset().tableName",
+				"type": "Expression"
+			}
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

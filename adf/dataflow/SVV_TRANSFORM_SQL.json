@@ -1,0 +1,35 @@
+{
+	"name": "SVV_TRANSFORM_SQL",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SVV_BLOB_INPUT",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Flatten1"
+				}
+			],
+			"script": "source(output(\n\t\tdata as (trafficData as (volume as (average as (daily as (byYear as (total as (coverage as (percentage as double), volume as (average as short, confidenceInterval as (lowerBound as short, upperBound as short))), year as short)[])))))\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine',\n\twildcardPaths:['029d27ee-c578-4fce-897e-65ae895f0fae']) ~> source1\nFlatten1 derive(each(match(true()), $$ = $$)) ~> DerivedColumn1\nsource1 foldDown(unroll(data.trafficData.volume.average.daily.byYear, data.trafficData.volume.average.daily.byYear),\n\tmapColumn(\n\t\tYear = data.trafficData.volume.average.daily.byYear.year,\n\t\tPercentage = data.trafficData.volume.average.daily.byYear.total.coverage.percentage,\n\t\tAverageVolume = data.trafficData.volume.average.daily.byYear.total.volume.average,\n\t\tLowerConfidence = data.trafficData.volume.average.daily.byYear.total.volume.confidenceInterval.lowerBound,\n\t\tUpperConfidence = data.trafficData.volume.average.daily.byYear.total.volume.confidenceInterval.upperBound\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> Flatten1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'AvgYearly',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tYear,\n\t\tPercentage,\n\t\tAverageVolume,\n\t\tLowerConfidence,\n\t\tUpperConfidence\n\t)) ~> sink1"
+		}
+	}
+}

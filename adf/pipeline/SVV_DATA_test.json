@@ -1,0 +1,167 @@
+{
+	"name": "SVV_DATA_test",
+	"properties": {
+		"activities": [
+			{
+				"name": "Web1",
+				"type": "WebActivity",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"url": "https://www.vegvesen.no/trafikkdata/api/",
+					"method": "POST",
+					"headers": {
+						"Content-Type": "application/json"
+					},
+					"body": {
+						"query": "{\n publishedAreaTrafficVolumeIndex(id: 956, year: 2020, month: 12) {\n id\n name\n period {\n calculationMonth {\n year\n month\n }\n }\n containsPointTrafficVolumeIndices {\n edges {\n node {\n \tpointTrafficVolumeIndex {\n trafficRegistrationPoint {\n id\n name\n }\n }\n }\n }\n }\n }\n}",
+						"variables": null
+					}
+				}
+			},
+			{
+				"name": "ForEach1",
+				"type": "ForEach",
+				"dependsOn": [
+					{
+						"activity": "Set variable2",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@activity('Web1').output.data.publishedAreaTrafficVolumeIndex[0].containsPointTrafficVolumeIndices.edges",
+						"type": "Expression"
+					},
+					"activities": [
+						{
+							"name": "Web",
+							"type": "WebActivity",
+							"dependsOn": [],
+							"policy": {
+								"timeout": "7.00:00:00",
+								"retry": 0,
+								"retryIntervalInSeconds": 30,
+								"secureOutput": false,
+								"secureInput": false
+							},
+							"userProperties": [],
+							"typeProperties": {
+								"url": "https://www.vegvesen.no/trafikkdata/api/",
+								"method": "POST",
+								"headers": {
+									"Content-Type": "application/json"
+								},
+								"body": {
+									"value": "@concat('{\"query\":\"{\\n  trafficData(trafficRegistrationPointId: \\\"',item().node.pointTrafficVolumeIndex.trafficRegistrationPoint.id,'\\\") {\\n    trafficRegistrationPoint{\\n      name\\n    }\\n    volume {\\n      byDay(from:\\\"2017-10-24T06:55:47.172Z\\\", to:\\\"2020-05-24T06:55:47.172Z\\\") {\\n        edges {\\n          cursor\\n          node{\\n            from\\n            to\\n            total {\\n              volumeNumbers\\n              {\\n                volume\\n              }\\n            }\\n          }\\n        }\\n      }\\n    }\\n  }\\n}\",\"variables\":null}')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Web",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "testStringTemp",
+								"value": {
+									"value": "@concat(variables('testString'), activity('Web1').output, ',')",
+									"type": "Expression"
+								}
+							}
+						},
+						{
+							"name": "Set variable1_copy1",
+							"type": "SetVariable",
+							"dependsOn": [
+								{
+									"activity": "Set variable1",
+									"dependencyConditions": [
+										"Succeeded"
+									]
+								}
+							],
+							"userProperties": [],
+							"typeProperties": {
+								"variableName": "testString",
+								"value": {
+									"value": "@variables('testStringTemp')",
+									"type": "Expression"
+								}
+							}
+						}
+					]
+				}
+			},
+			{
+				"name": "Set variable2",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "testString",
+					"value": " \"allData\": ["
+				}
+			},
+			{
+				"name": "SLUTT",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "ForEach1",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "testStringTemp",
+					"value": {
+						"value": "@concat(variables('testString'), ']')",
+						"type": "Expression"
+					}
+				}
+			}
+		],
+		"variables": {
+			"trafikkPunktIDogNavn": {
+				"type": "Array"
+			},
+			"testString": {
+				"type": "String"
+			},
+			"testStringTemp": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

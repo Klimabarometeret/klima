@@ -1,5 +1,5 @@
 {
-	"name": "SSB_BLOB_OUTPUT",
+	"name": "MET_BLOB_OUTPUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
@@ -11,7 +11,7 @@
 			}
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
@@ -19,15 +19,10 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"container": "ssbdata"
-			},
-			"columnDelimiter": ",",
-			"encodingName": "UTF-8",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+				"container": "metdata"
+			}
 		},
-		"schema": []
+		"schema": {}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }
