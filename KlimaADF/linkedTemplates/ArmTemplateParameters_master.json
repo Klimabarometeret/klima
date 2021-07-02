@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "KlimaADF"
+		},
+		"AZURE_BLOB_LINK_connectionString": {
+			"value": ""
+		},
+		"AZURE_SQL_DB_LINK_connectionString": {
+			"value": ""
+		},
+		"csv_lake_linked_service_accountKey": {
+			"value": ""
+		},
+		"MET_HTTP_LINK_properties_typeProperties_url": {
+			"value": "https://rim.met.no/api/v1/observations"
+		},
+		"SSB_HTTP_LINK_properties_typeProperties_url": {
+			"value": "https://data.ssb.no/api/v0/no/table/"
+		},
+		"SSB_REST_LINK_properties_typeProperties_url": {
+			"value": "https://data.ssb.no/api/v0/no/table/"
+		},
+		"SVV_HTTP_LINK_properties_typeProperties_url": {
+			"value": "https://www.vegvesen.no/trafikkdata/api/"
+		},
+		"csv_lake_linked_service_properties_typeProperties_url": {
+			"value": "https://stg2yj4b3un2o3rq.dfs.core.windows.net"
+		},
+		"TriggerOnStorageBlobCreate_properties_typeProperties_scope": {
+			"value": "/subscriptions/828f9a73-7ecc-4f88-9abe-3c39c71ec80f/resourceGroups/klima-rg/providers/Microsoft.Storage/storageAccounts/klimastacc"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}

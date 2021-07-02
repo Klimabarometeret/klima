@@ -1,0 +1,125 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "KlimaADF"
+		},
+		"AZURE_BLOB_LINK_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AZURE_BLOB_LINK'"
+		},
+		"AZURE_SQL_DB_LINK_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AZURE_SQL_DB_LINK'"
+		},
+		"csv_lake_linked_service_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'csv_lake_linked_service'"
+		},
+		"MET_HTTP_LINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://rim.met.no/api/v1/observations"
+		},
+		"SSB_HTTP_LINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://data.ssb.no/api/v0/no/table/"
+		},
+		"SSB_REST_LINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://data.ssb.no/api/v0/no/table/"
+		},
+		"SVV_HTTP_LINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.vegvesen.no/trafikkdata/api/"
+		},
+		"csv_lake_linked_service_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://stg2yj4b3un2o3rq.dfs.core.windows.net"
+		},
+		"TriggerOnStorageBlobCreate_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/828f9a73-7ecc-4f88-9abe-3c39c71ec80f/resourceGroups/klima-rg/providers/Microsoft.Storage/storageAccounts/klimastacc"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "KlimaADF_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AZURE_BLOB_LINK_connectionString": {
+						"value": "[parameters('AZURE_BLOB_LINK_connectionString')]"
+					},
+					"AZURE_SQL_DB_LINK_connectionString": {
+						"value": "[parameters('AZURE_SQL_DB_LINK_connectionString')]"
+					},
+					"csv_lake_linked_service_accountKey": {
+						"value": "[parameters('csv_lake_linked_service_accountKey')]"
+					},
+					"MET_HTTP_LINK_properties_typeProperties_url": {
+						"value": "[parameters('MET_HTTP_LINK_properties_typeProperties_url')]"
+					},
+					"SSB_HTTP_LINK_properties_typeProperties_url": {
+						"value": "[parameters('SSB_HTTP_LINK_properties_typeProperties_url')]"
+					},
+					"SSB_REST_LINK_properties_typeProperties_url": {
+						"value": "[parameters('SSB_REST_LINK_properties_typeProperties_url')]"
+					},
+					"SVV_HTTP_LINK_properties_typeProperties_url": {
+						"value": "[parameters('SVV_HTTP_LINK_properties_typeProperties_url')]"
+					},
+					"csv_lake_linked_service_properties_typeProperties_url": {
+						"value": "[parameters('csv_lake_linked_service_properties_typeProperties_url')]"
+					},
+					"TriggerOnStorageBlobCreate_properties_typeProperties_scope": {
+						"value": "[parameters('TriggerOnStorageBlobCreate_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "KlimaADF_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'KlimaADF_ArmTemplate_0')]"
+			]
+		}
+	]
+}
