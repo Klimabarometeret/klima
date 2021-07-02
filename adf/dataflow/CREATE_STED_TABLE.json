@@ -1,5 +1,5 @@
 {
-	"name": "dataflow1",
+	"name": "CREATE_STED_TABLE",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
