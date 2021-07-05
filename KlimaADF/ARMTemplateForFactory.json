@@ -49,6 +49,50 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/CREATE_RELATION_TABLES')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "STED",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "CREATE_STED_TABLE",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"source2": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/CREATE_STED_TABLE')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/MET_DATA_JOIN')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -2128,6 +2172,53 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/CREATE_STED_TABLE')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "source1"
+						},
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "source2"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "Join1"
+						},
+						{
+							"name": "Aggregate1"
+						}
+					],
+					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source1\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source2\nsource1, source2 join(source1@Sted == source2@Sted,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 aggregate(groupBy(source1@Sted),\n\tStedNY = case(\r\n    max(source1@Sted) == \"Norge\", \"Norge\",\r\n    max(source1@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/JOIN_MET_DATA')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -2463,97 +2554,6 @@
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SVV_BLOB_INPUT')]",
 				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CREATE_STED_TABLE')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"linkedService": {
-								"referenceName": "AZURE_SQL_DB_LINK",
-								"type": "LinkedServiceReference"
-							},
-							"name": "source1"
-						},
-						{
-							"linkedService": {
-								"referenceName": "AZURE_SQL_DB_LINK",
-								"type": "LinkedServiceReference"
-							},
-							"name": "source2"
-						}
-					],
-					"sinks": [
-						{
-							"linkedService": {
-								"referenceName": "AZURE_SQL_DB_LINK",
-								"type": "LinkedServiceReference"
-							},
-							"name": "sink1"
-						}
-					],
-					"transformations": [
-						{
-							"name": "Join1"
-						},
-						{
-							"name": "Aggregate1"
-						}
-					],
-					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source1\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source2\nsource1, source2 join(source1@Sted == source2@Sted,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 aggregate(groupBy(source1@Sted),\n\tStedNY = case(\r\n    max(source1@Sted) == \"Norge\", \"Norge\",\r\n    max(source1@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)\r\n) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tStedNY\n\t)) ~> sink1"
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/CREATE_RELATION_TABLES')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "STED",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "CREATE_STED_TABLE",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"source2": {},
-									"sink1": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"annotations": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/CREATE_STED_TABLE')]"
 			]
 		}
 	]
