@@ -9,13 +9,6 @@
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "SSB07849"
-				},
-				{
-					"linkedService": {
-						"referenceName": "AZURE_SQL_DB_LINK",
-						"type": "LinkedServiceReference"
-					},
 					"name": "SSB12906"
 				}
 			],
@@ -30,13 +23,10 @@
 			],
 			"transformations": [
 				{
-					"name": "Join1"
-				},
-				{
 					"name": "Aggregate1"
 				}
 			],
-			"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SSB07849\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SSB12906\nSSB07849, SSB12906 join(SSB07849@Drivstoff == SSB12906@Drivstoff,\n\tjoinType:'right',\n\tbroadcast: 'auto')~> Join1\nJoin1 aggregate(groupBy(SSB07849@Drivstoff),\n\tStedNY = ERROR_FUNCTION('case(__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Annet Drivstoff\", \"Annet Drivstoff\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Bensin\", \"Bensin\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Bensin hybrid, ladbar\", \"Hybrid\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Diesel\", \"Diesel\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",__NEW_LINE_R____NEW_LINE_N__    max(SSB12906@Drivstoff) == \"Diesel\", \"Diesel\",__NEW_LINE_R____NEW_LINE_N____NEW_LINE_R____NEW_LINE_N__)')) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Drivstoff,\n\t\tSted = StedNY\n\t)) ~> sink1"
+			"script": "source(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SSB12906\nSSB12906 aggregate(groupBy(Drivstoff),\n\t{DrivstoffRÅ} = case(\r\n    max(Drivstoff) == \"Annet drivstoff\", \"Annet drivstoff\",\r\n    max(Drivstoff) == \"Bensin\", \"Bensin\",\r\n    max(Drivstoff) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",\r\n    max(Drivstoff) == \"Bensin hybrid, ladbar\", \"Hybrid\",\r\n    max(Drivstoff) == \"Diesel\", \"Diesel\",\r\n    max(Drivstoff) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",\r\n    max(Drivstoff) == \"Diesel hybrid, ladbar\", \"Hybrid\",\r\n    max(Drivstoff) == \"El.\", \"Elektrisitet\",\r\n    max(Drivstoff) == \"Gass\", \"Gass\",\r\n    max(Drivstoff) == \"Hydrogen\", \"Hydrogen\",\r\n    max(Drivstoff) == \"Parafin\", \"Parafin\"\r\n),\n\t\tUtlippsintensitet = case(\r\n    max(Drivstoff) == \"Annet drivstoff\", \"Ukjent\",\r\n    max(Drivstoff) == \"Bensin\", \"Fossil\",\r\n    max(Drivstoff) == \"Bensin hybrid, ikke ladbar\", \"Fossil\",\r\n    max(Drivstoff) == \"Bensin hybrid, ladbar\", \"Lavutslipp\",\r\n    max(Drivstoff) == \"Diesel\", \"Fossil\",\r\n    max(Drivstoff) == \"Diesel hybrid, ikke ladbar\", \"Fossil\",\r\n    max(Drivstoff) == \"Diesel hybrid, ladbar\", \"Lavutslipp\",\r\n    max(Drivstoff) == \"El.\", \"Nullutslipp\",\r\n    max(Drivstoff) == \"Gass\", \"Gass\",\r\n    max(Drivstoff) == \"Hydrogen\", \"Nullutslipp\",\r\n    max(Drivstoff) == \"Parafin\", \"Fossil\"\r\n)) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Utslippsintensitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tDrivstoff,\n\t\t{DrivstoffRÅ},\n\t\tUtlippsintensitet\n\t)) ~> sink1"
 		}
 	}
 }
