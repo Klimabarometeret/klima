@@ -1,0 +1,38 @@
+{
+	"name": "SVV_TRAFIKKDATA_TRANSFORM_SQL_copy1",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SVV_BLOB_INPUT_CSV",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Filter1"
+				},
+				{
+					"name": "DerivedColumn1"
+				},
+				{
+					"name": "Aggregate1"
+				}
+			],
+			"script": "parameters{\n\tArr as string[] (split(toString(Volum),';'))\n}\nsource(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as integer,\n\t\t{Konfidensintervall start} as integer,\n\t\t{Konfidensintervall slutt} as integer,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as short,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as integer,\n\t\t{>= 5,6m} as short,\n\t\t{5,6m - 7,6m} as short,\n\t\t{7,6m - 12,5m} as short,\n\t\t{12,5m - 16,0m} as short,\n\t\t{16,0m - 24,0m} as short,\n\t\t{>= 24,0m} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['SVV-data.csv']) ~> source1\nsource1 filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\r\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\r\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\r\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\r\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\r\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\r\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\r\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> Filter1\nFilter1 derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tPrestebekken = case(Trafikkregistreringspunkt == '22540V121303', Volum),\n\t\t{Prestebekken Rampe} = case(Trafikkregistreringspunkt == '68804V121330', Volum),\n\t\tVesterbrua = case(Trafikkregistreringspunkt == '98936V121303', Volum),\n\t\t{Vesterbrua Rampe} = case(Trafikkregistreringspunkt == '04813V121368', Volum)) ~> DerivedColumn1\nDerivedColumn1 aggregate(groupBy(Fra)) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Trafikkdata',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt = Select1@Trafikkregistreringspunkt,\n\t\tNavn = Select1@Navn,\n\t\tDato = Fra,\n\t\tVolum = Select1@Volum,\n\t\tFelt = Select1@Felt,\n\t\t{Lett transport} = {< 5,6m},\n\t\t{Tung transport}\n\t)) ~> sink1"
+		}
+	}
+}
