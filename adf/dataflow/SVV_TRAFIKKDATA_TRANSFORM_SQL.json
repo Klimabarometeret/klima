@@ -18,31 +18,13 @@
 					"name": "DerivedColumn1"
 				},
 				{
-					"name": "Filter2"
-				},
-				{
-					"name": "DerivedColumn3"
-				},
-				{
-					"name": "Aggregate2"
-				},
-				{
-					"name": "Filter3"
-				},
-				{
-					"name": "DerivedColumn4"
-				},
-				{
-					"name": "Aggregate3"
-				},
-				{
 					"name": "Select1"
 				},
 				{
 					"name": "Filter4"
 				}
 			],
-			"script": "parameters{\n\tArr as string[] (split(toString(Volum),';'))\n}\nsource(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as integer,\n\t\t{Konfidensintervall start} as integer,\n\t\t{Konfidensintervall slutt} as integer,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as short,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as integer,\n\t\t{>= 5,6m} as short,\n\t\t{5,6m - 7,6m} as short,\n\t\t{7,6m - 12,5m} as short,\n\t\t{12,5m - 16,0m} as short,\n\t\t{16,0m - 24,0m} as short,\n\t\t{>= 24,0m} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['SVV-data.csv']) ~> source1\nFilter4 derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tVolum = ERROR_FUNCTION('')) ~> DerivedColumn1\nsource1 filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\r\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\")) ~> Filter2\nFilter2 derive(Prestebekken = case(Trafikkregistreringspunkt == '22540V121303', Volum),\n\t\t{Prestebekken rampe} = case(Trafikkregistreringspunkt == '68804V121330', Volum)) ~> DerivedColumn3\nDerivedColumn3 aggregate(groupBy(Fra),\n\t{Bjørndalssletta} = minus(sum(Prestebekken),sum({Prestebekken rampe}))) ~> Aggregate2\nsource1 filter((Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\")) ~> Filter3\nFilter3 derive(Vesterveien = case(Trafikkregistreringspunkt == '98936V121303', Volum),\n\t\t{Vesterveien rampe} = case(Trafikkregistreringspunkt == '04813V121368', Volum)) ~> DerivedColumn4\nDerivedColumn4 aggregate(groupBy(Fra),\n\tVesterveien = minus(sum(Vesterveien),sum({Vesterveien rampe}))) ~> Aggregate3\nDerivedColumn1 select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport},\n\t\t{Bjørndalssletta},\n\t\tVesterveien\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nsource1 filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\")) ~> Filter4"
+			"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as integer,\n\t\t{Konfidensintervall start} as integer,\n\t\t{Konfidensintervall slutt} as integer,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as short,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as integer,\n\t\t{>= 5,6m} as short,\n\t\t{5,6m - 7,6m} as short,\n\t\t{7,6m - 12,5m} as short,\n\t\t{12,5m - 16,0m} as short,\n\t\t{16,0m - 24,0m} as short,\n\t\t{>= 24,0m} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['SVV-data.csv']) ~> source1\nFilter4 derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Sødal\", \"Sødal\",\r\n    Navn == \"PRESTEBEKKEN\", \"Bjørndalssletta\",\r\n    Navn == \"PRESTBK RAMPE FRA LU\", \"Bjørndalssletta Påkjørsel\",\r\n    Navn == \"Rampe mot Prestheia\", \"Bjørndalssletta Avkjørsel\",\r\n    Navn == \"Vesterbrua\", \"Vesterveien\",\r\n    Navn == \"TRETJØNNVEIEN\", \"Presteheia\"\r\n),\n\t\tFra = toDate(Fra)) ~> DerivedColumn1\nDerivedColumn1 select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nsource1 filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> Filter4"
 		}
 	}
 }
