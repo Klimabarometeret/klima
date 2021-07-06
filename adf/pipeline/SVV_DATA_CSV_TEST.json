@@ -82,7 +82,7 @@
 						"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
 						"type": "DataFlowReference",
 						"parameters": {
-							"Arr": "split(toString(Volum), ';')"
+							"Arr": "split(toString(Volum),';')"
 						}
 					},
 					"compute": {
