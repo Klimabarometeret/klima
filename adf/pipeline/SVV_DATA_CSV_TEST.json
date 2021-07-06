@@ -80,7 +80,10 @@
 				"typeProperties": {
 					"dataflow": {
 						"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
-						"type": "DataFlowReference"
+						"type": "DataFlowReference",
+						"parameters": {
+							"Arr": "split(toString(Volum), ';')"
+						}
 					},
 					"compute": {
 						"coreCount": 8,
