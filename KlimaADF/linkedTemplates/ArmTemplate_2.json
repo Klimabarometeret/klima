@@ -1,0 +1,859 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "KlimaADF"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/SSB_07849_CSV')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data",
+						"description": "Velg Source: SSB_HTTP\nVelg Sink: SSB_BLOB_OUTPUT\n\nLegg inn table ID på relativeUrl variabel under source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen\n\n@activity('GetApiTitle').output.label som sink filename",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "GetApiTitle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "POST",
+									"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".csv"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SSB_HTTP_INPUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "07849"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SSB_BLOB_OUTPUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "07849.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "GetApiTitle",
+						"description": "LEGG inn table ID fra SSB bakerst på url under settings\nLegg samme json spørring som på copy data inn i body under settings. NB!!! Endre \"csv2\" til \"json-stat2\" her inne !IKKE i copy data!",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://data.ssb.no/api/v0/no/table/07849",
+							"method": "POST",
+							"headers": {},
+							"body": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat2\"\n  }\n}"
+						}
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SSB_07849_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:28Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SSB_12906_CSV')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data",
+						"description": "Legg inn table ID på relativeUrl variabel udner source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "GetApiTitle",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "POST",
+									"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"TypeRegistrering\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"N\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"typeConversion": true,
+								"typeConversionSettings": {
+									"allowDataTruncation": true,
+									"treatBooleanAsNumber": false
+								}
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "SSB_HTTP_INPUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "12906"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SSB_BLOB_OUTPUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "12906.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "GetApiTitle",
+						"description": "LEGG inn table ID fra SSB bakerst på url under settings",
+						"type": "WebActivity",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"url": "https://data.ssb.no/api/v0/no/table/12906",
+							"method": "POST",
+							"headers": {},
+							"body": {
+								"query": [
+									{
+										"code": "Region",
+										"selection": {
+											"filter": "item",
+											"values": [
+												"4204"
+											]
+										}
+									},
+									{
+										"code": "TypeRegistrering",
+										"selection": {
+											"filter": "item",
+											"values": [
+												"N"
+											]
+										}
+									},
+									{
+										"code": "DrivstoffType",
+										"selection": {
+											"filter": "all",
+											"values": [
+												"*"
+											]
+										}
+									}
+								],
+								"response": {
+									"format": "csv2"
+								}
+							}
+						}
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SSB_12906_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:28Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_DATA_CSV_TEST')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SVV_HTTP_INPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "export?from=2017-03-01&resolution=DAY&to=2021-07-08&trpIds=02466V121760%2C04813V121368%2C16947V121800%2C22540V121303%2C68804V121330%2C73380V121327%2C98936V121303%2C99454V104306"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SVV_BLOB_OUTPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "SVV-data.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"LeseCSV": {},
+									"Datatabell": {},
+									"NavnTabell": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_DATA_JSON')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "POST",
+									"additionalHeaders": "Content-Type: application/json",
+									"requestBody": "{\"query\":\"{\\n  trafficData(trafficRegistrationPointId: \\\"04813V121368\\\") {\\n    volume {\\n      average {\\n        daily {\\n          byYear {\\n            year\\n            total {\\n              volume {\\n                average\\n                confidenceInterval {\\n                  lowerBound\\n                  upperBound\\n                }\\n              }\\n              coverage {\\n                percentage\\n              }\\n            }\\n          }\\n        }\\n      }\\n    }\\n  }\\n}\\n\",\"variables\":null}",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SVV_HTTP_INPUT",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SVV_BLOB_OUTPUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "SVV_DATA_TEST.json"
+								}
+							}
+						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SVV_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_SYKKELDATA_CSV_TEST')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SVV_HTTP_INPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "exportAverage?fromYear=2016&resolution=MDT&toYear=2021&trpIds=09717B1671751%2C11654B1671763%2C83248B1213727"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SVV_BLOB_OUTPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "SVV-sykkeldata.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SVV_SYKKELDATA_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {
+									"Arr": "split(toString(Volum),';')"
+								},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/MET_DATA_JOIN')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "MET_DATA_NEDBOR",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "MET_DATA_MEANTEMP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "MET_DATA_MAXTEMP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "JOIN_MET_DATA",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"METmaxtemp": {},
+									"METmeantemp": {},
+									"METnedbor": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					},
+					{
+						"name": "MET_DATA_MAXTEMP",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_MAXTEMP",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "MET_DATA_MEANTEMP",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_MEANTEMP",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "MET_DATA_NEDBOR",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_NEDBOR",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:28Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/MET_DATA_JOIN_copy1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "MET_DATA_NEDBOR",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "MET_DATA_MAXTEMP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							},
+							{
+								"activity": "MET_DATA_MEANTEMP",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "JOIN_MET_DATA",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"METmaxtemp": {},
+									"METmeantemp": {},
+									"METnedbor": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					},
+					{
+						"name": "MET_DATA_MAXTEMP",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_MAXTEMP",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "MET_DATA_MEANTEMP",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_MEANTEMP",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					},
+					{
+						"name": "MET_DATA_NEDBOR",
+						"type": "ExecutePipeline",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"pipeline": {
+								"referenceName": "MET_DATA_NEDBOR",
+								"type": "PipelineReference"
+							},
+							"waitOnCompletion": true,
+							"parameters": {}
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:28Z"
+			},
+			"dependsOn": []
+		}
+	]
+}

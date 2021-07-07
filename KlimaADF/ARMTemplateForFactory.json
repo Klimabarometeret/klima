@@ -84,12 +84,43 @@
 							},
 							"traceLevel": "Fine"
 						}
+					},
+					{
+						"name": "Utslippsintensitet",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "CREATE_UTSLIPP_TABLE",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"SSB12906": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
 					}
 				],
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/dataflows/CREATE_STED_TABLE')]"
+				"[concat(variables('factoryId'), '/dataflows/CREATE_STED_TABLE')]",
+				"[concat(variables('factoryId'), '/dataflows/CREATE_UTSLIPP_TABLE')]"
 			]
 		},
 		{
@@ -1484,6 +1515,116 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SVV_DATA_CSV_TEST')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SVV_HTTP_INPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "export?from=2017-03-01&resolution=DAY&to=2021-07-08&trpIds=02466V121760%2C04813V121368%2C16947V121800%2C22540V121303%2C68804V121330%2C73380V121327%2C98936V121303%2C99454V104306"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SVV_BLOB_OUTPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "SVV-data.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"LeseCSV": {},
+									"Datatabell": {},
+									"NavnTabell": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SVV_HTTP_INPUT_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/SVV_BLOB_OUTPUT_CSV')]",
+				"[concat(variables('factoryId'), '/dataflows/SVV_TRAFIKKDATA_TRANSFORM_SQL')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SVV_DATA_JSON')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1760,6 +1901,117 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SVV_SYKKELDATA_CSV_TEST')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Copy data1",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "SVV_HTTP_INPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "exportAverage?fromYear=2016&resolution=MDT&toYear=2021&trpIds=09717B1671751%2C11654B1671763%2C83248B1213727"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SVV_BLOB_OUTPUT_CSV",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "SVV-sykkeldata.csv"
+								}
+							}
+						]
+					},
+					{
+						"name": "Data flow1",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [
+							{
+								"activity": "Copy data1",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "SVV_SYKKELDATA_TRANSFORM_SQL",
+								"type": "DataFlowReference",
+								"parameters": {
+									"Arr": "split(toString(Volum),';')"
+								},
+								"datasetParameters": {
+									"source1": {},
+									"sink1": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SVV_HTTP_INPUT_CSV')]",
+				"[concat(variables('factoryId'), '/datasets/SVV_BLOB_OUTPUT_CSV')]",
+				"[concat(variables('factoryId'), '/dataflows/SVV_SYKKELDATA_TRANSFORM_SQL')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/AZURE_SQL_OUTPUT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -1999,6 +2251,34 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SVV_BLOB_INPUT_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AZURE_BLOB_LINK",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"container": "svvdata"
+					},
+					"columnDelimiter": ";",
+					"encodingName": "ISO-8859-1",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SVV_BLOB_OUTPUT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2027,6 +2307,43 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SVV_BLOB_OUTPUT_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AZURE_BLOB_LINK",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"fileName": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": {
+							"value": "@dataset().fileName",
+							"type": "Expression"
+						},
+						"container": "svvdata"
+					},
+					"columnDelimiter": ";",
+					"encodingName": "ISO-8859-1",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SVV_HTTP_INPUT')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -2043,6 +2360,42 @@
 					}
 				},
 				"schema": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/SVV_HTTP_LINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_HTTP_INPUT_CSV')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "SVV_HTTP_LINK",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"relativeUrl": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "HttpServerLocation",
+						"relativeUrl": {
+							"value": "@dataset().relativeUrl",
+							"type": "Expression"
+						}
+					},
+					"columnDelimiter": ";",
+					"encodingName": "ISO-8859-1",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/SVV_HTTP_LINK')]"
@@ -2212,6 +2565,49 @@
 						}
 					],
 					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source1\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> source2\nsource1, source2 join(source1@Sted == source2@Sted,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> Join1\nJoin1 aggregate(groupBy(source1@Sted),\n\tStedNY = case(\r\n    max(source1@Sted) == \"Norge\", \"Norge\",\r\n    max(source1@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(source1@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> Aggregate1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/CREATE_UTSLIPP_TABLE')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "SSB12906"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "Aggregate1"
+						},
+						{
+							"name": "DerivedColumn1"
+						},
+						{
+							"name": "Select1"
+						}
+					],
+					"script": "source(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SSB12906\nSelect1 aggregate(groupBy({DrivstoffRÅ}),\n\tDrivstoff = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Annet drivstoff\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Bensin\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Diesel\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Elektrisitet\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Hydrogen\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Parafin\"\r\n),\n\t\tUtlippsintensitet = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Ukjent\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Fossil\"\r\n)) ~> Aggregate1\nSSB12906 derive({DrivstoffRÅ} = Drivstoff) ~> DerivedColumn1\nDerivedColumn1 select(mapColumn(\n\t\tDato,\n\t\tBiltype,\n\t\tSted,\n\t\t{DrivstoffRÅ},\n\t\t{Solgte biler},\n\t\t{År}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> Select1\nAggregate1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'Utslippsintensitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tDrivstoff,\n\t\t{DrivstoffRÅ},\n\t\tUtlippsintensitet\n\t)) ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -2469,7 +2865,7 @@
 							"name": "DerivedColumn1"
 						}
 					],
-					"script": "source(output(\n\t\tregion as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07849: Registrerte kjøretøy} as integer,\n\t\t{_c5} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['07849.csv']) ~> source1\nsource1 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n),\n\t\tdrivstofftype = replace(drivstofftype, \"El.\", \"Elektrisitet\")) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tmapColumn(\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\tBestand = {07849: Registrerte kjøretøy},\n\t\tDate = Dato\n\t)) ~> sink1"
+					"script": "source(output(\n\t\tregion as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07849: Registrerte kjøretøy} as integer,\n\t\t{_c5} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['07849.csv']) ~> source1\nsource1 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tmapColumn(\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\tBestand = {07849: Registrerte kjøretøy},\n\t\tDate = Dato\n\t)) ~> sink1"
 				}
 			},
 			"dependsOn": [
@@ -2512,6 +2908,98 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/SSB_BLOB_INPUT')]",
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_SYKKELDATA_TRANSFORM_SQL')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "SVV_BLOB_INPUT_CSV",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [
+						{
+							"name": "Filter1"
+						}
+					],
+					"script": "parameters{\n\tArr as string[] (split(toString(Volum),';'))\n}\nsource(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as date,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['SVV-sykkeldata.csv']) ~> source1\nsource1 filter(Felt == \"Totalt\") ~> Filter1\nFilter1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Sykkeldata',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> sink1"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SVV_BLOB_INPUT_CSV')]",
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SVV_TRAFIKKDATA_TRANSFORM_SQL')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "SVV_BLOB_INPUT_CSV",
+								"type": "DatasetReference"
+							},
+							"name": "LeseCSV"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "Datatabell"
+						},
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "NavnTabell"
+						}
+					],
+					"transformations": [
+						{
+							"name": "EndreNavnOgSamleData"
+						},
+						{
+							"name": "RedusereKolonnevalg"
+						},
+						{
+							"name": "FiltrereRetning"
+						},
+						{
+							"name": "SammenslaaNavn"
+						}
+					],
+					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as date,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as integer,\n\t\t{Konfidensintervall start} as integer,\n\t\t{Konfidensintervall slutt} as integer,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as short,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as integer,\n\t\t{>= 5,6m} as short,\n\t\t{5,6m - 7,6m} as short,\n\t\t{7,6m - 12,5m} as short,\n\t\t{12,5m - 16,0m} as short,\n\t\t{16,0m - 24,0m} as short,\n\t\t{>= 24,0m} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['SVV-data.csv']) ~> LeseCSV\nFiltrereRetning derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Sødal\", \"Sødal\",\r\n    Navn == \"PRESTEBEKKEN\", \"Bjørndalssletta\",\r\n    Navn == \"PRESTBK RAMPE FRA LU\", \"Bjørndalssletta Påkjørsel\",\r\n    Navn == \"Rampe mot Prestheia\", \"Bjørndalssletta Avkjørsel\",\r\n    Navn == \"Vesterbrua\", \"Vesterveien\",\r\n    Navn == \"TRETJØNNVEIEN\", \"Presteheia\"\r\n)) ~> EndreNavnOgSamleData\nEndreNavnOgSamleData select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> RedusereKolonnevalg\nLeseCSV filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> FiltrereRetning\nRedusereKolonnevalg aggregate(groupBy(Navn),\n\t{NavnSammenslått} = case(\r\n    max(Navn) == \"Grim\", \"Grim\",\r\n    max(Navn) == \"Vesterveien Avkjørsel\", \"Vesterveien\",\r\n    max(Navn) == \"Sødal\", \"Sødal\",\r\n    max(Navn) == \"Bjørndalssletta\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Påkjørsel\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Avkjørsel\", \"Bjørndalssletta Avkjørsel\",\r\n    max(Navn) == \"Vesterveien\", \"Vesterveien\",\r\n    max(Navn) == \"Presteheia\", \"Presteheia\"\r\n)) ~> SammenslaaNavn\nRedusereKolonnevalg sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Trafikkdata',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato,\n\t\tTotalt = Volum,\n\t\t{Lette kjøretøy},\n\t\t{Tunge kjøretøy}\n\t)) ~> Datatabell\nSammenslaaNavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Navn',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{NavnRÅ} = Navn,\n\t\tNavn = {NavnSammenslått}\n\t)) ~> NavnTabell"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/SVV_BLOB_INPUT_CSV')]",
 				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
 			]
 		},
