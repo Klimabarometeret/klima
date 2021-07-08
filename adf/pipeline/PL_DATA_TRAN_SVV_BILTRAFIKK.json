@@ -53,7 +53,7 @@
 						"referenceName": "DS_ABLOB_SVV_OUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "SVV-data.csv"
+							"fileName": "biltrafikk.csv"
 						}
 					}
 				]
