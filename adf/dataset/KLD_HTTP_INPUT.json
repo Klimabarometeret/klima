@@ -1,0 +1,34 @@
+{
+	"name": "KLD_HTTP_INPUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "KLD_HTTP_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"relativeUrl": {
+				"type": "string"
+			},
+			"sheetName": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheetName",
+				"type": "Expression"
+			},
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().relativeUrl",
+					"type": "Expression"
+				}
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}
