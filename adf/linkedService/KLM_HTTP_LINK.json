@@ -1,0 +1,12 @@
+{
+	"name": "KLM_HTTP_LINK",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://www.miljodirektoratet.no/greenhousegas/api/",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
