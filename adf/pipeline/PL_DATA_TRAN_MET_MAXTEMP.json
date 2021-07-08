@@ -60,7 +60,7 @@
 						"referenceName": "DS_ABLOB_MET_OUT",
 						"type": "DatasetReference",
 						"parameters": {
-							"fileName": "MET_MAXTEMP.json"
+							"fileName": "maxtemp.json"
 						}
 					}
 				]
