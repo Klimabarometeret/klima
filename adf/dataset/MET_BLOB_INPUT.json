@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"container": "metdata"
+				"folderPath": "metdata",
+				"container": "klimabarometer-kristiansand"
 			}
 		},
 		"schema": {}

@@ -19,7 +19,8 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"container": "metdata"
+				"folderPath": "metdata",
+				"container": "klimabarometer-kristiansand"
 			}
 		},
 		"schema": {}
