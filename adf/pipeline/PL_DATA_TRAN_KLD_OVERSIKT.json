@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Hente data",
+				"name": "Hente data fra KLD API og lagre i BLOB",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -56,11 +56,11 @@
 				]
 			},
 			{
-				"name": "Data flow1",
+				"name": "Transformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Hente data",
+						"activity": "Hente data fra KLD API og lagre i BLOB",
 						"dependencyConditions": [
 							"Succeeded"
 						]

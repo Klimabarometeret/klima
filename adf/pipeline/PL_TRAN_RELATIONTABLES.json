@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "STED",
+				"name": "Transformere stedsdata og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -27,7 +27,7 @@
 				}
 			},
 			{
-				"name": "Utslippsintensitet",
+				"name": "Transformere Utslippsdata og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {

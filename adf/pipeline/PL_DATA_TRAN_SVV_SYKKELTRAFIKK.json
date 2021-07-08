@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Hente data fra SVV API og lagre i BLOB",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -59,11 +59,11 @@
 				]
 			},
 			{
-				"name": "Data flow1",
+				"name": "Transformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Copy data1",
+						"activity": "Hente data fra SVV API og lagre i BLOB",
 						"dependencyConditions": [
 							"Succeeded"
 						]

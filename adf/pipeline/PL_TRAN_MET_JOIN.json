@@ -3,23 +3,23 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "Transformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "MET_DATA_NEDBOR",
+						"activity": "PL_DATA_TRAN_MET_NEDBOR",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "MET_DATA_MEANTEMP",
+						"activity": "PL_DATA_TRAN_MET_MEANTEMP",
 						"dependencyConditions": [
 							"Succeeded"
 						]
 					},
 					{
-						"activity": "MET_DATA_MAXTEMP",
+						"activity": "PL_DATA_TRAN_MET_MAXTEMP",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -46,7 +46,7 @@
 				}
 			},
 			{
-				"name": "MET_DATA_MAXTEMP",
+				"name": "PL_DATA_TRAN_MET_MAXTEMP",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
@@ -59,7 +59,7 @@
 				}
 			},
 			{
-				"name": "MET_DATA_MEANTEMP",
+				"name": "PL_DATA_TRAN_MET_MEANTEMP",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
@@ -72,7 +72,7 @@
 				}
 			},
 			{
-				"name": "MET_DATA_NEDBOR",
+				"name": "PL_DATA_TRAN_MET_NEDBOR",
 				"type": "ExecutePipeline",
 				"dependsOn": [],
 				"userProperties": [],
