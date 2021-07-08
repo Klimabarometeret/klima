@@ -1,5 +1,5 @@
 {
-	"name": "SSB_12906_TRANSFORM_SQL",
+	"name": "DF_ABLB_TRAN_SQL_SSB_12906",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

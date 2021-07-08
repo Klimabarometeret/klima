@@ -139,7 +139,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "SSB_07832_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_SSB_07832",
 						"type": "DataFlowReference"
 					},
 					"compute": {

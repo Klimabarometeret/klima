@@ -76,7 +76,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "KLD_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_KLD_OVERSIKT",
 						"type": "DataFlowReference"
 					},
 					"compute": {

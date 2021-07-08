@@ -1,5 +1,5 @@
 {
-	"name": "MET_MAXTEMP_TRANSFORM_SQL",
+	"name": "DF_ABLB_TRAN_SQL_MET_MAXTEMP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

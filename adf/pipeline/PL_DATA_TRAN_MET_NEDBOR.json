@@ -139,7 +139,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "MET_NEDBOR_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_MET_NEDBOR",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -1,5 +1,5 @@
 {
-	"name": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
+	"name": "DF_ABLB_TRAN_SQL_SVV_BILTRAFIKK",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

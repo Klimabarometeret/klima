@@ -79,7 +79,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_SVV_BILTRAFIKK",
 						"type": "DataFlowReference"
 					},
 					"compute": {
