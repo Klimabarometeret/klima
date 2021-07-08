@@ -76,7 +76,7 @@
 								"referenceName": "DS_ABLOB_MET_OUT",
 								"type": "DatasetReference",
 								"parameters": {
-									"fileName": "MET_MAXTEMP.json"
+									"fileName": "maxtemp.json"
 								}
 							}
 						]
@@ -255,7 +255,7 @@
 								"referenceName": "DS_ABLOB_MET_OUT",
 								"type": "DatasetReference",
 								"parameters": {
-									"fileName": "MET_MEANTEMP.json"
+									"fileName": "meantemp.json"
 								}
 							}
 						]
@@ -434,7 +434,7 @@
 								"referenceName": "DS_ABLOB_MET_OUT",
 								"type": "DatasetReference",
 								"parameters": {
-									"fileName": "MET_NEDBOR.json"
+									"fileName": "nedbor.json"
 								}
 							}
 						]
