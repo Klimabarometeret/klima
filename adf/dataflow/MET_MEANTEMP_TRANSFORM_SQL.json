@@ -6,7 +6,7 @@
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "MET_BLOB_INPUT",
+						"referenceName": "DS_ABLB_MET_IN",
 						"type": "DatasetReference"
 					},
 					"name": "source1"

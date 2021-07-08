@@ -1,5 +1,5 @@
 {
-	"name": "SVV_BLOB_INPUT_CSV",
+	"name": "DS_ABLB_SVV_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",

@@ -1,5 +1,5 @@
 {
-	"name": "SVV_HTTP_INPUT_CSV",
+	"name": "DS_HTTP_SVV_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SVV_HTTP_LINK",

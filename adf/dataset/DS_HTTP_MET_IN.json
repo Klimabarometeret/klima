@@ -1,5 +1,5 @@
 {
-	"name": "MET_HTTP_INPUT",
+	"name": "DS_HTTP_MET_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "MET_HTTP_LINK",

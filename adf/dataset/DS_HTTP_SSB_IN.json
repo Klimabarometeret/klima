@@ -1,5 +1,5 @@
 {
-	"name": "SSB_HTTP_INPUT",
+	"name": "DS_HTTP_SSB_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "SSB_HTTP_LINK",

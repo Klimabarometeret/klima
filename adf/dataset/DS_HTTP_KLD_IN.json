@@ -1,5 +1,5 @@
 {
-	"name": "KLD_HTTP_INPUT",
+	"name": "DS_HTTP_KLD_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "KLD_HTTP_LINK",

@@ -1,5 +1,5 @@
 {
-	"name": "MET_BLOB_OUTPUT",
+	"name": "DS_ABLB_MET_OUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",

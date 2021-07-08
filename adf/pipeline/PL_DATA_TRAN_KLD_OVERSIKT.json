@@ -37,7 +37,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "KLD_HTTP_INPUT",
+						"referenceName": "DS_HTTP_KLD_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "excel?areaId=640",

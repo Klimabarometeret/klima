@@ -45,7 +45,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "MET_HTTP_INPUT",
+						"referenceName": "DS_HTTP_MET_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": {
@@ -57,7 +57,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "MET_BLOB_OUTPUT",
+						"referenceName": "DS_ABLB_MET_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "MET_MEANTEMP.json"

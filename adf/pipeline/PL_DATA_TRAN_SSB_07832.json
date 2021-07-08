@@ -57,7 +57,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP_INPUT",
+						"referenceName": "DS_HTTP_SSB_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "07832"
@@ -66,7 +66,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_OUTPUT",
+						"referenceName": "DS_ABLB_SSB_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "07832.csv"

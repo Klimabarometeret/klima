@@ -41,7 +41,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SVV_HTTP_INPUT_CSV",
+						"referenceName": "DS_HTTP_SVV_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "exportAverage?fromYear=2016&resolution=MDT&toYear=2021&trpIds=09717B1671751%2C11654B1671763%2C83248B1213727"
@@ -50,7 +50,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SVV_BLOB_OUTPUT_CSV",
+						"referenceName": "DS_ABLB_SVV_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "SVV-sykkeldata.csv"
