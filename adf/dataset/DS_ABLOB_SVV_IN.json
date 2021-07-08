@@ -1,5 +1,5 @@
 {
-	"name": "DS_ABLB_SVV_IN",
+	"name": "DS_ABLOB_SVV_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",

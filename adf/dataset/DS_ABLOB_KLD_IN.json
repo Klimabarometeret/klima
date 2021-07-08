@@ -1,5 +1,5 @@
 {
-	"name": "DS_ABLB_KLD_IN",
+	"name": "DS_ABLOB_KLD_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
