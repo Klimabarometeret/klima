@@ -14,6 +14,9 @@
 		"csv_lake_linked_service_accountKey": {
 			"value": ""
 		},
+		"KLD_HTTP_LINK_properties_typeProperties_url": {
+			"value": "https://www.miljodirektoratet.no/greenhousegas/api/"
+		},
 		"MET_HTTP_LINK_properties_typeProperties_url": {
 			"value": "https://rim.met.no/api/v1/observations"
 		},

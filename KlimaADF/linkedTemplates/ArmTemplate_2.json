@@ -13,438 +13,22 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/SSB_07849_CSV')]",
+			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_MET_MAXTEMP')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data",
-						"description": "Velg Source: SSB_HTTP\nVelg Sink: SSB_BLOB_OUTPUT\n\nLegg inn table ID på relativeUrl variabel under source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen\n\n@activity('GetApiTitle').output.label som sink filename",
+						"name": "Hente data fra MET API og lagre data i BLOB",
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "GetApiTitle",
+								"activity": "Sjekke om sommertid",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							}
 						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "POST",
-									"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
-									"requestTimeout": ""
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".csv"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SSB_HTTP_INPUT",
-								"type": "DatasetReference",
-								"parameters": {
-									"relativeUrl": "07849"
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SSB_BLOB_OUTPUT",
-								"type": "DatasetReference",
-								"parameters": {
-									"fileName": "07849.csv"
-								}
-							}
-						]
-					},
-					{
-						"name": "GetApiTitle",
-						"description": "LEGG inn table ID fra SSB bakerst på url under settings\nLegg samme json spørring som på copy data inn i body under settings. NB!!! Endre \"csv2\" til \"json-stat2\" her inne !IKKE i copy data!",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://data.ssb.no/api/v0/no/table/07849",
-							"method": "POST",
-							"headers": {},
-							"body": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\",\n        ]\n      }\n    },\n    {\n      \"code\": \"KjoringensArt\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"ContentsCode\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Tid\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"json-stat2\"\n  }\n}"
-						}
-					},
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [
-							{
-								"activity": "Copy data",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "SSB_07849_TRANSFORM_SQL",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-07-01T16:09:28Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SSB_12906_CSV')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data",
-						"description": "Legg inn table ID på relativeUrl variabel udner source\nLegg api spørring fra SSB api console under body på source (husk å endre \"json-stat2\" -> \"csv2\" nederst i json spørring\n\nSjekk at mapping er tom. Hvis IKKE -> Trykk på \"Clear\" knappen",
-						"type": "Copy",
-						"dependsOn": [
-							{
-								"activity": "GetApiTitle",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "POST",
-									"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"TypeRegistrering\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"N\"\n        ]\n      }\n    },\n    {\n      \"code\": \"DrivstoffType\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": [\n          \"*\"\n        ]\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
-									"requestTimeout": ""
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false,
-							"translator": {
-								"type": "TabularTranslator",
-								"typeConversion": true,
-								"typeConversionSettings": {
-									"allowDataTruncation": true,
-									"treatBooleanAsNumber": false
-								}
-							}
-						},
-						"inputs": [
-							{
-								"referenceName": "SSB_HTTP_INPUT",
-								"type": "DatasetReference",
-								"parameters": {
-									"relativeUrl": "12906"
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SSB_BLOB_OUTPUT",
-								"type": "DatasetReference",
-								"parameters": {
-									"fileName": "12906.csv"
-								}
-							}
-						]
-					},
-					{
-						"name": "GetApiTitle",
-						"description": "LEGG inn table ID fra SSB bakerst på url under settings",
-						"type": "WebActivity",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"url": "https://data.ssb.no/api/v0/no/table/12906",
-							"method": "POST",
-							"headers": {},
-							"body": {
-								"query": [
-									{
-										"code": "Region",
-										"selection": {
-											"filter": "item",
-											"values": [
-												"4204"
-											]
-										}
-									},
-									{
-										"code": "TypeRegistrering",
-										"selection": {
-											"filter": "item",
-											"values": [
-												"N"
-											]
-										}
-									},
-									{
-										"code": "DrivstoffType",
-										"selection": {
-											"filter": "all",
-											"values": [
-												"*"
-											]
-										}
-									}
-								],
-								"response": {
-									"format": "csv2"
-								}
-							}
-						}
-					},
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [
-							{
-								"activity": "Copy data",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "SSB_12906_TRANSFORM_SQL",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-07-01T16:09:28Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SVV_DATA_CSV_TEST')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
-						"policy": {
-							"timeout": "7.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"source": {
-								"type": "DelimitedTextSource",
-								"storeSettings": {
-									"type": "HttpReadSettings",
-									"requestMethod": "GET",
-									"requestTimeout": ""
-								},
-								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
-								}
-							},
-							"sink": {
-								"type": "DelimitedTextSink",
-								"storeSettings": {
-									"type": "AzureBlobStorageWriteSettings"
-								},
-								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
-								}
-							},
-							"enableStaging": false
-						},
-						"inputs": [
-							{
-								"referenceName": "SVV_HTTP_INPUT_CSV",
-								"type": "DatasetReference",
-								"parameters": {
-									"relativeUrl": "export?from=2017-03-01&resolution=DAY&to=2021-07-08&trpIds=02466V121760%2C04813V121368%2C16947V121800%2C22540V121303%2C68804V121330%2C73380V121327%2C98936V121303%2C99454V104306"
-								}
-							}
-						],
-						"outputs": [
-							{
-								"referenceName": "SVV_BLOB_OUTPUT_CSV",
-								"type": "DatasetReference",
-								"parameters": {
-									"fileName": "SVV-data.csv"
-								}
-							}
-						]
-					},
-					{
-						"name": "Data flow1",
-						"type": "ExecuteDataFlow",
-						"dependsOn": [
-							{
-								"activity": "Copy data1",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							}
-						],
-						"policy": {
-							"timeout": "1.00:00:00",
-							"retry": 0,
-							"retryIntervalInSeconds": 30,
-							"secureOutput": false,
-							"secureInput": false
-						},
-						"userProperties": [],
-						"typeProperties": {
-							"dataflow": {
-								"referenceName": "SVV_TRAFIKKDATA_TRANSFORM_SQL",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"LeseCSV": {},
-									"Datatabell": {},
-									"NavnTabell": {}
-								}
-							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
-							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-07-01T16:09:27Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SVV_DATA_JSON')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
-					{
-						"name": "Copy data1",
-						"type": "Copy",
-						"dependsOn": [],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -458,10 +42,7 @@
 								"type": "JsonSource",
 								"storeSettings": {
 									"type": "HttpReadSettings",
-									"requestMethod": "POST",
-									"additionalHeaders": "Content-Type: application/json",
-									"requestBody": "{\"query\":\"{\\n  trafficData(trafficRegistrationPointId: \\\"04813V121368\\\") {\\n    volume {\\n      average {\\n        daily {\\n          byYear {\\n            year\\n            total {\\n              volume {\\n                average\\n                confidenceInterval {\\n                  lowerBound\\n                  upperBound\\n                }\\n              }\\n              coverage {\\n                percentage\\n              }\\n            }\\n          }\\n        }\\n      }\\n    }\\n  }\\n}\\n\",\"variables\":null}",
-									"requestTimeout": ""
+									"requestMethod": "GET"
 								},
 								"formatSettings": {
 									"type": "JsonReadSettings"
@@ -480,27 +61,85 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "SVV_HTTP_INPUT",
+								"referenceName": "DS_HTTP_MET_IN",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"relativeUrl": {
+										"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=max(air_temperature%20P1D)&timeResolution=days')",
+										"type": "Expression"
+									}
+								}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "SVV_BLOB_OUTPUT",
+								"referenceName": "DS_ABLOB_MET_OUT",
 								"type": "DatasetReference",
 								"parameters": {
-									"fileName": "SVV_DATA_TEST.json"
+									"fileName": "MET_MAXTEMP.json"
 								}
 							}
 						]
 					},
 					{
-						"name": "Data flow1",
+						"name": "Formatere til Norsk tidssone",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Hente naavaerende datetime",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetimeFormat",
+							"value": {
+								"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Sjekke om sommertid",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Formatere til Norsk tidssone",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "summertime",
+							"value": {
+								"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Hente naavaerende datetime",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetime",
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Transformere data og lagre i SQL",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
 							{
-								"activity": "Copy data1",
+								"activity": "Hente data fra MET API og lagre data i BLOB",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -516,12 +155,12 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "SVV_TRANSFORM_SQL",
+								"referenceName": "DF_ABLOB_TRAN_SQL_MET_MAXTEMP",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
+									"ABlobMETMaxtemp": {},
+									"METMaxtempTabell": {}
 								}
 							},
 							"staging": {},
@@ -533,21 +172,42 @@
 						}
 					}
 				],
+				"variables": {
+					"datetime": {
+						"type": "String"
+					},
+					"summertime": {
+						"type": "Boolean"
+					},
+					"datetimeFormat": {
+						"type": "String"
+					},
+					"asdf": {
+						"type": "String"
+					}
+				},
 				"annotations": [],
-				"lastPublishTime": "2021-07-01T16:09:27Z"
+				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/SVV_SYKKELDATA_CSV_TEST')]",
+			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_MET_MEANTEMP')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy data1",
+						"name": "Hente data fra MET API og lagre data i BLOB",
 						"type": "Copy",
-						"dependsOn": [],
+						"dependsOn": [
+							{
+								"activity": "Sjekke om sommertid",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
 						"policy": {
 							"timeout": "7.00:00:00",
 							"retry": 0,
@@ -558,54 +218,107 @@
 						"userProperties": [],
 						"typeProperties": {
 							"source": {
-								"type": "DelimitedTextSource",
+								"type": "JsonSource",
 								"storeSettings": {
 									"type": "HttpReadSettings",
-									"requestMethod": "GET",
-									"requestTimeout": ""
+									"requestMethod": "GET"
 								},
 								"formatSettings": {
-									"type": "DelimitedTextReadSettings"
+									"type": "JsonReadSettings"
 								}
 							},
 							"sink": {
-								"type": "DelimitedTextSink",
+								"type": "JsonSink",
 								"storeSettings": {
 									"type": "AzureBlobStorageWriteSettings"
 								},
 								"formatSettings": {
-									"type": "DelimitedTextWriteSettings",
-									"quoteAllText": true,
-									"fileExtension": ".txt"
+									"type": "JsonWriteSettings"
 								}
 							},
 							"enableStaging": false
 						},
 						"inputs": [
 							{
-								"referenceName": "SVV_HTTP_INPUT_CSV",
+								"referenceName": "DS_HTTP_MET_IN",
 								"type": "DatasetReference",
 								"parameters": {
-									"relativeUrl": "exportAverage?fromYear=2016&resolution=MDT&toYear=2021&trpIds=09717B1671751%2C11654B1671763%2C83248B1213727"
+									"relativeUrl": {
+										"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=mean(air_temperature%20P1D)&timeResolution=days')",
+										"type": "Expression"
+									}
 								}
 							}
 						],
 						"outputs": [
 							{
-								"referenceName": "SVV_BLOB_OUTPUT_CSV",
+								"referenceName": "DS_ABLOB_MET_OUT",
 								"type": "DatasetReference",
 								"parameters": {
-									"fileName": "SVV-sykkeldata.csv"
+									"fileName": "MET_MEANTEMP.json"
 								}
 							}
 						]
 					},
 					{
-						"name": "Data flow1",
+						"name": "Formatere til Norsk tidssone",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Hente naavaerende datetime",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetimeFormat",
+							"value": {
+								"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Sjekke om sommertid",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Formatere til Norsk tidssone",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "summertime",
+							"value": {
+								"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Hente naavaerende datetime",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetime",
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Transformere data og lagre i SQL",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
 							{
-								"activity": "Copy data1",
+								"activity": "Hente data fra MET API og lagre data i BLOB",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -621,54 +334,170 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "SVV_SYKKELDATA_TRANSFORM_SQL",
+								"referenceName": "DF_ABLOB_TRAN_SQL_MET_MEANTEMP",
 								"type": "DataFlowReference",
-								"parameters": {
-									"Arr": "split(toString(Volum),';')"
+								"parameters": {},
+								"datasetParameters": {
+									"ABlobMetMeantemp": {},
+									"METMeantempTabell": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"variables": {
+					"datetime": {
+						"type": "String"
+					},
+					"summertime": {
+						"type": "Boolean"
+					},
+					"datetimeFormat": {
+						"type": "String"
+					},
+					"asdf": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:28Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_MET_NEDBOR')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Hente data fra MET API og lagre data i BLOB",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Sjekke om sommertid",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET"
 								},
-								"datasetParameters": {
-									"source1": {},
-									"sink1": {}
+								"formatSettings": {
+									"type": "JsonReadSettings"
 								}
 							},
-							"staging": {},
-							"compute": {
-								"coreCount": 8,
-								"computeType": "General"
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
 							},
-							"traceLevel": "Fine"
-						}
-					}
-				],
-				"annotations": [],
-				"lastPublishTime": "2021-07-01T16:09:27Z"
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/MET_DATA_JOIN')]",
-			"type": "Microsoft.DataFactory/factories/pipelines",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"activities": [
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_HTTP_MET_IN",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": {
+										"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=sum(precipitation_amount%20P1D)&timeResolution=days')",
+										"type": "Expression"
+									}
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ABLOB_MET_OUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "MET_NEDBOR.json"
+								}
+							}
+						]
+					},
 					{
-						"name": "Data flow1",
+						"name": "Formatere til Norsk tidssone",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Hente naavaerende datetime",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetimeFormat",
+							"value": {
+								"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Sjekke om sommertid",
+						"type": "SetVariable",
+						"dependsOn": [
+							{
+								"activity": "Formatere til Norsk tidssone",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "summertime",
+							"value": {
+								"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Hente naavaerende datetime",
+						"type": "SetVariable",
+						"dependsOn": [],
+						"userProperties": [],
+						"typeProperties": {
+							"variableName": "datetime",
+							"value": {
+								"value": "@utcnow()",
+								"type": "Expression"
+							}
+						}
+					},
+					{
+						"name": "Transformere data og lagre i SQL",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
 							{
-								"activity": "MET_DATA_NEDBOR",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "MET_DATA_MEANTEMP",
-								"dependencyConditions": [
-									"Succeeded"
-								]
-							},
-							{
-								"activity": "MET_DATA_MAXTEMP",
+								"activity": "Hente data fra MET API og lagre data i BLOB",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -684,14 +513,12 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "JOIN_MET_DATA",
+								"referenceName": "DF_ABLOB_TRAN_SQL_MET_NEDBOR",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"METmaxtemp": {},
-									"METmeantemp": {},
-									"METnedbor": {},
-									"sink1": {}
+									"ABlobMETNedbor": {},
+									"METNedborTabell": {}
 								}
 							},
 							"staging": {},
@@ -701,79 +528,48 @@
 							},
 							"traceLevel": "Fine"
 						}
-					},
-					{
-						"name": "MET_DATA_MAXTEMP",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "MET_DATA_MAXTEMP",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "MET_DATA_MEANTEMP",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "MET_DATA_MEANTEMP",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
-					},
-					{
-						"name": "MET_DATA_NEDBOR",
-						"type": "ExecutePipeline",
-						"dependsOn": [],
-						"userProperties": [],
-						"typeProperties": {
-							"pipeline": {
-								"referenceName": "MET_DATA_NEDBOR",
-								"type": "PipelineReference"
-							},
-							"waitOnCompletion": true,
-							"parameters": {}
-						}
 					}
 				],
+				"variables": {
+					"datetime": {
+						"type": "String"
+					},
+					"summertime": {
+						"type": "Boolean"
+					},
+					"datetimeFormat": {
+						"type": "String"
+					}
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/MET_DATA_JOIN_copy1')]",
+			"name": "[concat(parameters('factoryName'), '/PL_TRAN_MET_JOIN')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"activities": [
 					{
-						"name": "Data flow1",
+						"name": "Transformere data og lagre i SQL",
 						"type": "ExecuteDataFlow",
 						"dependsOn": [
 							{
-								"activity": "MET_DATA_NEDBOR",
+								"activity": "PL_DATA_TRAN_MET_NEDBOR",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							},
 							{
-								"activity": "MET_DATA_MAXTEMP",
+								"activity": "PL_DATA_TRAN_MET_MEANTEMP",
 								"dependencyConditions": [
 									"Succeeded"
 								]
 							},
 							{
-								"activity": "MET_DATA_MEANTEMP",
+								"activity": "PL_DATA_TRAN_MET_MAXTEMP",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -789,14 +585,14 @@
 						"userProperties": [],
 						"typeProperties": {
 							"dataflow": {
-								"referenceName": "JOIN_MET_DATA",
+								"referenceName": "DF_SQL_TRAN_SQL_MET_ALLDATA",
 								"type": "DataFlowReference",
 								"parameters": {},
 								"datasetParameters": {
-									"METmaxtemp": {},
-									"METmeantemp": {},
-									"METnedbor": {},
-									"sink1": {}
+									"SQLMetMaxtempTabell": {},
+									"SQLMetMeantempTabell": {},
+									"SQLMetNedborTabell": {},
+									"METDataTabell": {}
 								}
 							},
 							"staging": {},
@@ -808,13 +604,13 @@
 						}
 					},
 					{
-						"name": "MET_DATA_MAXTEMP",
+						"name": "PL_DATA_TRAN_MET_MAXTEMP",
 						"type": "ExecutePipeline",
 						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "MET_DATA_MAXTEMP",
+								"referenceName": "PL_DATA_TRAN_MET_MAXTEMP",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
@@ -822,13 +618,13 @@
 						}
 					},
 					{
-						"name": "MET_DATA_MEANTEMP",
+						"name": "PL_DATA_TRAN_MET_MEANTEMP",
 						"type": "ExecutePipeline",
 						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "MET_DATA_MEANTEMP",
+								"referenceName": "PL_DATA_TRAN_MET_MEANTEMP",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
@@ -836,13 +632,13 @@
 						}
 					},
 					{
-						"name": "MET_DATA_NEDBOR",
+						"name": "PL_DATA_TRAN_MET_NEDBOR",
 						"type": "ExecutePipeline",
 						"dependsOn": [],
 						"userProperties": [],
 						"typeProperties": {
 							"pipeline": {
-								"referenceName": "MET_DATA_NEDBOR",
+								"referenceName": "PL_DATA_TRAN_MET_NEDBOR",
 								"type": "PipelineReference"
 							},
 							"waitOnCompletion": true,
@@ -853,7 +649,11 @@
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/pipelines/PL_DATA_TRAN_MET_MAXTEMP')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_DATA_TRAN_MET_MEANTEMP')]",
+				"[concat(variables('factoryId'), '/pipelines/PL_DATA_TRAN_MET_NEDBOR')]"
+			]
 		}
 	]
 }

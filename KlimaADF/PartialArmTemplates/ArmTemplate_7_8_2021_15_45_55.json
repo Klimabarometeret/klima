@@ -6,46 +6,6 @@
 			"type": "string",
 			"metadata": "Data Factory name",
 			"defaultValue": "KlimaADF"
-		},
-		"AZURE_BLOB_LINK_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AZURE_BLOB_LINK'"
-		},
-		"AZURE_SQL_DB_LINK_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'AZURE_SQL_DB_LINK'"
-		},
-		"csv_lake_linked_service_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'csv_lake_linked_service'"
-		},
-		"KLD_HTTP_LINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://www.miljodirektoratet.no/greenhousegas/api/"
-		},
-		"MET_HTTP_LINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://rim.met.no/api/v1/observations"
-		},
-		"SSB_HTTP_LINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://data.ssb.no/api/v0/no/table/"
-		},
-		"SSB_REST_LINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://data.ssb.no/api/v0/no/table/"
-		},
-		"SVV_HTTP_LINK_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://www.vegvesen.no/trafikkdata/api/"
-		},
-		"csv_lake_linked_service_properties_typeProperties_url": {
-			"type": "string",
-			"defaultValue": "https://stg2yj4b3un2o3rq.dfs.core.windows.net"
-		},
-		"TriggerOnStorageBlobCreate_properties_typeProperties_scope": {
-			"type": "string",
-			"defaultValue": "/subscriptions/828f9a73-7ecc-4f88-9abe-3c39c71ec80f/resourceGroups/klima-rg/providers/Microsoft.Storage/storageAccounts/klimastacc"
 		}
 	},
 	"variables": {
@@ -133,14 +93,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_KLD_OVERSIKT",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobKLDOversikt": {},
-									"KLDOversiktTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -301,14 +255,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_MET_MAXTEMP",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobMETMaxtemp": {},
-									"METMaxtempTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -484,14 +432,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_MET_MEANTEMP",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobMetMeantemp": {},
-									"METMeantempTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -667,14 +609,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_MET_NEDBOR",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobMETNedbor": {},
-									"METNedborTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -796,14 +732,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_SSB_07832",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobSSB07832": {},
-									"SSB07832Tabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -915,14 +845,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_SSB_07849",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobSSB07849": {},
-									"SSB07849Tabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1034,14 +958,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_SSB_12906",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobSSB12906": {},
-									"SSB12906Tabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1143,15 +1061,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_SVV_BILTRAFIKK",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobSVVBildata": {},
-									"SVVBiltrafikkTabell": {},
-									"SVVNavnTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1253,14 +1164,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_ABLOB_TRAN_SQL_SVV_SYKKELTRAFIKK",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"ABlobSVVSykkeldata": {},
-									"SVVSykkeltrafikkTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1318,16 +1223,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_SQL_TRAN_SQL_MET_ALLDATA",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"SQLMetMaxtempTabell": {},
-									"SQLMetMeantempTabell": {},
-									"SQLMetNedborTabell": {},
-									"METDataTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1345,8 +1242,7 @@
 								"referenceName": "PL_DATA_TRAN_MET_MAXTEMP",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					},
 					{
@@ -1359,8 +1255,7 @@
 								"referenceName": "PL_DATA_TRAN_MET_MEANTEMP",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					},
 					{
@@ -1373,8 +1268,7 @@
 								"referenceName": "PL_DATA_TRAN_MET_NEDBOR",
 								"type": "PipelineReference"
 							},
-							"waitOnCompletion": true,
-							"parameters": {}
+							"waitOnCompletion": true
 						}
 					}
 				],
@@ -1409,15 +1303,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_SQL_TRAN_SQL_REL_STED",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"SQLSSB07849Tabell": {},
-									"SQLSSB12906Tabell": {},
-									"StedTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1440,14 +1327,8 @@
 						"typeProperties": {
 							"dataflow": {
 								"referenceName": "DF_SQL_TRAN_SQL_REL_UTSLIPP",
-								"type": "DataFlowReference",
-								"parameters": {},
-								"datasetParameters": {
-									"SQLSSB12906Tabell": {},
-									"UtslippTabell": {}
-								}
+								"type": "DataFlowReference"
 							},
-							"staging": {},
 							"compute": {
 								"coreCount": 8,
 								"computeType": "General"
@@ -1487,9 +1368,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_KLD_OUT')]",
@@ -1537,9 +1416,7 @@
 					}
 				]
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_MET_IN')]",
@@ -1561,9 +1438,7 @@
 				},
 				"schema": {}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_MET_OUT')]",
@@ -1594,9 +1469,7 @@
 				},
 				"schema": {}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_SSB_IN')]",
@@ -1623,9 +1496,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_SSB_OUT')]",
@@ -1661,9 +1532,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_SVV_IN')]",
@@ -1690,9 +1559,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_SVV_OUT')]",
@@ -1728,9 +1595,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_HTTP_KLD_IN')]",
@@ -1798,9 +1663,7 @@
 				},
 				"schema": {}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/MET_HTTP_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_HTTP_SSB_IN')]",
@@ -1834,9 +1697,7 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SSB_HTTP_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DS_HTTP_SVV_IN')]",
@@ -1870,34 +1731,6 @@
 				},
 				"schema": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SVV_HTTP_LINK')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AZURE_BLOB_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobStorage",
-				"typeProperties": {
-					"connectionString": "[parameters('AZURE_BLOB_LINK_connectionString')]"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AZURE_SQL_DB_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('AZURE_SQL_DB_LINK_connectionString')]"
-				}
-			},
 			"dependsOn": []
 		},
 		{
@@ -1908,106 +1741,9 @@
 				"annotations": [],
 				"type": "HttpServer",
 				"typeProperties": {
-					"url": "[parameters('KLD_HTTP_LINK_properties_typeProperties_url')]",
+					"url": "https://www.miljodirektoratet.no/greenhousegas/api/",
 					"enableServerCertificateValidation": true,
 					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/MET_HTTP_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('MET_HTTP_LINK_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SSB_HTTP_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('SSB_HTTP_LINK_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SSB_REST_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "RestService",
-				"typeProperties": {
-					"url": "[parameters('SSB_REST_LINK_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SVV_HTTP_LINK')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "HttpServer",
-				"typeProperties": {
-					"url": "[parameters('SVV_HTTP_LINK_properties_typeProperties_url')]",
-					"enableServerCertificateValidation": true,
-					"authenticationType": "Anonymous"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/csv_lake_linked_service')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('csv_lake_linked_service_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('csv_lake_linked_service_accountKey')]"
-					}
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/TriggerOnStorageBlobCreate')]",
-			"type": "Microsoft.DataFactory/factories/triggers",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"runtimeState": "Stopped",
-				"pipelines": [],
-				"type": "BlobEventsTrigger",
-				"typeProperties": {
-					"blobPathBeginsWith": "/ssbdata/blobs/",
-					"ignoreEmptyBlobs": true,
-					"scope": "[parameters('TriggerOnStorageBlobCreate_properties_typeProperties_scope')]",
-					"events": [
-						"Microsoft.Storage.BlobCreated"
-					]
 				}
 			},
 			"dependsOn": []
@@ -2045,10 +1781,7 @@
 					"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'utslippdata',\n\tfileName: 'Oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobKLDOversikt\nABlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'kld_oversikt',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_MET_MAXTEMP')]",
@@ -2087,8 +1820,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]"
 			]
 		},
 		{
@@ -2128,8 +1860,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]"
 			]
 		},
 		{
@@ -2169,8 +1900,7 @@
 				}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
+				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_MET_IN')]"
 			]
 		},
 		{
@@ -2206,10 +1936,7 @@
 					"script": "source(output(\n\t\tregion as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as integer,\n\t\t{_c4} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssbdata',\n\tfileName: '07832.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07832\nABlobSSB07832 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Tilhengere\", \"Tilhenger\",\r\nstatistikkvariabel == \"Motorredskap\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"K-4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019\", \"Søgne (-2019\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tregion as string,\n\t\tmerke as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as boolean,\n\t\t{_c5} as string\n\t),\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_bilberke',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tRegion = region,\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tAntall = {07832: Registrerte kjøretøy},\n\t\tDato\n\t)) ~> SSB07832Tabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_SSB_07849')]",
@@ -2244,10 +1971,7 @@
 					"script": "source(output(\n\t\tregion as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07849: Registrerte kjøretøy} as integer,\n\t\t{_c5} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssbdata',\n\tfileName: '07849.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07849\nABlobSSB07849 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tmapColumn(\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\tBestand = {07849: Registrerte kjøretøy},\n\t\tDate = Dato\n\t)) ~> SSB07849Tabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_SSB_12906')]",
@@ -2282,10 +2006,7 @@
 					"script": "source(output(\n\t\tregion as string,\n\t\t{type registrering} as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{12906: Førstegangsregistrerte kjøretøy} as integer,\n\t\t{_c6} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssbdata',\n\tfileName: '12906.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB12906\nABlobSSB12906 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Bobiler\", \"Bobil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tDato,\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\t{Solgte biler} = {12906: Førstegangsregistrerte kjøretøy},\n\t\t{År} = {år}\n\t)) ~> SSB12906Tabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_SVV_BILTRAFIKK')]",
@@ -2336,10 +2057,7 @@
 					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\tDato as date,\n\t\tFelt as string,\n\t\tVolum as string,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall timer total} as short,\n\t\t{Antall timer inkludert} as short,\n\t\t{Antall timer ugyldig} as short,\n\t\t{Ikke gyldig lengde} as string,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{>= 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svvdata',\n\tfileName: 'SVV-data.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVBildata\nFiltrereRetning derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Sødal\", \"Sødal\",\r\n    Navn == \"PRESTEBEKKEN\", \"Bjørndalssletta\",\r\n    Navn == \"PRESTBK RAMPE FRA LU\", \"Bjørndalssletta Påkjørsel\",\r\n    Navn == \"Rampe mot Prestheia\", \"Bjørndalssletta Avkjørsel\",\r\n    Navn == \"Vesterbrua\", \"Vesterveien\",\r\n    Navn == \"TRETJØNNVEIEN\", \"Presteheia\"\r\n)) ~> EndreNavnOgSamleData\nEndreNavnOgSamleData select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> RedusereKolonnevalg\nABlobSVVBildata filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> FiltrereRetning\nRedusereKolonnevalg aggregate(groupBy(Navn),\n\t{NavnSammenslått} = case(\r\n    max(Navn) == \"Grim\", \"Grim\",\r\n    max(Navn) == \"Vesterveien Avkjørsel\", \"Vesterveien\",\r\n    max(Navn) == \"Sødal\", \"Sødal\",\r\n    max(Navn) == \"Bjørndalssletta\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Påkjørsel\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Avkjørsel\", \"Bjørndalssletta Avkjørsel\",\r\n    max(Navn) == \"Vesterveien\", \"Vesterveien\",\r\n    max(Navn) == \"Presteheia\", \"Presteheia\"\r\n)) ~> SlaaSammenNavn\nRedusereKolonnevalg sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_biltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato,\n\t\tTotalt = Volum,\n\t\t{Lette kjøretøy},\n\t\t{Tunge kjøretøy}\n\t)) ~> SVVBiltrafikkTabell\nSlaaSammenNavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_navn',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{NavnRÅ} = Navn,\n\t\tNavn = {NavnSammenslått}\n\t)) ~> SVVNavnTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_SVV_SYKKELTRAFIKK')]",
@@ -2374,10 +2092,7 @@
 					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svvdata',\n\tfileName: 'SVV-sykkeldata.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVSykkeldata\nABlobSVVSykkeldata filter(Felt == \"Totalt\") ~> FiltrereTotalt\nFiltrereTotalt sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_sykkeltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> SVVSykkeltrafikkTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]",
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_SQL_TRAN_SQL_MET_ALLDATA')]",
@@ -2432,9 +2147,7 @@
 					"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMaxtempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMeantempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetNedborTabell\nSQLMetMaxtempTabell, SQLMetMeantempTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetMeantempTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetMeantempTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData, SQLMetNedborTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetNedborTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetNedborTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData2\nSlaaSammenData2 derive(Stasjonsnavn = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), SQLMetMaxtempTabell@Stasjon,\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), SQLMetMeantempTabell@Stasjon,\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), SQLMetNedborTabell@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(SQLMetMaxtempTabell@Dato)), SQLMetMaxtempTabell@Dato,\r\n    not(isNull(SQLMetMeantempTabell@Dato)), SQLMetMeantempTabell@Dato,\r\n    not(isNull(SQLMetNedborTabell@Dato)), SQLMetNedborTabell@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> METDataTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_SQL_TRAN_SQL_REL_STED')]",
@@ -2479,9 +2192,7 @@
 					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '07849',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB07849Tabell\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nSQLSSB07849Tabell, SQLSSB12906Tabell join(SQLSSB07849Tabell@Sted == SQLSSB07849Tabell@Sted,\n\tjoinType:'inner',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData aggregate(groupBy(SQLSSB07849Tabell@Sted),\n\tStedNY = case(\r\n    max(SQLSSB07849Tabell@Sted) == \"Norge\", \"Norge\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> AggregereStedsnavn\nAggregereStedsnavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> StedTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/DF_SQL_TRAN_SQL_REL_UTSLIPP')]",
@@ -2522,9 +2233,7 @@
 					"script": "source(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: '12906',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nVelgeKolonner aggregate(groupBy({DrivstoffRÅ}),\n\tDrivstoff = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Annet drivstoff\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Bensin\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Diesel\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Elektrisitet\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Hydrogen\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Parafin\"\r\n),\n\t\tUtlippsintensitet = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Ukjent\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Fossil\"\r\n)) ~> AggregereDrivstoffOgUtslipp\nSQLSSB12906Tabell derive({DrivstoffRÅ} = Drivstoff) ~> NyKolonneDrivstoffRAA\nNyKolonneDrivstoffRAA select(mapColumn(\n\t\tDato,\n\t\tBiltype,\n\t\tSted,\n\t\t{DrivstoffRÅ},\n\t\t{Solgte biler},\n\t\t{År}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> VelgeKolonner\nAggregereDrivstoffOgUtslipp sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'utslippsintensitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tDrivstoff,\n\t\t{DrivstoffRÅ},\n\t\tUtlippsintensitet\n\t)) ~> UtslippTabell"
 				}
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
-			]
+			"dependsOn": []
 		}
 	]
 }

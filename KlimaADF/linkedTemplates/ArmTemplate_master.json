@@ -19,6 +19,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'csv_lake_linked_service'"
 		},
+		"KLD_HTTP_LINK_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://www.miljodirektoratet.no/greenhousegas/api/"
+		},
 		"MET_HTTP_LINK_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://rim.met.no/api/v1/observations"
@@ -78,6 +82,9 @@
 					},
 					"csv_lake_linked_service_accountKey": {
 						"value": "[parameters('csv_lake_linked_service_accountKey')]"
+					},
+					"KLD_HTTP_LINK_properties_typeProperties_url": {
+						"value": "[parameters('KLD_HTTP_LINK_properties_typeProperties_url')]"
 					},
 					"MET_HTTP_LINK_properties_typeProperties_url": {
 						"value": "[parameters('MET_HTTP_LINK_properties_typeProperties_url')]"
