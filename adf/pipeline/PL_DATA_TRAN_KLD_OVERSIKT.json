@@ -44,6 +44,15 @@
 							"sheetName": "Oversikt"
 						}
 					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_KLD_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "Oversikt.csv"
+						}
+					}
 				]
 			},
 			{
