@@ -5,6 +5,10 @@
 			"summertime": {
 				"type": "bool",
 				"value": false
+			},
+			"ContainerName": {
+				"type": "string",
+				"value": "klimabarometer-kristiansand"
 			}
 		}
 	},
