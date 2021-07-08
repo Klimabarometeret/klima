@@ -9,21 +9,21 @@
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "METmaxtemp"
+					"name": "SQLMetMaxtemp"
 				},
 				{
 					"linkedService": {
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "METmeantemp"
+					"name": "SQLMetMeantemp"
 				},
 				{
 					"linkedService": {
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "METnedbor"
+					"name": "SQLMetNedbor"
 				}
 			],
 			"sinks": [
@@ -32,24 +32,21 @@
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "METTabell"
 				}
 			],
 			"transformations": [
 				{
-					"name": "Join1"
+					"name": "SlaaSammenData"
 				},
 				{
-					"name": "Join2"
+					"name": "SlaaSammenData2"
 				},
 				{
-					"name": "DerivedColumn1"
-				},
-				{
-					"name": "Sort1"
+					"name": "NyeKolonner"
 				}
 			],
-			"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> METmaxtemp\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> METmeantemp\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> METnedbor\nMETmaxtemp, METmeantemp join(METmaxtemp@Stasjon == METmeantemp@Stasjon\n\t&& METmaxtemp@Dato == METmeantemp@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> Join1\nJoin1, METnedbor join(METmaxtemp@Stasjon == METnedbor@Stasjon\n\t&& METmaxtemp@Dato == METnedbor@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> Join2\nJoin2 derive(Stasjonsnavn = case(\r\n    not(isNull(METmaxtemp@Stasjon)), \"Kjevik\",\r\n    not(isNull(METmeantemp@Stasjon)), \"Kjevik\",\r\n    not(isNull(METnedbor@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(METmaxtemp@Stasjon)), METmaxtemp@Stasjon,\r\n    not(isNull(METmeantemp@Stasjon)), METmeantemp@Stasjon,\r\n    not(isNull(METnedbor@Stasjon)), METnedbor@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(METmaxtemp@Dato)), METmaxtemp@Dato,\r\n    not(isNull(METmeantemp@Dato)), METmeantemp@Dato,\r\n    not(isNull(METnedbor@Dato)), METnedbor@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> DerivedColumn1\nDerivedColumn1 sort(asc(Dato, true)) ~> Sort1\nSort1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> sink1"
+			"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMaxtemp\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMeantemp\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetNedbor\nSQLMetMaxtemp, SQLMetMeantemp join(SQLMetMaxtemp@Stasjon == SQLMetMeantemp@Stasjon\n\t&& SQLMetMaxtemp@Dato == SQLMetMeantemp@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData, SQLMetNedbor join(SQLMetMaxtemp@Stasjon == SQLMetNedbor@Stasjon\n\t&& SQLMetMaxtemp@Dato == SQLMetNedbor@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData2\nSlaaSammenData2 derive(Stasjonsnavn = case(\r\n    not(isNull(SQLMetMaxtemp@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetMeantemp@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetNedbor@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(SQLMetMaxtemp@Stasjon)), SQLMetMaxtemp@Stasjon,\r\n    not(isNull(SQLMetMeantemp@Stasjon)), SQLMetMeantemp@Stasjon,\r\n    not(isNull(SQLMetNedbor@Stasjon)), SQLMetNedbor@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(SQLMetMaxtemp@Dato)), SQLMetMaxtemp@Dato,\r\n    not(isNull(SQLMetMeantemp@Dato)), SQLMetMeantemp@Dato,\r\n    not(isNull(SQLMetNedbor@Dato)), SQLMetNedbor@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> METTabell"
 		}
 	}
 }

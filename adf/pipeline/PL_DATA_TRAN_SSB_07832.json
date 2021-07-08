@@ -3,16 +3,9 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data",
+				"name": "Hente data fra SSB API og lagre i BLOB",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "GetApiTitle",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -75,55 +68,11 @@
 				]
 			},
 			{
-				"name": "GetApiTitle",
-				"type": "WebActivity",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"url": "https://data.ssb.no/api/v0/no/table/07832",
-					"method": "POST",
-					"body": {
-						"query": [
-							{
-								"code": "Region",
-								"selection": {
-									"filter": "item",
-									"values": [
-										"0",
-										"4204",
-										"1001",
-										"1017",
-										"1018"
-									]
-								}
-							},
-							{
-								"code": "Kjoretoy",
-								"selection": {
-									"filter": "all",
-									"values": []
-								}
-							}
-						],
-						"response": {
-							"format": "csv2"
-						}
-					}
-				}
-			},
-			{
-				"name": "Data flow1",
+				"name": "Transformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Copy data",
+						"activity": "Hente data fra SSB API og lagre i BLOB",
 						"dependencyConditions": [
 							"Succeeded"
 						]

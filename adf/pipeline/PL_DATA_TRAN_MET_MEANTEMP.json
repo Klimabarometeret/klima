@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data",
+				"name": "Hente data fra MET API og lagre data i BLOB",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -66,11 +66,11 @@
 				]
 			},
 			{
-				"name": "Formater til vaar tidssone",
+				"name": "Formatere til Norsk tidssone",
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Hente datetime",
+						"activity": "Hente naavaerende datetime",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -90,7 +90,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Formater til vaar tidssone",
+						"activity": "Formatere til Norsk tidssone",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -106,7 +106,7 @@
 				}
 			},
 			{
-				"name": "Hente datetime",
+				"name": "Hente naavaerende datetime",
 				"type": "SetVariable",
 				"dependsOn": [],
 				"userProperties": [],
@@ -119,11 +119,11 @@
 				}
 			},
 			{
-				"name": "Data flow1",
+				"name": "Transformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
-						"activity": "Copy data",
+						"activity": "Hente data fra MET API og lagre data i BLOB",
 						"dependencyConditions": [
 							"Succeeded"
 						]

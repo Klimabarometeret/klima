@@ -9,7 +9,7 @@
 						"referenceName": "AZURE_BLOB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "LeseCSV"
+					"name": "BlobKLDOversikt"
 				}
 			],
 			"sinks": [
@@ -18,15 +18,15 @@
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "KLDOversiktTabell"
 				}
 			],
 			"transformations": [
 				{
-					"name": "DerivedColumn1"
+					"name": "LageDatoKolonne"
 				}
 			],
-			"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'utslippdata',\n\tfileName: 'Oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> LeseCSV\nLeseCSV derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> DerivedColumn1\nDerivedColumn1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'KLD_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> sink1"
+			"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'utslippdata',\n\tfileName: 'Oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> BlobKLDOversikt\nBlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'KLD_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
 		}
 	}
 }

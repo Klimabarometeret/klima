@@ -9,7 +9,7 @@
 						"referenceName": "AZURE_BLOB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "source1"
+					"name": "BlobSVVSykkeldata"
 				}
 			],
 			"sinks": [
@@ -18,15 +18,15 @@
 						"referenceName": "AZURE_SQL_DB_LINK",
 						"type": "LinkedServiceReference"
 					},
-					"name": "sink1"
+					"name": "SVVSykkeltrafikkTabell"
 				}
 			],
 			"transformations": [
 				{
-					"name": "Filter1"
+					"name": "FiltrereTotalt"
 				}
 			],
-			"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svvdata',\n\tfileName: 'SVV-sykkeldata.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> source1\nsource1 filter(Felt == \"Totalt\") ~> Filter1\nFilter1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Sykkeldata',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> sink1"
+			"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svvdata',\n\tfileName: 'SVV-sykkeldata.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> BlobSVVSykkeldata\nBlobSVVSykkeldata filter(Felt == \"Totalt\") ~> FiltrereTotalt\nFiltrereTotalt sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'SVV_Sykkeldata',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> SVVSykkeltrafikkTabell"
 		}
 	}
 }
