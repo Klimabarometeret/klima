@@ -1,5 +1,5 @@
 {
-	"name": "CREATE_RELATION_TABLES",
+	"name": "PL_TRAN_RELATIONTABLES",
 	"properties": {
 		"activities": [
 			{

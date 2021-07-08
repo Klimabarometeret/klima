@@ -1,5 +1,5 @@
 {
-	"name": "KLD_OVERSIKT_CSV",
+	"name": "PL_DATA_TRAN_KLD_OVERSIKT",
 	"properties": {
 		"activities": [
 			{
@@ -33,15 +33,7 @@
 							"fileExtension": ".txt"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"typeConversion": true,
-						"typeConversionSettings": {
-							"allowDataTruncation": true,
-							"treatBooleanAsNumber": false
-						}
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
@@ -50,15 +42,6 @@
 						"parameters": {
 							"relativeUrl": "excel?areaId=640",
 							"sheetName": "Oversikt"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "KLD_BLOB_OUTPUT",
-						"type": "DatasetReference",
-						"parameters": {
-							"fileName": "Oversikt.csv"
 						}
 					}
 				]
