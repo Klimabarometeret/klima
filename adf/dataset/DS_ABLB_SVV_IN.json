@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"folderPath": "svvdata",
+				"folderPath": "svv-data",
 				"container": "klimabarometer-kristiansand"
 			},
 			"columnDelimiter": ";",

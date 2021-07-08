@@ -19,7 +19,7 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"folderPath": "svvdata",
+				"folderPath": "svv-data",
 				"container": "klimabarometer-kristiansand"
 			},
 			"columnDelimiter": ";",
