@@ -1,5 +1,5 @@
 {
-	"name": "CREATE_UTSLIPP_TABLE",
+	"name": "DF_SQL_TRAN_SQL_REL_UTSLIPP",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

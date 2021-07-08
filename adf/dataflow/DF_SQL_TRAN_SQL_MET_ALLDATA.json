@@ -1,5 +1,5 @@
 {
-	"name": "JOIN_MET_DATA",
+	"name": "DF_SQL_TRAN_SQL_MET_ALLDATA",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

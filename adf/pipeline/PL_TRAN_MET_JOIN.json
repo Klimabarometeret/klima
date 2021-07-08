@@ -35,7 +35,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "JOIN_MET_DATA",
+						"referenceName": "DF_SQL_TRAN_SQL_MET_ALLDATA",
 						"type": "DataFlowReference"
 					},
 					"compute": {

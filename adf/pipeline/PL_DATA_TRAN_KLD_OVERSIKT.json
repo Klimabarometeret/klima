@@ -37,11 +37,20 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "KLD_HTTP_INPUT",
+						"referenceName": "DS_HTTP_KLD_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "excel?areaId=640",
 							"sheetName": "Oversikt"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLB_KLD_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "Oversikt.csv"
 						}
 					}
 				]
@@ -67,7 +76,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "KLD_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_KLD_OVERSIKT",
 						"type": "DataFlowReference"
 					},
 					"compute": {

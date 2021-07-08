@@ -1,5 +1,5 @@
 {
-	"name": "SVV_BLOB_OUTPUT_CSV",
+	"name": "DS_ABLB_SSB_OUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
@@ -19,15 +19,16 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"folderPath": "svvdata",
+				"folderPath": "ssbdata",
 				"container": "klimabarometer-kristiansand"
 			},
-			"columnDelimiter": ";",
-			"encodingName": "ISO-8859-1",
+			"columnDelimiter": ",",
+			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }

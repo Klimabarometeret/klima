@@ -58,7 +58,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "SSB_HTTP_INPUT",
+						"referenceName": "DS_HTTP_SSB_IN",
 						"type": "DatasetReference",
 						"parameters": {
 							"relativeUrl": "12906"
@@ -67,7 +67,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "SSB_BLOB_OUTPUT",
+						"referenceName": "DS_ABLB_SSB_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "12906.csv"
@@ -148,7 +148,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "SSB_12906_TRANSFORM_SQL",
+						"referenceName": "DF_ABLB_TRAN_SQL_SSB_12906",
 						"type": "DataFlowReference"
 					},
 					"compute": {

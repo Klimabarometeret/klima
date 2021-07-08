@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "CREATE_STED_TABLE",
+						"referenceName": "DF_SQL_TRAN_SQL_REL_STED",
 						"type": "DataFlowReference"
 					},
 					"compute": {
@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "CREATE_UTSLIPP_TABLE",
+						"referenceName": "DF_SQL_TRAN_SQL_REL_UTSLIPP",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -1,18 +1,25 @@
 {
-	"name": "SVV_HTTP_INPUT_CSV",
+	"name": "DS_HTTP_KLD_IN",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SVV_HTTP_LINK",
+			"referenceName": "KLD_HTTP_LINK",
 			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"relativeUrl": {
 				"type": "string"
+			},
+			"sheetName": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Excel",
 		"typeProperties": {
+			"sheetName": {
+				"value": "@dataset().sheetName",
+				"type": "Expression"
+			},
 			"location": {
 				"type": "HttpServerLocation",
 				"relativeUrl": {
@@ -20,11 +27,7 @@
 					"type": "Expression"
 				}
 			},
-			"columnDelimiter": ";",
-			"encodingName": "ISO-8859-1",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"firstRowAsHeader": true
 		},
 		"schema": []
 	}

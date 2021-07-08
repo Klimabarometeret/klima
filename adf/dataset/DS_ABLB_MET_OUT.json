@@ -1,5 +1,5 @@
 {
-	"name": "SSB_BLOB_OUTPUT",
+	"name": "DS_ABLB_MET_OUT",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
@@ -11,7 +11,7 @@
 			}
 		},
 		"annotations": [],
-		"type": "DelimitedText",
+		"type": "Json",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
@@ -19,16 +19,11 @@
 					"value": "@dataset().fileName",
 					"type": "Expression"
 				},
-				"folderPath": "ssbdata",
+				"folderPath": "metdata",
 				"container": "klimabarometer-kristiansand"
-			},
-			"columnDelimiter": ",",
-			"encodingName": "UTF-8",
-			"escapeChar": "\\",
-			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			}
 		},
-		"schema": []
+		"schema": {}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"
 }

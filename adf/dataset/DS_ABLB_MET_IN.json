@@ -1,15 +1,17 @@
 {
-	"name": "SVV_HTTP_INPUT",
+	"name": "DS_ABLB_MET_IN",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "SVV_HTTP_LINK",
+			"referenceName": "AZURE_BLOB_LINK",
 			"type": "LinkedServiceReference"
 		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
 			"location": {
-				"type": "HttpServerLocation"
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "metdata",
+				"container": "klimabarometer-kristiansand"
 			}
 		},
 		"schema": {}

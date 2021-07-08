@@ -1,12 +1,12 @@
 {
-	"name": "MET_NEDBOR_TRANSFORM_SQL",
+	"name": "DF_ABLB_TRAN_SQL_MET_NEDBOR",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
 				{
 					"dataset": {
-						"referenceName": "MET_BLOB_INPUT",
+						"referenceName": "DS_ABLB_MET_IN",
 						"type": "DatasetReference"
 					},
 					"name": "source1"

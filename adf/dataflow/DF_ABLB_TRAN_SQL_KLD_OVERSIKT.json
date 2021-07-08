@@ -1,5 +1,5 @@
 {
-	"name": "KLD_TRANSFORM_SQL",
+	"name": "DF_ABLB_TRAN_SQL_KLD_OVERSIKT",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

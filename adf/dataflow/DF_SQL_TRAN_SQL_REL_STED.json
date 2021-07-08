@@ -1,5 +1,5 @@
 {
-	"name": "CREATE_STED_TABLE",
+	"name": "DF_SQL_TRAN_SQL_REL_STED",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
