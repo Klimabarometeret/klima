@@ -47,7 +47,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ABLB_KLD_OUT",
+						"referenceName": "DS_ABLOB_KLD_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "Oversikt.csv"
@@ -76,7 +76,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "DF_ABLB_TRAN_SQL_KLD_OVERSIKT",
+						"referenceName": "DF_ABLOB_TRAN_SQL_KLD_OVERSIKT",
 						"type": "DataFlowReference"
 					},
 					"compute": {

@@ -59,7 +59,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ABLB_SSB_OUT",
+						"referenceName": "DS_ABLOB_SSB_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "07832.csv"
@@ -88,7 +88,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "DF_ABLB_TRAN_SQL_SSB_07832",
+						"referenceName": "DF_ABLOB_TRAN_SQL_SSB_07832",
 						"type": "DataFlowReference"
 					},
 					"compute": {

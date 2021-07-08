@@ -57,7 +57,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ABLB_MET_OUT",
+						"referenceName": "DS_ABLOB_MET_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "MET_NEDBOR.json"
@@ -139,7 +139,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "DF_ABLB_TRAN_SQL_MET_NEDBOR",
+						"referenceName": "DF_ABLOB_TRAN_SQL_MET_NEDBOR",
 						"type": "DataFlowReference"
 					},
 					"compute": {

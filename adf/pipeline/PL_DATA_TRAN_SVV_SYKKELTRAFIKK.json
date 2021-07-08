@@ -50,7 +50,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "DS_ABLB_SVV_OUT",
+						"referenceName": "DS_ABLOB_SVV_OUT",
 						"type": "DatasetReference",
 						"parameters": {
 							"fileName": "SVV-sykkeldata.csv"
@@ -79,7 +79,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "DF_ABLB_TRAN_SQL_SVV_SYKKELTRAFIKK",
+						"referenceName": "DF_ABLOB_TRAN_SQL_SVV_SYKKELTRAFIKK",
 						"type": "DataFlowReference"
 					},
 					"compute": {

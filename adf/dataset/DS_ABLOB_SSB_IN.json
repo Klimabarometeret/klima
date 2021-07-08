@@ -1,33 +1,25 @@
 {
-	"name": "DS_ABLB_SVV_OUT",
+	"name": "DS_ABLOB_SSB_IN",
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AZURE_BLOB_LINK",
 			"type": "LinkedServiceReference"
-		},
-		"parameters": {
-			"fileName": {
-				"type": "string"
-			}
 		},
 		"annotations": [],
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": {
-					"value": "@dataset().fileName",
-					"type": "Expression"
-				},
-				"folderPath": "svv-data",
+				"folderPath": "ssb-data",
 				"container": "klimabarometer-kristiansand"
 			},
-			"columnDelimiter": ";",
-			"encodingName": "ISO-8859-1",
+			"columnDelimiter": ",",
+			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
 		"schema": []
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
 }
