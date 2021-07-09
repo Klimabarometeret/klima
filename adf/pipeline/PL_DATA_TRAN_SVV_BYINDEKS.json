@@ -1,0 +1,66 @@
+{
+	"name": "PL_DATA_TRAN_SVV_BYINDEKS",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra SVV API og lagre i BLOB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_SVV_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "exportAverage?fromYear=2016&resolution=ADT&toYear=2021&trpIds=00000V1702725%2C00000V1702751%2C01355V1702751%2C02466V121760%2C02489V121427%2C04110V121776%2C05898V121506%2C06702V121764%2C08057V2475663%2C12556V121486%2C13278V121819%2C16947V121800%2C18321V121493%2C22540V121303%2C25833V121761%2C26071V121746%2C26467V121457%2C26849V121777%2C27139V121510%2C28020V121748%2C28135V121429%2C33412V121301%2C35258V2475662%2C40820V121304%2C43920V121762%2C45924V1955584%2C47077V121488%2C47215V121446%2C47254V121508%2C57166V121303%2C57502V121402%2C58182V1787571%2C65613V121784%2C68018V121746%2C78704V121429%2C95764V121488"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_SVV_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "byindeks.csv"
+						}
+					}
+				]
+			}
+		],
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
