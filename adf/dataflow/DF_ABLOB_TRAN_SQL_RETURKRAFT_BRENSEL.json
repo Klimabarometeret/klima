@@ -15,9 +15,17 @@
 					"name": "source1"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [],
-			"script": "source(output(\n\t\tDato as date,\n\t\t{Avfall brent (tonn)} as short,\n\t\t{År} as short,\n\t\tMnd as short,\n\t\tDag as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['avfall-data/returkraft.xlsx']) ~> source1"
+			"script": "source(output(\n\t\tDato as date,\n\t\t{Avfall brent (tonn)} as short,\n\t\t{År} as short,\n\t\tMnd as short,\n\t\tDag as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['avfall-data/returkraft.xlsx']) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'returkraft_brensel',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tDato,\n\t\t{Avfall brent (tonn)}\n\t)) ~> sink1"
 		}
 	}
 }
