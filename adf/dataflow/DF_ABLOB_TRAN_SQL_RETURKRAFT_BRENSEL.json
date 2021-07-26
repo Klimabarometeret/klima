@@ -1,0 +1,23 @@
+{
+	"name": "DF_ABLOB_TRAN_SQL_RETURKRAFT_BRENSEL",
+	"properties": {
+		"folder": {
+			"name": "Returkraft"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_ABLOB_RETURKRAFT_INN",
+						"type": "DatasetReference"
+					},
+					"name": "source1"
+				}
+			],
+			"sinks": [],
+			"transformations": [],
+			"script": "source(output(\n\t\tDato as date,\n\t\t{Avfall brent (tonn)} as short,\n\t\t{År} as short,\n\t\tMnd as short,\n\t\tDag as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['avfall-data/returkraft.xlsx']) ~> source1"
+		}
+	}
+}
