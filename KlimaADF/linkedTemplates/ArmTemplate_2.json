@@ -13,6 +13,47 @@
 	},
 	"resources": [
 		{
+			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_MET_MEANTEMP')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "MET"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DS_ABLOB_MET_IN",
+								"type": "DatasetReference"
+							},
+							"name": "ABlobMetMeantemp"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "METMeantempTabell"
+						}
+					],
+					"transformations": [
+						{
+							"name": "RulleUtData"
+						},
+						{
+							"name": "RulleUtData2"
+						}
+					],
+					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/meantemp.json']) ~> ABlobMetMeantemp\nABlobMetMeantemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Middeltemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Middeltemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)}\n\t)) ~> METMeantempTabell"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_MET_NEDBOR')]",
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
@@ -49,6 +90,40 @@
 						}
 					],
 					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/nedbor.json']) ~> ABlobMETNedbor\nABlobMETNedbor foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Nedbør (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Nedbør (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Nedbør (dag)}\n\t)) ~> METNedborTabell"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_RETURKRAFT_BRENSEL')]",
+			"type": "Microsoft.DataFactory/factories/dataflows",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"folder": {
+					"name": "Returkraft"
+				},
+				"type": "MappingDataFlow",
+				"typeProperties": {
+					"sources": [
+						{
+							"dataset": {
+								"referenceName": "DS_ABLOB_RETURKRAFT_INN",
+								"type": "DatasetReference"
+							},
+							"name": "source1"
+						}
+					],
+					"sinks": [
+						{
+							"linkedService": {
+								"referenceName": "AZURE_SQL_DB_LINK",
+								"type": "LinkedServiceReference"
+							},
+							"name": "sink1"
+						}
+					],
+					"transformations": [],
+					"script": "source(output(\n\t\tDato as date,\n\t\t{Avfall brent (tonn)} as short,\n\t\t{År} as short,\n\t\tMnd as short,\n\t\tDag as boolean\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\twildcardPaths:['avfall-data/returkraft.xlsx']) ~> source1\nsource1 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'returkraft_brensel',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tDato,\n\t\t{Avfall brent (tonn)}\n\t)) ~> sink1"
 				}
 			},
 			"dependsOn": []
@@ -415,7 +490,9 @@
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_ABLOB_TRAN_SQL_MET_MEANTEMP')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_MET_NEDBOR')]",

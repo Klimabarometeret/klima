@@ -444,6 +444,34 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_RETURKRAFT_INN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AZURE_BLOB_LINK",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Returkraft"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Returkraft Brensel",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "returkraft.xlsx",
+						"folderPath": "avfall-data",
+						"container": "klimabarometer-kristiansand"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_KLD_OVERSIKT')]",
 			"type": "Microsoft.DataFactory/factories/pipelines",
 			"apiVersion": "2018-06-01",
@@ -1319,47 +1347,6 @@
 						}
 					],
 					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/maxtemp.json']) ~> ABlobMETMaxtemp\nABlobMETMaxtemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Maksimumstemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Maksimumstemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Maksimumstemperatur (dag)}\n\t)) ~> METMaxtempTabell"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_MET_MEANTEMP')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"folder": {
-					"name": "MET"
-				},
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DS_ABLOB_MET_IN",
-								"type": "DatasetReference"
-							},
-							"name": "ABlobMetMeantemp"
-						}
-					],
-					"sinks": [
-						{
-							"linkedService": {
-								"referenceName": "AZURE_SQL_DB_LINK",
-								"type": "LinkedServiceReference"
-							},
-							"name": "METMeantempTabell"
-						}
-					],
-					"transformations": [
-						{
-							"name": "RulleUtData"
-						},
-						{
-							"name": "RulleUtData2"
-						}
-					],
-					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/meantemp.json']) ~> ABlobMetMeantemp\nABlobMetMeantemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Middeltemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Middeltemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)}\n\t)) ~> METMeantempTabell"
 				}
 			},
 			"dependsOn": []
