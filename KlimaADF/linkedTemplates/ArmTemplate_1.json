@@ -26,6 +26,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "SVV"
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
@@ -51,6 +54,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "KLD"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -76,7 +82,7 @@
 							"name": "LageDatoKolonne"
 						}
 					],
-					"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'kld-data',\n\tfileName: 'oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobKLDOversikt\nABlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'kld_oversikt',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
+					"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'kld-data',\n\tfileName: 'oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobKLDOversikt\nABlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'kld_oversikt',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
 				}
 			},
 			"dependsOn": []
@@ -86,6 +92,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "SSB"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -111,7 +120,7 @@
 							"name": "NyeKolonner"
 						}
 					],
-					"script": "source(output(\n\t\tregion as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as integer,\n\t\t{_c4} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '07832.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07832\nABlobSSB07832 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Tilhengere\", \"Tilhenger\",\r\nstatistikkvariabel == \"Motorredskap\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"K-4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019\", \"Søgne (-2019\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tregion as string,\n\t\tmerke as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as boolean,\n\t\t{_c5} as string\n\t),\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_bilberke',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tRegion = region,\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tAntall = {07832: Registrerte kjøretøy},\n\t\tDato\n\t)) ~> SSB07832Tabell"
+					"script": "source(output(\n\t\tregion as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as integer,\n\t\t{_c4} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '07832.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07832\nABlobSSB07832 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Tilhengere\", \"Tilhenger\",\r\nstatistikkvariabel == \"Motorredskap\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"K-4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019\", \"Søgne (-2019\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinput(\n\t\tregion as string,\n\t\tmerke as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07832: Registrerte kjøretøy} as boolean,\n\t\t{_c5} as string\n\t),\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_bilberke',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tRegion = region,\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tAntall = {07832: Registrerte kjøretøy},\n\t\tDato\n\t)) ~> SSB07832Tabell"
 				}
 			},
 			"dependsOn": []
@@ -121,6 +130,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "SSB"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -146,7 +158,7 @@
 							"name": "NyeKolonner"
 						}
 					],
-					"script": "source(output(\n\t\tregion as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07849: Registrerte kjøretøy} as integer,\n\t\t{_c5} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '07849.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07849\nABlobSSB07849 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tmapColumn(\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\tBestand = {07849: Registrerte kjøretøy},\n\t\tDate = Dato\n\t)) ~> SSB07849Tabell"
+					"script": "source(output(\n\t\tregion as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{07849: Registrerte kjøretøy} as integer,\n\t\t{_c5} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '07849.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB07849\nABlobSSB07849 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\t{År} = {år},\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\tBestand = {07849: Registrerte kjøretøy},\n\t\tDate = Dato\n\t)) ~> SSB07849Tabell"
 				}
 			},
 			"dependsOn": []
@@ -156,6 +168,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "SSB"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -181,7 +196,7 @@
 							"name": "NyeKolonner"
 						}
 					],
-					"script": "source(output(\n\t\tregion as string,\n\t\t{type registrering} as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{12906: Førstegangsregistrerte kjøretøy} as integer,\n\t\t{_c6} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '12906.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB12906\nABlobSSB12906 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Bobiler\", \"Bobil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tDato,\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\t{Solgte biler} = {12906: Førstegangsregistrerte kjøretøy},\n\t\t{År} = {år}\n\t)) ~> SSB12906Tabell"
+					"script": "source(output(\n\t\tregion as string,\n\t\t{type registrering} as string,\n\t\tdrivstofftype as string,\n\t\t{år} as short,\n\t\tstatistikkvariabel as string,\n\t\t{12906: Førstegangsregistrerte kjøretøy} as integer,\n\t\t{_c6} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'ssb-data',\n\tfileName: '12906.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobSSB12906\nABlobSSB12906 derive(Dato = toDate(concat('01/01/', toString({år})), 'dd/MM/yyyy'),\n\t\tstatistikkvariabel = case(statistikkvariabel == \"Personbiler\", \"Personbil\",\r\nstatistikkvariabel == \"Ambulanser\", \"Ambulanse\",\r\nstatistikkvariabel == \"Bobiler\", \"Bobil\",\r\nstatistikkvariabel == \"Busser\", \"Buss\",\r\nstatistikkvariabel == \"Varebiler\", \"Varebil\",\r\nstatistikkvariabel == \"Kombinerte biler\", \"Kombinert bil\",\r\nstatistikkvariabel == \"Lastebiler\", \"Lastebil\",\r\nstatistikkvariabel == \"Mopeder\", \"Moped\",\r\nstatistikkvariabel == \"Lette motorsykler\", \"Lett motorsykkel\",\r\nstatistikkvariabel == \"Tunge motorsykler\", \"Tung motorsykkel\",\r\nstatistikkvariabel == \"Beltemotorsykler\", \"Beltemotorsykkel\",\r\nstatistikkvariabel == \"Traktorer\", \"Traktor\",\r\nstatistikkvariabel == \"Motorredskaper\", \"Motorredskap\"\r\n),\n\t\tregion = case(\r\n    region == \"0 Hele landet\", \"Norge\",\r\n    region == \"4204 Kristiansand\", \"Kristiansand\",\r\n    region == \"1001 Kristiansand (-2019)\", \"Kristiansand (-2019)\",\r\n    region == \"1018 Søgne (-2019)\", \"Søgne (-2019)\",\r\n    region == \"1017 Songdalen (1964-2019)\", \"Songdalen (-2019)\"\r\n)) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tDato,\n\t\tBiltype = statistikkvariabel,\n\t\tSted = region,\n\t\tDrivstoff = drivstofftype,\n\t\t{Solgte biler} = {12906: Førstegangsregistrerte kjøretøy},\n\t\t{År} = {år}\n\t)) ~> SSB12906Tabell"
 				}
 			},
 			"dependsOn": []
@@ -191,6 +206,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "SVV"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -232,7 +250,7 @@
 							"name": "SlaaSammenNavn"
 						}
 					],
-					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\tDato as date,\n\t\tFelt as string,\n\t\tVolum as string,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall timer total} as short,\n\t\t{Antall timer inkludert} as short,\n\t\t{Antall timer ugyldig} as short,\n\t\t{Ikke gyldig lengde} as string,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{>= 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svv-data',\n\tfileName: 'biltrafikk.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVBildata\nFiltrereRetning derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Sødal\", \"Sødal\",\r\n    Navn == \"PRESTEBEKKEN\", \"Bjørndalssletta\",\r\n    Navn == \"PRESTBK RAMPE FRA LU\", \"Bjørndalssletta Påkjørsel\",\r\n    Navn == \"Rampe mot Prestheia\", \"Bjørndalssletta Avkjørsel\",\r\n    Navn == \"Vesterbrua\", \"Vesterveien\",\r\n    Navn == \"TRETJØNNVEIEN\", \"Presteheia\"\r\n)) ~> EndreNavnOgSamleData\nEndreNavnOgSamleData select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> RedusereKolonnevalg\nABlobSVVBildata filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> FiltrereRetning\nRedusereKolonnevalg aggregate(groupBy(Navn),\n\t{NavnSammenslått} = case(\r\n    max(Navn) == \"Grim\", \"Grim\",\r\n    max(Navn) == \"Vesterveien Avkjørsel\", \"Vesterveien\",\r\n    max(Navn) == \"Sødal\", \"Sødal\",\r\n    max(Navn) == \"Bjørndalssletta\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Påkjørsel\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Avkjørsel\", \"Bjørndalssletta Avkjørsel\",\r\n    max(Navn) == \"Vesterveien\", \"Vesterveien\",\r\n    max(Navn) == \"Presteheia\", \"Presteheia\"\r\n)) ~> SlaaSammenNavn\nRedusereKolonnevalg sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_biltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato,\n\t\tTotalt = Volum,\n\t\t{Lette kjøretøy},\n\t\t{Tunge kjøretøy}\n\t)) ~> SVVBiltrafikkTabell\nSlaaSammenNavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_rel_navn',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{NavnRÅ} = Navn,\n\t\tNavn = {NavnSammenslått}\n\t)) ~> SVVNavnTabell"
+					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\tDato as date,\n\t\tFelt as string,\n\t\tVolum as integer,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall timer total} as short,\n\t\t{Antall timer inkludert} as short,\n\t\t{Antall timer ugyldig} as short,\n\t\t{Ikke gyldig lengde} as string,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\t{< 5,6m} as integer,\n\t\t{>= 5,6m} as integer,\n\t\t{5,6m - 7,6m} as integer,\n\t\t{7,6m - 12,5m} as integer,\n\t\t{12,5m - 16,0m} as integer,\n\t\t{>= 16,0m} as integer,\n\t\t{16,0m - 24,0m} as integer,\n\t\t{>= 24,0m} as integer\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svv-data',\n\tfileName: 'biltrafikk.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVBildata\nFiltrereRetning derive({Tung transport} = {>= 5,6m}+{5,6m - 7,6m}+{7,6m - 12,5m}+{12,5m - 16,0m}+{16,0m - 24,0m}+{>= 24,0m},\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Sødal\", \"Sødal\",\r\n    Navn == \"PRESTEBEKKEN\", \"Bjørndalssletta\",\r\n    Navn == \"PRESTBK RAMPE FRA LU\", \"Bjørndalssletta Påkjørsel\",\r\n    Navn == \"Rampe mot Prestheia\", \"Bjørndalssletta Avkjørsel\",\r\n    Navn == \"Vesterbrua\", \"Vesterveien\",\r\n    Navn == \"TRETJØNNVEIEN\", \"Presteheia\"\r\n)) ~> EndreNavnOgSamleData\nEndreNavnOgSamleData select(mapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato,\n\t\tVolum,\n\t\t{Lette kjøretøy} = {< 5,6m},\n\t\t{Tunge kjøretøy} = {Tung transport}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> RedusereKolonnevalg\nABlobSVVBildata filter((Trafikkregistreringspunkt == \"68804V121330\" && Felt == \"Totalt i retning Oddernestunnelen\") ||\n(Trafikkregistreringspunkt == \"02466V121760\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"04813V121368\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"22540V121303\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"16947V121800\" && Felt == \"Totalt i retning KRISTIANSAND\") ||\n(Trafikkregistreringspunkt == \"99454V104306\" && Felt == \"Totalt i retning Lund\") ||\n(Trafikkregistreringspunkt == \"98936V121303\" && Felt == \"Totalt i retning Kristiansand\") ||\n(Trafikkregistreringspunkt == \"73380V121327\" && Felt == \"Totalt i retning Prestheia\")) ~> FiltrereRetning\nRedusereKolonnevalg aggregate(groupBy(Navn),\n\t{NavnSammenslått} = case(\r\n    max(Navn) == \"Grim\", \"Grim\",\r\n    max(Navn) == \"Vesterveien Avkjørsel\", \"Vesterveien\",\r\n    max(Navn) == \"Sødal\", \"Sødal\",\r\n    max(Navn) == \"Bjørndalssletta\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Påkjørsel\", \"Bjørndalssletta\",\r\n    max(Navn) == \"Bjørndalssletta Avkjørsel\", \"Bjørndalssletta Avkjørsel\",\r\n    max(Navn) == \"Vesterveien\", \"Vesterveien\",\r\n    max(Navn) == \"Presteheia\", \"Presteheia\"\r\n)) ~> SlaaSammenNavn\nRedusereKolonnevalg sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_biltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato,\n\t\tTotalt = Volum,\n\t\t{Lette kjøretøy},\n\t\t{Tunge kjøretøy}\n\t)) ~> SVVBiltrafikkTabell\nSlaaSammenNavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_rel_navn',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\t{NavnRÅ} = Navn,\n\t\tNavn = {NavnSammenslått}\n\t)) ~> SVVNavnTabell"
 				}
 			},
 			"dependsOn": []
@@ -242,6 +260,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "SVV"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -267,7 +288,7 @@
 							"name": "FiltrereTotalt"
 						}
 					],
-					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as string,\n\t\tTil as string,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svv-data',\n\tfileName: 'sykkeltrafikk.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVSykkeldata\nABlobSVVSykkeldata filter(Felt == \"Totalt\") ~> FiltrereTotalt\nFiltrereTotalt sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_sykkeltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> SVVSykkeltrafikkTabell"
+					"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as date,\n\t\tTil as date,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svv-data',\n\tfileName: 'sykkeltrafikk.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVSykkeldata\nABlobSVVSykkeldata filter(Felt == \"Totalt\") ~> FiltrereTotalt\nFiltrereTotalt sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_sykkeltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum\n\t)) ~> SVVSykkeltrafikkTabell"
 				}
 			},
 			"dependsOn": []
@@ -277,6 +298,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "MET"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -322,7 +346,7 @@
 							"name": "NyeKolonner"
 						}
 					],
-					"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMaxtempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMeantempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetNedborTabell\nSQLMetMaxtempTabell, SQLMetMeantempTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetMeantempTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetMeantempTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData, SQLMetNedborTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetNedborTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetNedborTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData2\nSlaaSammenData2 derive(Stasjonsnavn = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), SQLMetMaxtempTabell@Stasjon,\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), SQLMetMeantempTabell@Stasjon,\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), SQLMetNedborTabell@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(SQLMetMaxtempTabell@Dato)), SQLMetMaxtempTabell@Dato,\r\n    not(isNull(SQLMetMeantempTabell@Dato)), SQLMetMeantempTabell@Dato,\r\n    not(isNull(SQLMetNedborTabell@Dato)), SQLMetNedborTabell@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> METDataTabell"
+					"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMaxtempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMeantempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetNedborTabell\nSQLMetMaxtempTabell, SQLMetMeantempTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetMeantempTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetMeantempTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData, SQLMetNedborTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetNedborTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetNedborTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData2\nSlaaSammenData2 derive(Stasjonsnavn = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), SQLMetMaxtempTabell@Stasjon,\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), SQLMetMeantempTabell@Stasjon,\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), SQLMetNedborTabell@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(SQLMetMaxtempTabell@Dato)), SQLMetMaxtempTabell@Dato,\r\n    not(isNull(SQLMetMeantempTabell@Dato)), SQLMetMeantempTabell@Dato,\r\n    not(isNull(SQLMetNedborTabell@Dato)), SQLMetNedborTabell@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> METDataTabell"
 				}
 			},
 			"dependsOn": []
@@ -332,6 +356,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "Relasjoner"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -367,7 +394,7 @@
 							"name": "AggregereStedsnavn"
 						}
 					],
-					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB07849Tabell\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nSQLSSB07849Tabell, SQLSSB12906Tabell join(SQLSSB07849Tabell@Sted == SQLSSB12906Tabell@Sted,\n\tjoinType:'right',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData aggregate(groupBy(SQLSSB07849Tabell@Sted),\n\tStedNY = case(\r\n    max(SQLSSB07849Tabell@Sted) == \"Norge\", \"Norge\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> AggregereStedsnavn\nAggregereStedsnavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_rel_sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> StedTabell"
+					"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB07849Tabell\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nSQLSSB07849Tabell, SQLSSB12906Tabell join(SQLSSB07849Tabell@Sted == SQLSSB12906Tabell@Sted,\n\tjoinType:'right',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData aggregate(groupBy(SQLSSB07849Tabell@Sted),\n\tStedNY = case(\r\n    max(SQLSSB07849Tabell@Sted) == \"Norge\", \"Norge\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> AggregereStedsnavn\nAggregereStedsnavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_rel_sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> StedTabell"
 				}
 			},
 			"dependsOn": []
@@ -377,6 +404,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "Relasjoner"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -408,7 +438,7 @@
 							"name": "VelgeKolonner"
 						}
 					],
-					"script": "source(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nVelgeKolonner aggregate(groupBy({DrivstoffRÅ}),\n\tDrivstoff = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Annet drivstoff\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Bensin\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Diesel\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Elektrisitet\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Hydrogen\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Parafin\"\r\n),\n\t\tUtlippsintensitet = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Ukjent\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Fossil\"\r\n)) ~> AggregereDrivstoffOgUtslipp\nSQLSSB12906Tabell derive({DrivstoffRÅ} = Drivstoff) ~> NyKolonneDrivstoffRAA\nNyKolonneDrivstoffRAA select(mapColumn(\n\t\tDato,\n\t\tBiltype,\n\t\tSted,\n\t\t{DrivstoffRÅ},\n\t\t{Solgte biler},\n\t\t{År}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> VelgeKolonner\nAggregereDrivstoffOgUtslipp sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_rel_utslippsintensitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\tDrivstoff,\n\t\t{DrivstoffRÅ},\n\t\tUtlippsintensitet\n\t)) ~> UtslippTabell"
+					"script": "source(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nVelgeKolonner aggregate(groupBy({DrivstoffRÅ}),\n\tDrivstoff = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Annet drivstoff\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Bensin\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Diesel\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Hybrid\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Plugin\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Elektrisitet\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Hydrogen\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Parafin\"\r\n),\n\t\tUtlippsintensitet = case(\r\n    max({DrivstoffRÅ}) == \"Annet drivstoff\", \"Ukjent\",\r\n    max({DrivstoffRÅ}) == \"Bensin\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Bensin hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"Diesel\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ikke ladbar\", \"Fossil\",\r\n    max({DrivstoffRÅ}) == \"Diesel hybrid, ladbar\", \"Lavutslipp\",\r\n    max({DrivstoffRÅ}) == \"El.\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Gass\", \"Gass\",\r\n    max({DrivstoffRÅ}) == \"Hydrogen\", \"Nullutslipp\",\r\n    max({DrivstoffRÅ}) == \"Parafin\", \"Fossil\"\r\n)) ~> AggregereDrivstoffOgUtslipp\nSQLSSB12906Tabell derive({DrivstoffRÅ} = Drivstoff) ~> NyKolonneDrivstoffRAA\nNyKolonneDrivstoffRAA select(mapColumn(\n\t\tDato,\n\t\tBiltype,\n\t\tSted,\n\t\t{DrivstoffRÅ},\n\t\t{Solgte biler},\n\t\t{År}\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> VelgeKolonner\nAggregereDrivstoffOgUtslipp sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_rel_utslippsintensitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tDrivstoff,\n\t\t{DrivstoffRÅ},\n\t\tUtlippsintensitet\n\t)) ~> UtslippTabell"
 				}
 			},
 			"dependsOn": []
@@ -510,6 +540,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "KLD"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -625,6 +658,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "SSB"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
@@ -742,6 +778,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "SSB"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
@@ -859,6 +898,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "SSB"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:28Z"
 			},
@@ -967,12 +1009,88 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "SVV"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:27Z"
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/DS_HTTP_SVV_IN')]",
 				"[concat(variables('factoryId'), '/dataflows/DF_ABLOB_TRAN_SQL_SVV_BILTRAFIKK')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_DATA_TRAN_SVV_BYINDEKS')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Hente data fra SVV API og lagre i BLOB",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "HttpReadSettings",
+									"requestMethod": "GET",
+									"requestTimeout": ""
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "DelimitedTextSink",
+								"storeSettings": {
+									"type": "AzureBlobStorageWriteSettings"
+								},
+								"formatSettings": {
+									"type": "DelimitedTextWriteSettings",
+									"quoteAllText": true,
+									"fileExtension": ".txt"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "DS_HTTP_SVV_IN",
+								"type": "DatasetReference",
+								"parameters": {
+									"relativeUrl": "exportAverage?fromYear=2016&resolution=ADT&toYear=2021&trpIds=00000V1702725%2C00000V1702751%2C01355V1702751%2C02466V121760%2C02489V121427%2C04110V121776%2C05898V121506%2C06702V121764%2C08057V2475663%2C12556V121486%2C13278V121819%2C16947V121800%2C18321V121493%2C22540V121303%2C25833V121761%2C26071V121746%2C26467V121457%2C26849V121777%2C27139V121510%2C28020V121748%2C28135V121429%2C33412V121301%2C35258V2475662%2C40820V121304%2C43920V121762%2C45924V1955584%2C47077V121488%2C47215V121446%2C47254V121508%2C57166V121303%2C57502V121402%2C58182V1787571%2C65613V121784%2C68018V121746%2C78704V121429%2C95764V121488"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "DS_ABLOB_SVV_OUT",
+								"type": "DatasetReference",
+								"parameters": {
+									"fileName": "byindeks.csv"
+								}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "SVV"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-07-01T16:09:27Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/DS_HTTP_SVV_IN')]"
 			]
 		},
 		{
@@ -1075,6 +1193,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "SVV"
+				},
 				"annotations": [],
 				"lastPublishTime": "2021-07-01T16:09:27Z"
 			},
@@ -1151,6 +1272,9 @@
 						}
 					}
 				],
+				"folder": {
+					"name": "Relasjoner"
+				},
 				"annotations": []
 			},
 			"dependsOn": [
@@ -1163,6 +1287,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "MET"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -1191,7 +1318,7 @@
 							"name": "RulleUtData2"
 						}
 					],
-					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/maxtemp.json']) ~> ABlobMETMaxtemp\nABlobMETMaxtemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Maksimumstemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Maksimumstemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Maksimumstemperatur (dag)}\n\t)) ~> METMaxtempTabell"
+					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/maxtemp.json']) ~> ABlobMETMaxtemp\nABlobMETMaxtemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Maksimumstemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Maksimumstemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Maksimumstemperatur (dag)}\n\t)) ~> METMaxtempTabell"
 				}
 			},
 			"dependsOn": []
@@ -1201,6 +1328,9 @@
 			"type": "Microsoft.DataFactory/factories/dataflows",
 			"apiVersion": "2018-06-01",
 			"properties": {
+				"folder": {
+					"name": "MET"
+				},
 				"type": "MappingDataFlow",
 				"typeProperties": {
 					"sources": [
@@ -1229,45 +1359,7 @@
 							"name": "RulleUtData2"
 						}
 					],
-					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/meantemp.json']) ~> ABlobMetMeantemp\nABlobMetMeantemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Middeltemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Middeltemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)}\n\t)) ~> METMeantempTabell"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DF_ABLOB_TRAN_SQL_MET_NEDBOR')]",
-			"type": "Microsoft.DataFactory/factories/dataflows",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"type": "MappingDataFlow",
-				"typeProperties": {
-					"sources": [
-						{
-							"dataset": {
-								"referenceName": "DS_ABLOB_MET_IN",
-								"type": "DatasetReference"
-							},
-							"name": "ABlobMETNedbor"
-						}
-					],
-					"sinks": [
-						{
-							"linkedService": {
-								"referenceName": "AZURE_SQL_DB_LINK",
-								"type": "LinkedServiceReference"
-							},
-							"name": "METNedborTabell"
-						}
-					],
-					"transformations": [
-						{
-							"name": "RulleUtData"
-						},
-						{
-							"name": "RulleUtData2"
-						}
-					],
-					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/nedbor.json']) ~> ABlobMETNedbor\nABlobMETNedbor foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Nedbør (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Nedbør (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Nedbør (dag)}\n\t)) ~> METNedborTabell"
+					"script": "source(output(\n\t\t{@context} as string,\n\t\t{@type} as string,\n\t\tapiVersion as string,\n\t\tcreatedAt as timestamp,\n\t\tcurrentItemCount as short,\n\t\tcurrentLink as string,\n\t\tdata as (observations as (elementId as string, exposureCategory as short, level as (levelType as string, unit as string, value as short), performanceCategory as string, qualityCode as short, timeOffset as string, timeResolution as string, timeSeriesId as boolean, unit as string, value as double)[], referenceTime as string, sourceId as string)[],\n\t\titemsPerPage as short,\n\t\tlicense as string,\n\t\toffset as boolean,\n\t\tqueryTime as double,\n\t\ttotalItemCount as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tinferDriftedColumnTypes: true,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'arrayOfDocuments',\n\twildcardPaths:['met-data/meantemp.json']) ~> ABlobMetMeantemp\nABlobMetMeantemp foldDown(unroll(data.observations, data.observations),\n\tmapColumn(\n\t\tStasjon = data,\n\t\tDato = data,\n\t\t{Middeltemperatur (dag)} = data\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData foldDown(unroll(Stasjon.observations, Stasjon.observations),\n\tmapColumn(\n\t\tStasjon = Stasjon.sourceId,\n\t\tDato = Stasjon.referenceTime,\n\t\t{Middeltemperatur (dag)} = Stasjon.observations.value\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData2\nRulleUtData2 sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tsaveOrder: 1,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)}\n\t)) ~> METMeantempTabell"
 				}
 			},
 			"dependsOn": []

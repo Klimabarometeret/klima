@@ -199,6 +199,9 @@
 					"referenceName": "AZURE_BLOB_LINK",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "KLD"
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
@@ -231,6 +234,9 @@
 					"fileName": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "KLD"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -277,6 +283,9 @@
 					"referenceName": "AZURE_BLOB_LINK",
 					"type": "LinkedServiceReference"
 				},
+				"folder": {
+					"name": "MET"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -306,6 +315,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "MET"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -333,6 +345,9 @@
 				"linkedServiceName": {
 					"referenceName": "AZURE_BLOB_LINK",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "SSB"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -368,6 +383,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "SSB"
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
@@ -400,6 +418,9 @@
 				"linkedServiceName": {
 					"referenceName": "AZURE_BLOB_LINK",
 					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "SVV"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -434,6 +455,9 @@
 					"fileName": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "SVV"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
@@ -476,6 +500,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "KLD"
+				},
 				"annotations": [],
 				"type": "Excel",
 				"typeProperties": {
@@ -512,6 +539,9 @@
 						"type": "string"
 					}
 				},
+				"folder": {
+					"name": "MET"
+				},
 				"annotations": [],
 				"type": "Json",
 				"typeProperties": {
@@ -542,6 +572,9 @@
 					"relativeUrl": {
 						"type": "string"
 					}
+				},
+				"folder": {
+					"name": "SSB"
 				},
 				"annotations": [],
 				"type": "DelimitedText",
