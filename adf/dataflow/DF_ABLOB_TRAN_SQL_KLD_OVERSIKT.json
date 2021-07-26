@@ -1,6 +1,9 @@
 {
 	"name": "DF_ABLOB_TRAN_SQL_KLD_OVERSIKT",
 	"properties": {
+		"folder": {
+			"name": "KLD"
+		},
 		"type": "MappingDataFlow",
 		"typeProperties": {
 			"sources": [
@@ -26,7 +29,7 @@
 					"name": "LageDatoKolonne"
 				}
 			],
-			"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'kld-data',\n\tfileName: 'oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobKLDOversikt\nABlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'kld_oversikt',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
+			"script": "source(output(\n\t\t{År} as short,\n\t\tSektor as string,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'kld-data',\n\tfileName: 'oversikt.csv',\n\tcolumnDelimiter: ',',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tcolumnNamesAsHeader: true) ~> ABlobKLDOversikt\nABlobKLDOversikt derive(Dato = toDate(concat('01/01/', toString({År})), 'dd/MM/yyyy')) ~> LageDatoKolonne\nLageDatoKolonne sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'kld_oversikt',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\t{År},\n\t\tSektor,\n\t\t{Utslipp (tonn CO₂-ekvivalenter)},\n\t\tDato\n\t)) ~> KLDOversiktTabell"
 		}
 	}
 }

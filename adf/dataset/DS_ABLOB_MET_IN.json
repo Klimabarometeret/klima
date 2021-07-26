@@ -5,6 +5,9 @@
 			"referenceName": "AZURE_BLOB_LINK",
 			"type": "LinkedServiceReference"
 		},
+		"folder": {
+			"name": "MET"
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
