@@ -2771,6 +2771,52 @@
 				"[concat(variables('factoryId'), '/datasets/DS_ABLOB_RETURKRAFT_INN')]",
 				"[concat(variables('factoryId'), '/linkedServices/AZURE_SQL_DB_LINK')]"
 			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/PL_TRAN_RETURKRAFT_BRENSEL')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Transformere data og lagre i SQL",
+						"type": "ExecuteDataFlow",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "1.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"dataflow": {
+								"referenceName": "DF_ABLOB_TRAN_SQL_RETURKRAFT_BRENSEL",
+								"type": "DataFlowReference",
+								"parameters": {},
+								"datasetParameters": {
+									"ABlobReturkraft": {},
+									"ReturkraftBrenselTabell": {}
+								}
+							},
+							"staging": {},
+							"compute": {
+								"coreCount": 8,
+								"computeType": "General"
+							},
+							"traceLevel": "Fine"
+						}
+					}
+				],
+				"folder": {
+					"name": "Avfall"
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/dataflows/DF_ABLOB_TRAN_SQL_RETURKRAFT_BRENSEL')]"
+			]
 		}
 	]
 }
