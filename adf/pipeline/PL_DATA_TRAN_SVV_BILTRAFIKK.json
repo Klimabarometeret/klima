@@ -44,7 +44,10 @@
 						"referenceName": "DS_HTTP_SVV_IN",
 						"type": "DatasetReference",
 						"parameters": {
-							"relativeUrl": "export?from=2017-03-01&resolution=DAY&to=2021-07-08&trpIds=02466V121760%2C04813V121368%2C16947V121800%2C22540V121303%2C68804V121330%2C73380V121327%2C98936V121303%2C99454V104306"
+							"relativeUrl": {
+								"value": "export?from=2017-03-01&resolution=DAY&to=2021-07-08&trpIds=02466V121760%2C04813V121368%2C16947V121800%2C22540V121303%2C98936V121303%2C99454V104306%2C68804V121330",
+								"type": "Expression"
+							}
 						}
 					}
 				],
