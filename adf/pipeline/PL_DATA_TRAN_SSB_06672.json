@@ -69,7 +69,7 @@
 				]
 			},
 			{
-				"name": "Traformere data",
+				"name": "Traformere data og lagre i SQL",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [
 					{
