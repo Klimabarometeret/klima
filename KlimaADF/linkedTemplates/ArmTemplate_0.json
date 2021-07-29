@@ -338,6 +338,36 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_RETURKRAFT_INN')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AZURE_BLOB_LINK",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "Returkraft"
+				},
+				"annotations": [],
+				"type": "Excel",
+				"typeProperties": {
+					"sheetName": "Returkraft Brensel",
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "returkraft.xlsx",
+						"folderPath": "avfall-data",
+						"container": "klimabarometer-kristiansand"
+					},
+					"firstRowAsHeader": true
+				},
+				"schema": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AZURE_BLOB_LINK')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/DS_ABLOB_SSB_IN')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -557,45 +587,6 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/MET_HTTP_LINK')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_HTTP_SSB_IN')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "SSB_HTTP_LINK",
-					"type": "LinkedServiceReference"
-				},
-				"parameters": {
-					"relativeUrl": {
-						"type": "string"
-					}
-				},
-				"folder": {
-					"name": "SSB"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "HttpServerLocation",
-						"relativeUrl": {
-							"value": "@dataset().relativeUrl",
-							"type": "Expression"
-						}
-					},
-					"columnDelimiter": ",",
-					"encodingName": "ISO-8859-1",
-					"escapeChar": "\\",
-					"firstRowAsHeader": true,
-					"quoteChar": "\""
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/SSB_HTTP_LINK')]"
 			]
 		}
 	]
