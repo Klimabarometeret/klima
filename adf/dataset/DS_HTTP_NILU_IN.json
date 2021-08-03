@@ -1,0 +1,20 @@
+{
+	"name": "DS_HTTP_NILU_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "NILU_HTTP_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "NILU"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation"
+			}
+		},
+		"schema": {}
+	}
+}
