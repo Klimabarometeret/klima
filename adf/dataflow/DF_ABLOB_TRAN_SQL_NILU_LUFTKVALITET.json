@@ -1,0 +1,38 @@
+{
+	"name": "DF_ABLOB_TRAN_SQL_NILU_LUFTKVALITET",
+	"properties": {
+		"folder": {
+			"name": "NILU"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "DS_ABLOB_NILU_IN",
+						"type": "DatasetReference"
+					},
+					"name": "AblobNILULuftkvalitet"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "NILULuftkvalitetTabell"
+				}
+			],
+			"transformations": [
+				{
+					"name": "RulleUtData"
+				},
+				{
+					"name": "HenteDataFraObjektIKolonner"
+				}
+			],
+			"script": "source(output(\n\t\tid as string,\n\t\tzone as string,\n\t\tmunicipality as string,\n\t\tarea as string,\n\t\tstation as string,\n\t\ttype as string,\n\t\teoi as string,\n\t\tcomponent as string,\n\t\tlatitude as double,\n\t\tlongitude as double,\n\t\tunit as string,\n\t\ttimestep as string,\n\t\tisVisible as boolean,\n\t\tvalues as (dateTime as string, value as double, count as string, coverage as string)[]\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tdocumentForm: 'documentPerLine',\n\twildcardPaths:['nilu-data/luftkvalitet.json']) ~> AblobNILULuftkvalitet\nAblobNILULuftkvalitet foldDown(unroll(values),\n\tmapColumn(\n\t\tid,\n\t\tzone,\n\t\tmunicipality,\n\t\tarea,\n\t\tstation,\n\t\ttype,\n\t\teoi,\n\t\tcomponent,\n\t\tlatitude,\n\t\tlongitude,\n\t\tunit,\n\t\ttimestep,\n\t\tisVisible,\n\t\tvaluesdfgh = values\n\t),\n\tskipDuplicateMapInputs: false,\n\tskipDuplicateMapOutputs: false) ~> RulleUtData\nRulleUtData derive(datetime = valuesdfgh.dateTime,\n\t\tvalue = valuesdfgh.value,\n\t\tcount = valuesdfgh.count,\n\t\tcoverage = valuesdfgh.coverage) ~> HenteDataFraObjektIKolonner\nHenteDataFraObjektIKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'nilu_luftkvalitet',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStasjon = station,\n\t\tType = type,\n\t\tStoff = component,\n\t\tLatitude = latitude,\n\t\tLongitude = longitude,\n\t\tEnhet = unit,\n\t\tDato = datetime,\n\t\tVerdi = value,\n\t\tDekning = coverage\n\t)) ~> NILULuftkvalitetTabell"
+		}
+	}
+}

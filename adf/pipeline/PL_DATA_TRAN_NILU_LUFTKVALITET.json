@@ -1,9 +1,9 @@
 {
-	"name": "pipeline1",
+	"name": "PL_DATA_TRAN_NILU_LUFTKVALITET",
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Hente data fra NILU API og lagre data i BLOB",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -19,9 +19,8 @@
 						"type": "JsonSource",
 						"storeSettings": {
 							"type": "HttpReadSettings",
-							"requestMethod": "POST",
-							"additionalHeaders": "Content-Type: application/json; charset=utf-8",
-							"requestBody": "{\"timeserieId\":\"{8a3d0795-9ad4-470a-89ce-5ef1dff75445},{692948e7-f189-4a58-ae47-f9a2d6ece9af},{a126cb60-07fb-42a3-b6cc-0fd5a829a32a},{8ef4975f-f38a-44c4-a27d-2114c39648ec}\",\"yearFrom\":2020,\"yearTo\":2021,\"component\":\"NO2\"}",
+							"requestMethod": "GET",
+							"additionalHeaders": "Accept: application/json",
 							"requestTimeout": ""
 						},
 						"formatSettings": {
@@ -37,18 +36,142 @@
 							"type": "JsonWriteSettings"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['zone']"
+								},
+								"sink": {
+									"path": "$['zone']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['municipality']"
+								},
+								"sink": {
+									"path": "$['municipality']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['area']"
+								},
+								"sink": {
+									"path": "$['area']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['station']"
+								},
+								"sink": {
+									"path": "$['station']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['type']"
+								},
+								"sink": {
+									"path": "$['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['eoi']"
+								},
+								"sink": {
+									"path": "$['eoi']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['component']"
+								},
+								"sink": {
+									"path": "$['component']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['latitude']"
+								},
+								"sink": {
+									"path": "$['latitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['longitude']"
+								},
+								"sink": {
+									"path": "$['longitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['unit']"
+								},
+								"sink": {
+									"path": "$['unit']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['timestep']"
+								},
+								"sink": {
+									"path": "$['timestep']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isVisible']"
+								},
+								"sink": {
+									"path": "$['isVisible']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['values']"
+								},
+								"sink": {
+									"path": "$['values']"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
 				},
 				"inputs": [
 					{
 						"referenceName": "DS_HTTP_NILU_IN",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "/agg/2/2015-01-01/2021-01-01/Stener%20Heyerdahl;Gartnerl%C3%B8kka;Bj%C3%B8rndalssletta"
+						}
 					}
 				],
 				"outputs": [
 					{
 						"referenceName": "DS_ABLOB_NILU_OUT",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "luftkvalitet.json"
+						}
 					}
 				]
 			}

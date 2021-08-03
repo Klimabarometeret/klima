@@ -5,6 +5,11 @@
 			"referenceName": "AZURE_BLOB_LINK",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
 		"folder": {
 			"name": "NILU"
 		},
@@ -13,110 +18,14 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
 				"folderPath": "nilu-data",
 				"container": "klimabarometer-kristiansand"
 			}
 		},
-		"schema": {
-			"type": "object",
-			"properties": {
-				"@context": {
-					"type": "string"
-				},
-				"@type": {
-					"type": "string"
-				},
-				"apiVersion": {
-					"type": "string"
-				},
-				"license": {
-					"type": "string"
-				},
-				"createdAt": {
-					"type": "string"
-				},
-				"queryTime": {
-					"type": "number"
-				},
-				"currentItemCount": {
-					"type": "integer"
-				},
-				"itemsPerPage": {
-					"type": "integer"
-				},
-				"offset": {
-					"type": "integer"
-				},
-				"totalItemCount": {
-					"type": "integer"
-				},
-				"currentLink": {
-					"type": "string"
-				},
-				"data": {
-					"type": "array",
-					"items": {
-						"type": "object",
-						"properties": {
-							"sourceId": {
-								"type": "string"
-							},
-							"referenceTime": {
-								"type": "string"
-							},
-							"observations": {
-								"type": "array",
-								"items": {
-									"type": "object",
-									"properties": {
-										"elementId": {
-											"type": "string"
-										},
-										"value": {
-											"type": "number"
-										},
-										"unit": {
-											"type": "string"
-										},
-										"level": {
-											"type": "object",
-											"properties": {
-												"levelType": {
-													"type": "string"
-												},
-												"unit": {
-													"type": "string"
-												},
-												"value": {
-													"type": "integer"
-												}
-											}
-										},
-										"timeOffset": {
-											"type": "string"
-										},
-										"timeResolution": {
-											"type": "string"
-										},
-										"timeSeriesId": {
-											"type": "integer"
-										},
-										"performanceCategory": {
-											"type": "string"
-										},
-										"exposureCategory": {
-											"type": "string"
-										},
-										"qualityCode": {
-											"type": "integer"
-										}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
-		}
+		"schema": {}
 	}
 }
