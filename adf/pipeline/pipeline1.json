@@ -20,6 +20,7 @@
 						"storeSettings": {
 							"type": "HttpReadSettings",
 							"requestMethod": "POST",
+							"additionalHeaders": "Content-Type: application/json; charset=utf-8",
 							"requestBody": "{\"timeserieId\":\"{8a3d0795-9ad4-470a-89ce-5ef1dff75445},{692948e7-f189-4a58-ae47-f9a2d6ece9af},{a126cb60-07fb-42a3-b6cc-0fd5a829a32a},{8ef4975f-f38a-44c4-a27d-2114c39648ec}\",\"yearFrom\":2020,\"yearTo\":2021,\"component\":\"NO2\"}",
 							"requestTimeout": ""
 						},
