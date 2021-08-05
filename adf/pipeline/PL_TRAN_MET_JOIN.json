@@ -1,0 +1,95 @@
+{
+	"name": "PL_TRAN_MET_JOIN",
+	"properties": {
+		"activities": [
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "PL_DATA_TRAN_MET_NEDBOR",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "PL_DATA_TRAN_MET_MEANTEMP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "PL_DATA_TRAN_MET_MAXTEMP",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_SQL_TRAN_SQL_MET_ALLDATA",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			},
+			{
+				"name": "PL_DATA_TRAN_MET_MAXTEMP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_TRAN_MET_MAXTEMP",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "PL_DATA_TRAN_MET_MEANTEMP",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_TRAN_MET_MEANTEMP",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			},
+			{
+				"name": "PL_DATA_TRAN_MET_NEDBOR",
+				"type": "ExecutePipeline",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"pipeline": {
+						"referenceName": "PL_DATA_TRAN_MET_NEDBOR",
+						"type": "PipelineReference"
+					},
+					"waitOnCompletion": true
+				}
+			}
+		],
+		"folder": {
+			"name": "MET"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

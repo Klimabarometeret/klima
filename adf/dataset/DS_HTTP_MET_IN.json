@@ -1,0 +1,30 @@
+{
+	"name": "DS_HTTP_MET_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "MET_HTTP_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"relativeUrl": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "MET"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().relativeUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

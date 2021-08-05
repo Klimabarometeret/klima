@@ -1,0 +1,55 @@
+{
+	"name": "DF_SQL_TRAN_SQL_MET_ALLDATA",
+	"properties": {
+		"folder": {
+			"name": "MET"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SQLMetMaxtempTabell"
+				},
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SQLMetMeantempTabell"
+				},
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SQLMetNedborTabell"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "METDataTabell"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SlaaSammenData"
+				},
+				{
+					"name": "SlaaSammenData2"
+				},
+				{
+					"name": "NyeKolonner"
+				}
+			],
+			"script": "source(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Maksimumstemperatur (dag)} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_maxtemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMaxtempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Middeltemperatur (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_meantemp',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetMeantempTabell\nsource(output(\n\t\tStasjon as string,\n\t\tDato as string,\n\t\t{Nedbør (dag)} as double\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_nedbor',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLMetNedborTabell\nSQLMetMaxtempTabell, SQLMetMeantempTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetMeantempTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetMeantempTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData, SQLMetNedborTabell join(SQLMetMaxtempTabell@Stasjon == SQLMetNedborTabell@Stasjon\n\t&& SQLMetMaxtempTabell@Dato == SQLMetNedborTabell@Dato,\n\tjoinType:'outer',\n\tbroadcast: 'auto')~> SlaaSammenData2\nSlaaSammenData2 derive(Stasjonsnavn = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), \"Kjevik\",\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), \"Kjevik\"\r\n),\n\t\tStasjon = case(\r\n    not(isNull(SQLMetMaxtempTabell@Stasjon)), SQLMetMaxtempTabell@Stasjon,\r\n    not(isNull(SQLMetMeantempTabell@Stasjon)), SQLMetMeantempTabell@Stasjon,\r\n    not(isNull(SQLMetNedborTabell@Stasjon)), SQLMetNedborTabell@Stasjon\r\n),\n\t\tDato = toTimestamp(case(\r\n    not(isNull(SQLMetMaxtempTabell@Dato)), SQLMetMaxtempTabell@Dato,\r\n    not(isNull(SQLMetMeantempTabell@Dato)), SQLMetMeantempTabell@Dato,\r\n    not(isNull(SQLMetNedborTabell@Dato)), SQLMetNedborTabell@Dato\r\n), 'yyyy-MM-dd\\'T\\'HH:mm:ss.SSS', 'CEST')) ~> NyeKolonner\nNyeKolonner sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'met_data',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tNavn = Stasjonsnavn,\n\t\tStasjon,\n\t\tDato,\n\t\t{Middeltemperatur (dag)},\n\t\t{Maksimumstemperatur (dag)},\n\t\t{Nedbør (dag)}\n\t)) ~> METDataTabell"
+		}
+	}
+}

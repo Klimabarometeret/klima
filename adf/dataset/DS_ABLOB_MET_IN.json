@@ -1,0 +1,23 @@
+{
+	"name": "DS_ABLOB_MET_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "MET"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "met-data",
+				"container": "klimabarometer-kristiansand"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

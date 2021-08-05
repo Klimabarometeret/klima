@@ -1,0 +1,95 @@
+{
+	"name": "PL_DATA_TRAN_KLD_OVERSIKT",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra KLD API og lagre i BLOB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "ExcelSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_KLD_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "excel?areaId=640",
+							"sheetName": "Oversikt"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_KLD_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "oversikt.csv"
+						}
+					}
+				]
+			},
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Hente data fra KLD API og lagre i BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_ABLOB_TRAN_SQL_KLD_OVERSIKT",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "KLD"
+		},
+		"annotations": []
+	}
+}

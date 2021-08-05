@@ -1,5 +1,17 @@
 {
 	"name": "KlimaADF",
+	"properties": {
+		"globalParameters": {
+			"summertime": {
+				"type": "bool",
+				"value": false
+			},
+			"ContainerName": {
+				"type": "string",
+				"value": "klimabarometer-kristiansand"
+			}
+		}
+	},
 	"location": "northeurope",
 	"identity": {
 		"type": "SystemAssigned",

@@ -1,0 +1,25 @@
+{
+	"name": "DS_ABLOB_RETURKRAFT_INN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Returkraft"
+		},
+		"annotations": [],
+		"type": "Excel",
+		"typeProperties": {
+			"sheetName": "Returkraft Brensel",
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": "returkraft.xlsx",
+				"folderPath": "avfall-data",
+				"container": "klimabarometer-kristiansand"
+			},
+			"firstRowAsHeader": true
+		},
+		"schema": []
+	}
+}

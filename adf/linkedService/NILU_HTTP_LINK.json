@@ -1,0 +1,12 @@
+{
+	"name": "NILU_HTTP_LINK",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://luftkvalitet.nilu.no/api/exceedances",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

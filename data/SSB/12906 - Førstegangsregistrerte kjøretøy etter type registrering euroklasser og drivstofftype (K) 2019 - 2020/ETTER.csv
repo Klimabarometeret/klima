@@ -1,0 +1,1431 @@
+region;type registrering;drivstofftype;år;biltyper;antall;dato
+Norge;Nye kjøretøy;Bensin;2019;Personbiler;21203;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Ambulanser;7;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Bobiler;2;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Varebiler;507;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Lastebiler;1;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Mopeder;2539;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Lette motorsykler;2740;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Tunge motorsykler;6150;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Beltemotorsykler;5269;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Traktorer;7256;01.01.2019
+Norge;Nye kjøretøy;Bensin;2019;Motorredskaper;1;01.01.2019
+Norge;Nye kjøretøy;Bensin;2020;Personbiler;8377;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Ambulanser;3;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Bobiler;4;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Varebiler;245;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Lastebiler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Mopeder;2086;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Lette motorsykler;2474;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Tunge motorsykler;6645;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Beltemotorsykler;4059;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Traktorer;7188;01.01.2020
+Norge;Nye kjøretøy;Bensin;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Diesel;2019;Personbiler;22245;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Ambulanser;108;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Bobiler;3587;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Busser;1902;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Varebiler;33056;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Lastebiler;5797;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Mopeder;208;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Tunge motorsykler;2;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Traktorer;3352;01.01.2019
+Norge;Nye kjøretøy;Diesel;2019;Motorredskaper;96;01.01.2019
+Norge;Nye kjøretøy;Diesel;2020;Personbiler;11353;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Ambulanser;74;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Bobiler;3376;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Busser;1016;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Varebiler;27376;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Lastebiler;4519;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Mopeder;375;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Tunge motorsykler;2;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Traktorer;2648;01.01.2020
+Norge;Nye kjøretøy;Diesel;2020;Motorredskaper;69;01.01.2020
+Norge;Nye kjøretøy;Parafin;2019;Personbiler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Bobiler;3;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Varebiler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Lastebiler;3;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Parafin;2020;Personbiler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Bobiler;3;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Varebiler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Lastebiler;1;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Parafin;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2019;Personbiler;16;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Busser;185;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Varebiler;26;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Lastebiler;133;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Gass;2020;Personbiler;5;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Busser;135;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Varebiler;19;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Lastebiler;85;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Gass;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;El.;2019;Personbiler;60246;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Busser;158;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Varebiler;2011;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Lastebiler;1;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Mopeder;623;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Lette motorsykler;19;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Tunge motorsykler;264;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Beltemotorsykler;8;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Traktorer;12;01.01.2019
+Norge;Nye kjøretøy;El.;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;El.;2020;Personbiler;76791;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Busser;250;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Varebiler;2560;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Lastebiler;14;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Mopeder;938;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Lette motorsykler;41;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Tunge motorsykler;125;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Traktorer;11;01.01.2020
+Norge;Nye kjøretøy;El.;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2019;Personbiler;28;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Varebiler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Lastebiler;1;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Hydrogen;2020;Personbiler;15;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Varebiler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Lastebiler;3;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Hydrogen;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Personbiler;18768;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Varebiler;5;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Personbiler;27497;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Varebiler;32;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Personbiler;18697;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Personbiler;15156;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Varebiler;9;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Personbiler;531;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Busser;63;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Personbiler;1412;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Varebiler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Personbiler;544;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Busser;6;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Varebiler;23;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lastebiler;1;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Personbiler;763;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Ambulanser;8;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Busser;2;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Varebiler;82;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2019;Personbiler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Ambulanser;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Bobiler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Busser;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Varebiler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Kombinerte biler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Lastebiler;20;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Mopeder;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Lette motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Tunge motorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Beltemotorsykler;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Traktorer;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2019;Motorredskaper;0;01.01.2019
+Norge;Nye kjøretøy;Annet drivstoff;2020;Personbiler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Ambulanser;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Bobiler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Busser;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Varebiler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Kombinerte biler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Lastebiler;9;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Mopeder;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Lette motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Tunge motorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Beltemotorsykler;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Traktorer;0;01.01.2020
+Norge;Nye kjøretøy;Annet drivstoff;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Bensin;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Personbiler;112;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Varebiler;2;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Mopeder;54;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Lette motorsykler;54;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Tunge motorsykler;141;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Beltemotorsykler;19;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Traktorer;56;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Diesel;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Personbiler;150;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Ambulanser;1;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Bobiler;35;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Busser;2;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Varebiler;223;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Lastebiler;13;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Mopeder;4;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Traktorer;9;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Parafin;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Parafin;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Personbiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Parafin;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Gass;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Gass;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Personbiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Gass;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;El.;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;El.;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;El.;2020;Personbiler;1760;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Varebiler;21;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Mopeder;9;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;El.;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Hydrogen;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Personbiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Hydrogen;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Personbiler;212;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Personbiler;152;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Personbiler;16;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Personbiler;8;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Personbiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Ambulanser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Bobiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Busser;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Varebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Kombinerte biler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Lastebiler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Mopeder;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Lette motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Tunge motorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Beltemotorsykler;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Traktorer;0;01.01.2019
+Kristiansand;Nye kjøretøy;Annet drivstoff;2019;Motorredskaper;0;01.01.2019
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Personbiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Ambulanser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Bobiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Busser;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Varebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Kombinerte biler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Lastebiler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Mopeder;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Lette motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Tunge motorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Beltemotorsykler;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Traktorer;0;01.01.2020
+4204 Kristiansand;Nye kjøretøy;Annet drivstoff;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Personbiler;261;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Varebiler;1;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Mopeder;46;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Lette motorsykler;44;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Tunge motorsykler;72;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Beltemotorsykler;20;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Traktorer;33;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Personbiler;309;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Ambulanser;3;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Bobiler;27;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Busser;2;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Varebiler;170;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Lastebiler;23;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Mopeder;1;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Traktorer;7;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Personbiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Parafin;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Parafin;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Personbiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Gass;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Gass;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;El.;2019;Personbiler;974;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Varebiler;15;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Mopeder;4;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;El.;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;El.;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Personbiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Hydrogen;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Hydrogen;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Personbiler;169;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Personbiler;228;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Personbiler;6;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Personbiler;7;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Personbiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Ambulanser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Bobiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Busser;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Varebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Kombinerte biler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Lastebiler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Mopeder;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Lette motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Tunge motorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Beltemotorsykler;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Traktorer;0;01.01.2019
+KristiansandFør2019;Nye kjøretøy;Annet drivstoff;2019;Motorredskaper;0;01.01.2019
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Personbiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Ambulanser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Bobiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Busser;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Varebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Kombinerte biler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Lastebiler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Mopeder;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Lette motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Tunge motorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Beltemotorsykler;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Traktorer;0;01.01.2020
+1001 Kristiansand (-2019);Nye kjøretøy;Annet drivstoff;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Bensin;2019;Personbiler;10;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Mopeder;4;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Lette motorsykler;4;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Tunge motorsykler;8;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Beltemotorsykler;5;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Traktorer;20;01.01.2019
+Songdalen;Nye kjøretøy;Bensin;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Diesel;2019;Personbiler;15;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Bobiler;1;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Varebiler;29;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Lastebiler;3;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Traktorer;3;01.01.2019
+Songdalen;Nye kjøretøy;Diesel;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Parafin;2019;Personbiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Parafin;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Parafin;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Gass;2019;Personbiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Gass;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Gass;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;El.;2019;Personbiler;51;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;El.;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;El.;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Hydrogen;2019;Personbiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Hydrogen;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Hydrogen;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Personbiler;3;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Personbiler;7;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Personbiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Personbiler;1;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Personbiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Ambulanser;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Bobiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Busser;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Varebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Kombinerte biler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Lastebiler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Mopeder;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Lette motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Tunge motorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Beltemotorsykler;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Traktorer;0;01.01.2019
+Songdalen;Nye kjøretøy;Annet drivstoff;2019;Motorredskaper;0;01.01.2019
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Personbiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Ambulanser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Bobiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Busser;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Varebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Kombinerte biler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Lastebiler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Mopeder;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Lette motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Tunge motorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Beltemotorsykler;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Traktorer;0;01.01.2020
+1017 Songdalen (1964-2019);Nye kjøretøy;Annet drivstoff;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Bensin;2019;Personbiler;19;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Mopeder;10;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Lette motorsykler;4;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Tunge motorsykler;10;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Traktorer;10;01.01.2019
+Søgne;Nye kjøretøy;Bensin;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Diesel;2019;Personbiler;28;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Bobiler;9;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Varebiler;23;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Lastebiler;1;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Traktorer;1;01.01.2019
+Søgne;Nye kjøretøy;Diesel;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Parafin;2019;Personbiler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Parafin;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Parafin;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Gass;2019;Personbiler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Gass;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Gass;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;El.;2019;Personbiler;131;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;El.;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;El.;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Hydrogen;2019;Personbiler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Hydrogen;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Hydrogen;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Personbiler;8;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Personbiler;10;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Bensin hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Bensin hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Personbiler;1;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ladbar;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ladbar;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Personbiler;1;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Diesel hybrid, ikke ladbar;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Diesel hybrid, ikke ladbar;2020;Motorredskaper;0;01.01.2020
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Personbiler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Ambulanser;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Bobiler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Busser;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Varebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Kombinerte biler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Lastebiler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Mopeder;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Lette motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Tunge motorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Beltemotorsykler;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Traktorer;0;01.01.2019
+Søgne;Nye kjøretøy;Annet drivstoff;2019;Motorredskaper;0;01.01.2019
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Personbiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Ambulanser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Bobiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Busser;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Varebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Kombinerte biler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Lastebiler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Mopeder;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Lette motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Tunge motorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Beltemotorsykler;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Traktorer;0;01.01.2020
+1018 Søgne (-2019);Nye kjøretøy;Annet drivstoff;2020;Motorredskaper;0;01.01.2020

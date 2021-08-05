@@ -1,0 +1,45 @@
+{
+	"name": "DF_SQL_TRAN_SQL_REL_STED",
+	"properties": {
+		"folder": {
+			"name": "Relasjoner"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SQLSSB07849Tabell"
+				},
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SQLSSB12906Tabell"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "StedTabell"
+				}
+			],
+			"transformations": [
+				{
+					"name": "SlaaSammenData"
+				},
+				{
+					"name": "AggregereStedsnavn"
+				}
+			],
+			"script": "source(output(\n\t\t{År} as short,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\tBestand as integer,\n\t\tDate as date\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_bilpark_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB07849Tabell\nsource(output(\n\t\tDato as date,\n\t\tBiltype as string,\n\t\tSted as string,\n\t\tDrivstoff as string,\n\t\t{Solgte biler} as integer,\n\t\t{År} as short\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_nybilsalg_etter_drivstofftype',\n\tisolationLevel: 'READ_UNCOMMITTED') ~> SQLSSB12906Tabell\nSQLSSB07849Tabell, SQLSSB12906Tabell join(SQLSSB07849Tabell@Sted == SQLSSB12906Tabell@Sted,\n\tjoinType:'right',\n\tbroadcast: 'auto')~> SlaaSammenData\nSlaaSammenData aggregate(groupBy(SQLSSB07849Tabell@Sted),\n\tStedNY = case(\r\n    max(SQLSSB07849Tabell@Sted) == \"Norge\", \"Norge\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Kristiansand (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Søgne (-2019)\", \"Kristiansand\",\r\n    max(SQLSSB07849Tabell@Sted) == \"Songdalen (-2019)\", \"Kristiansand\"\r\n)) ~> AggregereStedsnavn\nAggregereStedsnavn sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'ssb_rel_sted',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tStedGammel = Sted,\n\t\tSted = StedNY\n\t)) ~> StedTabell"
+		}
+	}
+}

@@ -1,0 +1,38 @@
+{
+	"name": "DF_ABLOB_TRAN_SQL_SVV_SYKKELTRAFIKK",
+	"properties": {
+		"folder": {
+			"name": "SVV"
+		},
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_BLOB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "ABlobSVVSykkeldata"
+				}
+			],
+			"sinks": [
+				{
+					"linkedService": {
+						"referenceName": "AZURE_SQL_DB_LINK",
+						"type": "LinkedServiceReference"
+					},
+					"name": "SVVSykkeltrafikkTabell"
+				}
+			],
+			"transformations": [
+				{
+					"name": "FiltrereTotalt"
+				},
+				{
+					"name": "Koordinater"
+				}
+			],
+			"script": "source(output(\n\t\tTrafikkregistreringspunkt as string,\n\t\tNavn as string,\n\t\tVegreferanse as string,\n\t\tFra as date,\n\t\tTil as date,\n\t\t{År} as short,\n\t\t{Måned} as short,\n\t\tVolum as short,\n\t\t{Konfidensintervall start} as short,\n\t\t{Konfidensintervall slutt} as short,\n\t\t{Dekningsgrad (%)} as string,\n\t\t{Antall døgn total} as short,\n\t\t{Antall døgn inkludert} as short,\n\t\t{Antall døgn ugyldig} as boolean,\n\t\t{Ikke gyldig lengde} as short,\n\t\t{Lengdekvalitetsgrad (%)} as string,\n\t\tFelt as string,\n\t\t{< 5,6m} as string,\n\t\t{>= 5,6m} as string,\n\t\t{5,6m - 7,6m} as string,\n\t\t{7,6m - 12,5m} as string,\n\t\t{12,5m - 16,0m} as string,\n\t\t{16,0m - 24,0m} as string,\n\t\t{>= 24,0m} as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false,\n\tformat: 'delimited',\n\tcontainer: 'klimabarometer-kristiansand',\n\tfolderPath: 'svv-data',\n\tfileName: 'sykkeltrafikk.csv',\n\tcolumnDelimiter: ';',\n\tescapeChar: '\\\\',\n\tquoteChar: '\\\"',\n\tencodingName: 'ISO-8859-1',\n\tcolumnNamesAsHeader: true) ~> ABlobSVVSykkeldata\nABlobSVVSykkeldata filter(Felt == \"Totalt\") ~> FiltrereTotalt\nFiltrereTotalt derive(Latitude = case(\r\n    Navn == \"Vollevann fv452 Sykkel\", \"58.166097\",\r\n    Navn == \"Vollevann E18 Sykkel\", \"58.165371\",\r\n    Navn == \"HANNEVIK (SYKKEL)\", \"58.138605624800746\"\r\n),\n\t\tLongitude = case(\r\n    Navn == \"Vollevann fv452 Sykkel\", \"8.033198\",\r\n    Navn == \"Vollevann E18 Sykkel\", \"8.033532\",\r\n    Navn == \"HANNEVIK (SYKKEL)\", \"7.96389965508359\"\r\n),\n\t\tNavn = case(\r\n    Navn == \"GRIM\", \"Grim\",\r\n    Navn == \"Avkjørsel v/ Wilhelm Krag\", \"Vesterveien Avkjørsel\",\r\n    Navn == \"Vollevann fv452 Sykkel\", \"Vollevann\",\r\n    Navn == \"Vollevann E18 Sykkel\", \"Vollevann v. E18\",\r\n    Navn == \"HANNEVIK (SYKKEL)\", \"Hannevika\"\r\n)) ~> Koordinater\nKoordinater sink(allowSchemaDrift: true,\n\tvalidateSchema: false,\n\tformat: 'table',\n\tstore: 'sqlserver',\n\tschemaName: 'dbo',\n\ttableName: 'svv_sykkeltrafikk',\n\tinsertable: true,\n\tupdateable: false,\n\tdeletable: false,\n\tupsertable: false,\n\trecreate: true,\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true,\n\terrorHandlingOption: 'stopOnFirstError',\n\tmapColumn(\n\t\tTrafikkregistreringspunkt,\n\t\tNavn,\n\t\tDato = Fra,\n\t\tVolum,\n\t\tLatitude,\n\t\tLongitude\n\t)) ~> SVVSykkeltrafikkTabell"
+		}
+	}
+}

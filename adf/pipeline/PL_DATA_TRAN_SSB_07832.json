@@ -1,0 +1,109 @@
+{
+	"name": "PL_DATA_TRAN_SSB_07832",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra SSB API og lagre i BLOB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "POST",
+							"requestBody": "{\n  \"query\": [\n    {\n      \"code\": \"Region\",\n      \"selection\": {\n        \"filter\": \"item\",\n        \"values\": [\n          \"0\",\n          \"4204\",\n          \"1001\",\n          \"1017\",\n          \"1018\"\n        ]\n      }\n    },\n    {\n      \"code\": \"Kjoretoy\",\n      \"selection\": {\n        \"filter\": \"all\",\n        \"values\": []\n      }\n    }\n  ],\n  \"response\": {\n    \"format\": \"csv2\"\n  }\n}",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_SSB_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "07832"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_SSB_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "07832.csv"
+						}
+					}
+				]
+			},
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Hente data fra SSB API og lagre i BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_ABLOB_TRAN_SQL_SSB_07832",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "SSB"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

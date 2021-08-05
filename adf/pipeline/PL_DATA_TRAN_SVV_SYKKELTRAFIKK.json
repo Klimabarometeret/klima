@@ -1,0 +1,100 @@
+{
+	"name": "PL_DATA_TRAN_SVV_SYKKELTRAFIKK",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra SVV API og lagre i BLOB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "DelimitedTextSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".txt"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_SVV_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "exportAverage?fromYear=2016&resolution=MDT&toYear=2021&trpIds=09717B1671751%2C11654B1671763%2C83248B1213727"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_SVV_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "sykkeltrafikk.csv"
+						}
+					}
+				]
+			},
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Hente data fra SVV API og lagre i BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_ABLOB_TRAN_SQL_SVV_SYKKELTRAFIKK",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "SVV"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:27Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

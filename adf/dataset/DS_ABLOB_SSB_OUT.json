@@ -1,0 +1,37 @@
+{
+	"name": "DS_ABLOB_SSB_OUT",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"fileName": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "SSB"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().fileName",
+					"type": "Expression"
+				},
+				"folderPath": "ssb-data",
+				"container": "klimabarometer-kristiansand"
+			},
+			"columnDelimiter": ",",
+			"encodingName": "UTF-8",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

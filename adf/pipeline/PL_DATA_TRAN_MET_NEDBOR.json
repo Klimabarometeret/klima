@@ -1,0 +1,171 @@
+{
+	"name": "PL_DATA_TRAN_MET_NEDBOR",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra MET API og lagre data i BLOB",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Sjekke om sommertid",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_MET_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": {
+								"value": "@concat(concat(\n    '?sources=SN39040&referenceTime=1939-12-31T23:59:59Z/', \nstring(if(variables('summertime'), addToTime(utcnow(), 2, 'Hour'), addToTime(utcnow(), 1, 'Hour')))),\n    '&elements=sum(precipitation_amount%20P1D)&timeResolution=days')",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_MET_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "nedbor.json"
+						}
+					}
+				]
+			},
+			{
+				"name": "Formatere til Norsk tidssone",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Hente naavaerende datetime",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "datetimeFormat",
+					"value": {
+						"value": "@convertFromUtc(variables('datetime'), 'W. Europe Standard Time')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Sjekke om sommertid",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Formatere til Norsk tidssone",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "summertime",
+					"value": {
+						"value": "@equals(string(subtractFromTime(startOfHour(variables('datetimeFormat')), 2, 'Hour')), replace(string(startOfHour(variables('datetime'))), 'Z', ''))",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Hente naavaerende datetime",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "datetime",
+					"value": {
+						"value": "@utcnow()",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Hente data fra MET API og lagre data i BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_ABLOB_TRAN_SQL_MET_NEDBOR",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"variables": {
+			"datetime": {
+				"type": "String"
+			},
+			"summertime": {
+				"type": "Boolean"
+			},
+			"datetimeFormat": {
+				"type": "String"
+			}
+		},
+		"folder": {
+			"name": "MET"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-07-01T16:09:28Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

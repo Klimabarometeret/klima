@@ -1,0 +1,27 @@
+{
+	"name": "DS_ABLOB_SVV_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "SVV"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "svv-data",
+				"container": "klimabarometer-kristiansand"
+			},
+			"columnDelimiter": ";",
+			"encodingName": "ISO-8859-1",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
