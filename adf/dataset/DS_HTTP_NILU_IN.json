@@ -1,0 +1,29 @@
+{
+	"name": "DS_HTTP_NILU_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "NILU_HTTP_LINK_TEMP",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"relativeUrl": {
+				"type": "string"
+			}
+		},
+		"folder": {
+			"name": "NILU"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "HttpServerLocation",
+				"relativeUrl": {
+					"value": "@dataset().relativeUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"schema": {}
+	}
+}

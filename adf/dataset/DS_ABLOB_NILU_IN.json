@@ -1,0 +1,85 @@
+{
+	"name": "DS_ABLOB_NILU_IN",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AZURE_BLOB_LINK",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "NILU"
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "nilu-data",
+				"container": "klimabarometer-kristiansand"
+			}
+		},
+		"schema": {
+			"type": "object",
+			"properties": {
+				"id": {
+					"type": "integer"
+				},
+				"zone": {
+					"type": "string"
+				},
+				"municipality": {
+					"type": "string"
+				},
+				"area": {
+					"type": "string"
+				},
+				"station": {
+					"type": "string"
+				},
+				"type": {
+					"type": "string"
+				},
+				"eoi": {
+					"type": "string"
+				},
+				"component": {
+					"type": "string"
+				},
+				"latitude": {
+					"type": "number"
+				},
+				"longitude": {
+					"type": "number"
+				},
+				"unit": {
+					"type": "string"
+				},
+				"timestep": {
+					"type": "integer"
+				},
+				"isVisible": {
+					"type": "boolean"
+				},
+				"values": {
+					"type": "array",
+					"items": {
+						"type": "object",
+						"properties": {
+							"dateTime": {
+								"type": "string"
+							},
+							"value": {
+								"type": "number"
+							},
+							"count": {
+								"type": "integer"
+							},
+							"coverage": {
+								"type": "integer"
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

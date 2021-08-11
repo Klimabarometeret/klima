@@ -1,0 +1,12 @@
+{
+	"name": "NILU_HTTP_LINK_TEMP",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://api.nilu.no",
+			"enableServerCertificateValidation": true,
+			"authenticationType": "Anonymous"
+		}
+	}
+}

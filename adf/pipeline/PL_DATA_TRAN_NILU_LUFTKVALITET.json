@@ -1,0 +1,215 @@
+{
+	"name": "PL_DATA_TRAN_NILU_LUFTKVALITET",
+	"properties": {
+		"activities": [
+			{
+				"name": "Hente data fra NILU API og lagre data i BLOB",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET",
+							"additionalHeaders": "Accept: application/json",
+							"requestTimeout": ""
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['id']"
+								},
+								"sink": {
+									"path": "$['id']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['zone']"
+								},
+								"sink": {
+									"path": "$['zone']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['municipality']"
+								},
+								"sink": {
+									"path": "$['municipality']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['area']"
+								},
+								"sink": {
+									"path": "$['area']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['station']"
+								},
+								"sink": {
+									"path": "$['station']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['type']"
+								},
+								"sink": {
+									"path": "$['type']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['eoi']"
+								},
+								"sink": {
+									"path": "$['eoi']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['component']"
+								},
+								"sink": {
+									"path": "$['component']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['latitude']"
+								},
+								"sink": {
+									"path": "$['latitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['longitude']"
+								},
+								"sink": {
+									"path": "$['longitude']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['unit']"
+								},
+								"sink": {
+									"path": "$['unit']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['timestep']"
+								},
+								"sink": {
+									"path": "$['timestep']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['isVisible']"
+								},
+								"sink": {
+									"path": "$['isVisible']"
+								}
+							},
+							{
+								"source": {
+									"path": "$['values']"
+								},
+								"sink": {
+									"path": "$['values']"
+								}
+							}
+						],
+						"collectionReference": ""
+					}
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_HTTP_NILU_IN",
+						"type": "DatasetReference",
+						"parameters": {
+							"relativeUrl": "/agg/2/2015-01-01/2021-01-01/Stener%20Heyerdahl;Gartnerl%C3%B8kka;Bj%C3%B8rndalssletta"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ABLOB_NILU_OUT",
+						"type": "DatasetReference",
+						"parameters": {
+							"fileName": "luftkvalitet.json"
+						}
+					}
+				]
+			},
+			{
+				"name": "Transformere data og lagre i SQL",
+				"type": "ExecuteDataFlow",
+				"dependsOn": [
+					{
+						"activity": "Hente data fra NILU API og lagre data i BLOB",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "1.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"dataflow": {
+						"referenceName": "DF_ABLOB_TRAN_SQL_NILU_LUFTKVALITET",
+						"type": "DataFlowReference"
+					},
+					"compute": {
+						"coreCount": 8,
+						"computeType": "General"
+					},
+					"traceLevel": "Fine"
+				}
+			}
+		],
+		"folder": {
+			"name": "NILU"
+		},
+		"annotations": []
+	}
+}
